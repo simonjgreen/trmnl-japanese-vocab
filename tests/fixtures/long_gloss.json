@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "date": "2026-08-09",
+  "level": "n2",
+  "level_display": "N2",
+  "dataset_version": "fixture",
+  "selection_version": "1",
+  "word": {
+    "id": "demo:申し込む",
+    "surface": "申し込む",
+    "reading": "もうしこむ",
+    "ruby_segments": [
+      {
+        "base": "申",
+        "reading": "もう"
+      },
+      {
+        "base": "し",
+        "reading": null
+      },
+      {
+        "base": "込",
+        "reading": "こ"
+      },
+      {
+        "base": "む",
+        "reading": null
+      }
+    ],
+    "display_gloss": "to apply for, to make an application, to propose",
+    "example": {
+      "ja": "来週の試験に申し込みました。",
+      "en": "I applied for next week's examination."
+    },
+    "display": {
+      "word_size": "medium",
+      "example_size": "normal"
+    }
+  },
+  "sequence": {
+    "cycle": 0,
+    "position": 42,
+    "total": 650
+  }
+}

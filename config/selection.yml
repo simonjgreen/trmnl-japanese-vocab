@@ -1,0 +1,13 @@
+---
+# Fixed epoch for the daily rotation. Changing this reshuffles every date, so
+# it must not be edited casually.
+epoch_date: '2026-01-01'
+
+# Bump deliberately when the rotation is intended to change. Corpus changes
+# also alter future assignments; this string makes such a change intentional
+# and diagnosable rather than mysterious.
+selection_version: '1'
+
+# Non-secret. Present so the schedule can be perturbed without touching
+# selection_version semantics.
+selection_salt: 'kotoba'

@@ -1,0 +1,20 @@
+{% comment %}
+  Quadrant — 400 x 240. Word and gloss only. There is no honest way to add a
+  sentence here without shrinking the word below the point of being the
+  dominant element.
+{% endcomment %}
+<div class="layout layout--col layout--center">
+  <div class="kotoba kotoba--quadrant">
+    {% if word and word.surface %}
+      {% render "kotoba_card",
+         word: word,
+         show_example: false,
+         example_lines: 1,
+         show_translation: false %}
+    {% else %}
+      {% render "kotoba_empty", level_display: level_display, date: date %}
+    {% endif %}
+  </div>
+</div>
+
+{% render "kotoba_title_bar", instance_label: instance_label %}

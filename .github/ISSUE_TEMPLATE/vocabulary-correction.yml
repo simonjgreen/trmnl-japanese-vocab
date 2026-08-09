@@ -1,0 +1,83 @@
+name: Vocabulary correction
+description: Report a wrong reading, gloss, furigana segmentation or level
+title: '[vocab] '
+labels: [vocabulary]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve the corpus.
+
+        Please note that **JLPT level assignments are community estimates**.
+        The Japan Foundation and JEES no longer publish official vocabulary
+        lists, so "this word is really N2" is a matter of judgement rather
+        than fact. Corrections to readings, glosses and furigana are much
+        more clear-cut and always welcome.
+
+  - type: input
+    id: entry_id
+    attributes:
+      label: Entry ID
+      description: >-
+        The `id` field from `data/vocabulary/<level>.json`, for example
+        `jlpt-waller:1198180-3f2a1b`. Find it by searching for the word.
+      placeholder: jlpt-waller:1198180-3f2a1b
+    validations:
+      required: true
+
+  - type: dropdown
+    id: field
+    attributes:
+      label: Which field is wrong?
+      options:
+        - reading
+        - furigana segmentation (ruby_segments)
+        - display_gloss
+        - example sentence
+        - JLPT level
+        - other
+    validations:
+      required: true
+
+  - type: textarea
+    id: current
+    attributes:
+      label: Current value
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed
+    attributes:
+      label: Proposed value
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: >-
+        A dictionary reference, a link, or an explanation. For furigana,
+        saying which kana belongs over which kanji is enough.
+    validations:
+      required: true
+
+  - type: textarea
+    id: licensing
+    attributes:
+      label: Source and licensing implications
+      description: >-
+        If the correction comes from another dataset, say which one and under
+        what licence. Corrections must not introduce material we cannot
+        redistribute.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Confirmation
+      options:
+        - label: This correction does not copy JLPT examination questions or protected workbook content.
+          required: true

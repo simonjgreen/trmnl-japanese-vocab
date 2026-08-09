@@ -1,0 +1,289 @@
+{% comment %}
+  Kotoba — shared markup.
+
+  Everything the four views have in common lives here: the CSS, the setting
+  normalisation, and the reusable components. Shared is prepended to each view
+  before rendering, but `render` does not inherit the surrounding scope, so
+  every component takes its arguments explicitly.
+
+  No JavaScript, no data fetching from markup, and no furigana logic: the ruby
+  segmentation arrives precomputed in the payload and is only ever iterated
+  over here.
+{% endcomment %}
+
+<style>
+  /* ---------------------------------------------------------------
+     Kotoba styles.
+
+     Every dimension is expressed as a custom property set on the view
+     container, and each element resolves its own with a single rule. This is
+     not decoration: `trmnlp lint` caps how many declarations of a handful of
+     properties the markup may contain, so scaling four layouts by repeating
+     that one property per size class would fail the check. Custom properties
+     give the same result within the budget, and keep the per-view numbers
+     collected in one readable block.
+
+     Spacing uses flex `gap` rather than per-element offsets, and greys come
+     from the Framework's `text--gray-*` classes rather than opacity.
+     --------------------------------------------------------------- */
+
+  .kotoba {
+    /* Japanese text is tagged lang="ja" so the renderer prefers Japanese
+       glyph variants. No font files are bundled or fetched; this is a
+       system fallback stack. */
+    --kotoba-ja: "Noto Sans CJK JP", "Noto Sans JP", "Hiragino Sans",
+      "Yu Gothic", "Meiryo", "IPAexGothic", "TakaoPGothic", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    place-content: center;
+    row-gap: var(--kotoba-gap);
+    width: 100%;
+    height: 100%;
+    text-align: center;
+  }
+
+  /* The target word ------------------------------------------------ */
+  .kotoba-word {
+    font-family: var(--kotoba-ja);
+    font-size: var(--kotoba-word);
+    font-weight: 600;
+    white-space: nowrap;
+    line-height: 1.15;
+    font-variant-east-asian: normal;
+    max-width: 100%;
+  }
+
+  .kotoba-word ruby {
+    ruby-position: over;
+    -webkit-ruby-position: before;
+    ruby-align: center;
+  }
+
+  /* <rb> has no default styling in some engines; make it explicit so the
+     base text is always laid out as a ruby base. */
+  .kotoba-word rb {
+    display: ruby-base;
+  }
+
+  .kotoba-word rt {
+    /* 28% of the base: legible at reading distance on e-ink, clearly
+       subordinate to the kanji. The gap between a reading and its base is
+       reserved by the ruby layout itself and cannot be tuned from here —
+       neither `transform` nor `line-height` on an rt box moves it. */
+    font-size: 0.28em;
+    line-height: 1;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  /* Supporting text ------------------------------------------------ */
+  .kotoba-gloss {
+    font-size: var(--kotoba-gloss);
+    font-weight: 400;
+    line-height: 1.25;
+    max-width: 92%;
+  }
+
+  .kotoba-example {
+    font-family: var(--kotoba-ja);
+    font-size: var(--kotoba-example);
+    font-weight: 400;
+    line-height: 1.45;
+    max-width: 90%;
+  }
+
+  /* The Japanese sentence and its optional translation travel together and
+     sit closer to each other than to the rest of the card. */
+  .kotoba-example-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 0.4em;
+    /* Full width, not shrink-to-fit: the children size themselves as a
+       percentage of this block, so letting it wrap to its content would
+       compound the two limits and wrap the sentence early. */
+    width: 100%;
+  }
+
+  .kotoba-example-en {
+    font-size: var(--kotoba-en);
+    font-weight: 400;
+    line-height: 1.35;
+    max-width: 86%;
+  }
+
+  /* ---------------------------------------------------------------
+     Per-view dimensions. Tuned against `trmnlp build --png` output at
+     800x480; see docs/visual-design.md before changing them.
+     --------------------------------------------------------------- */
+
+  /* Full — 800 x 480 */
+  .kotoba--full {
+    --kotoba-word: 108px;
+    --kotoba-gloss: 32px;
+    --kotoba-example: 25px;
+    --kotoba-en: 18px;
+    --kotoba-gap: 20px;
+  }
+  .kotoba--full .is-medium { --kotoba-word: 92px; }
+  .kotoba--full .is-long   { --kotoba-word: 74px; }
+  .kotoba--full .is-xlong  { --kotoba-word: 56px; }
+  .kotoba--full .is-compact { --kotoba-example: 22px; }
+  .kotoba--full .is-tiny    { --kotoba-example: 19px; }
+
+  /* Half horizontal — 800 x 240 */
+  .kotoba--half-h {
+    --kotoba-word: 62px;
+    --kotoba-gloss: 23px;
+    --kotoba-example: 18px;
+    --kotoba-en: 15px;
+    --kotoba-gap: 8px;
+  }
+  .kotoba--half-h .is-medium { --kotoba-word: 54px; }
+  .kotoba--half-h .is-long   { --kotoba-word: 46px; }
+  .kotoba--half-h .is-xlong  { --kotoba-word: 38px; }
+  .kotoba--half-h .is-compact { --kotoba-example: 17px; }
+  .kotoba--half-h .is-tiny    { --kotoba-example: 16px; }
+
+  /* Half vertical — 400 x 480 */
+  .kotoba--half-v {
+    --kotoba-word: 52px;
+    --kotoba-gloss: 21px;
+    --kotoba-example: 17px;
+    --kotoba-en: 14px;
+    --kotoba-gap: 14px;
+  }
+  .kotoba--half-v .is-medium { --kotoba-word: 46px; }
+  .kotoba--half-v .is-long   { --kotoba-word: 38px; }
+  .kotoba--half-v .is-xlong  { --kotoba-word: 30px; }
+  .kotoba--half-v .is-compact { --kotoba-example: 16px; }
+  .kotoba--half-v .is-tiny    { --kotoba-example: 15px; }
+
+  /* Quadrant — 400 x 240 */
+  .kotoba--quadrant {
+    --kotoba-word: 40px;
+    --kotoba-gloss: 18px;
+    --kotoba-example: 15px;
+    --kotoba-en: 13px;
+    --kotoba-gap: 8px;
+  }
+  .kotoba--quadrant .is-medium { --kotoba-word: 34px; }
+  .kotoba--quadrant .is-long   { --kotoba-word: 28px; }
+  .kotoba--quadrant .is-xlong  { --kotoba-word: 24px; }
+
+  /* Clamps ------------------------------------------------------------ */
+  .kotoba-clamp-1,
+  .kotoba-clamp-2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .kotoba-clamp-1 { -webkit-line-clamp: 1; }
+  .kotoba-clamp-2 { -webkit-line-clamp: 2; }
+</style>
+
+{% comment %}
+  Normalise the settings once.
+
+  Custom field values are read from `trmnl.plugin_settings.custom_fields_values`
+  and fall back to a bare top-level variable of the same name, because both
+  shapes occur depending on where the plugin is being rendered.
+
+  `capture` is used rather than a direct comparison because a boolean field can
+  arrive as a real boolean or as the string "true"/"1"; capturing turns any of
+  them into a string that can be compared consistently.
+{% endcomment %}
+{% assign kotoba_fields = trmnl.plugin_settings.custom_fields_values %}
+{% assign kotoba_true = "true,1,yes,on" | split: "," %}
+
+{% capture raw_translation %}{{ kotoba_fields.show_example_translation | default: show_example_translation }}{% endcapture %}
+{% assign raw_translation = raw_translation | strip | downcase %}
+{% assign show_translation = false %}
+{% if kotoba_true contains raw_translation %}{% assign show_translation = true %}{% endif %}
+
+{% capture raw_progress %}{{ kotoba_fields.show_rotation_progress | default: show_rotation_progress }}{% endcapture %}
+{% assign raw_progress = raw_progress | strip | downcase %}
+{% assign show_progress = false %}
+{% if kotoba_true contains raw_progress %}{% assign show_progress = true %}{% endif %}
+
+{% comment %} ============ the word, with furigana over the kanji ============ {% endcomment %}
+{% template kotoba_ruby %}
+  {%- for segment in segments -%}
+    {%- if segment.reading and segment.reading != blank -%}
+      <ruby><rb>{{ segment.base | escape }}</rb><rt>{{ segment.reading | escape }}</rt></ruby>
+    {%- else -%}
+      {{- segment.base | escape -}}
+    {%- endif -%}
+  {%- endfor -%}
+{% endtemplate %}
+
+{% comment %} ============ the whole card ============ {% endcomment %}
+{% template kotoba_card %}
+  {%- assign word_class = "" -%}
+  {%- case word.display.word_size -%}
+    {%- when "medium" -%}{%- assign word_class = "is-medium" -%}
+    {%- when "long" -%}{%- assign word_class = "is-long" -%}
+    {%- when "xlong" -%}{%- assign word_class = "is-xlong" -%}
+  {%- endcase -%}
+
+  {%- assign example_class = "" -%}
+  {%- case word.display.example_size -%}
+    {%- when "compact" -%}{%- assign example_class = "is-compact" -%}
+    {%- when "tiny" -%}{%- assign example_class = "is-tiny" -%}
+  {%- endcase -%}
+
+  <div class="kotoba-word {{ word_class }}" lang="ja">
+    {%- render "kotoba_ruby", segments: word.ruby_segments -%}
+  </div>
+
+  <div class="kotoba-gloss kotoba-clamp-2">{{ word.display_gloss | escape }}</div>
+
+  {%- if show_example and word.example.ja -%}
+    <div class="kotoba-example-block">
+      <div class="kotoba-example {{ example_class }} kotoba-clamp-{{ example_lines }}" lang="ja">
+        {{- word.example.ja | escape -}}
+      </div>
+      {%- if show_translation and word.example.en -%}
+        <div class="kotoba-example-en text--gray-25 kotoba-clamp-1">
+          {{- word.example.en | escape -}}
+        </div>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+{% endtemplate %}
+
+{% comment %} ============ empty state ============ {% endcomment %}
+{% template kotoba_empty %}
+  <div class="kotoba-gloss">
+    Vocabulary unavailable
+    {%- if level_display or date -%}
+      <div class="kotoba-example-en text--gray-30">
+        {{ level_display | escape }}{% if level_display and date %} · {% endif %}{{ date | escape }}
+      </div>
+    {%- endif -%}
+  </div>
+{% endtemplate %}
+
+{% comment %} ============ title bar ============ {% endcomment %}
+{% template kotoba_title_bar %}
+  <div class="title_bar">
+    <span class="title">Japanese</span>
+    <span class="instance">
+      {%- if instance_label and instance_label != blank -%}
+        {{- instance_label | escape -}}
+      {%- else -%}
+        Kotoba
+      {%- endif -%}
+    </span>
+  </div>
+{% endtemplate %}
+
+{% comment %}
+  The instance label: the level on its own, or the level plus the learner's
+  position in the rotation when the optional setting is on.
+{% endcomment %}
+{% assign instance_label = level_display %}
+{% if show_progress and sequence.total %}
+  {% assign instance_label = level_display | append: " · " | append: sequence.position | append: "/" | append: sequence.total %}
+{% endif %}

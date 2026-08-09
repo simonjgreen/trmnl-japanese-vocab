@@ -1,0 +1,17 @@
+---
+# Rolling date coverage for the generated static API.
+# A ten-year future horizon means a delayed or disabled weekly schedule cannot
+# take a device offline; it only stops the horizon moving forward.
+date_range:
+  past_days: 90
+  future_days: 3650
+
+# Hard ceiling on a single daily payload. Anything larger is a build failure.
+payload:
+  recommended_bytes: 5120
+  hard_limit_bytes: 10240
+  minify: true
+
+# `demo` relaxes the per-level minimum; `production` enforces it.
+status: production
+minimum_entries_per_level: 100

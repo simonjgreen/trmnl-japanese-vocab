@@ -1,0 +1,181 @@
+[
+  {
+    "id": "demo:10-2cc50c",
+    "surface": "大人",
+    "reading": "おとな",
+    "ruby_segments": [
+      {
+        "base": "大人",
+        "reading": "おとな"
+      }
+    ],
+    "glosses": [
+      "adult"
+    ],
+    "display_gloss": "adult",
+    "part_of_speech": [
+      "noun"
+    ],
+    "jlpt": {
+      "level": "N4",
+      "source_id": "demo",
+      "confidence": "community-estimated"
+    },
+    "example": {
+      "ja": "大人の切符を二枚ください。",
+      "en": "Two adult tickets please."
+    },
+    "source_refs": [
+      {
+        "source_id": "demo",
+        "source_entry_id": "10"
+      }
+    ],
+    "status": "active",
+    "notes": null
+  },
+  {
+    "id": "demo:6-6b9362",
+    "surface": "今日",
+    "reading": "きょう",
+    "ruby_segments": [
+      {
+        "base": "今日",
+        "reading": "きょう"
+      }
+    ],
+    "glosses": [
+      "today"
+    ],
+    "display_gloss": "today",
+    "part_of_speech": [
+      "noun"
+    ],
+    "jlpt": {
+      "level": "N4",
+      "source_id": "demo",
+      "confidence": "community-estimated"
+    },
+    "example": {
+      "ja": "今日はいい天気ですね。",
+      "en": "It is fine weather today."
+    },
+    "source_refs": [
+      {
+        "source_id": "demo",
+        "source_entry_id": "6"
+      }
+    ],
+    "status": "active",
+    "notes": null
+  },
+  {
+    "id": "demo:7-59368a",
+    "surface": "砂",
+    "reading": "すな",
+    "ruby_segments": [
+      {
+        "base": "砂",
+        "reading": "すな"
+      }
+    ],
+    "glosses": [
+      "sand"
+    ],
+    "display_gloss": "sand",
+    "part_of_speech": [
+      "noun"
+    ],
+    "jlpt": {
+      "level": "N4",
+      "source_id": "demo",
+      "confidence": "community-estimated"
+    },
+    "example": {
+      "ja": "子供が砂で遊んでいます。",
+      "en": "The children are playing in the sand."
+    },
+    "source_refs": [
+      {
+        "source_id": "demo",
+        "source_entry_id": "7"
+      }
+    ],
+    "status": "active",
+    "notes": null
+  },
+  {
+    "id": "demo:8-47b8d5",
+    "surface": "時々",
+    "reading": "ときどき",
+    "ruby_segments": [
+      {
+        "base": "時々",
+        "reading": "ときどき"
+      }
+    ],
+    "glosses": [
+      "sometimes"
+    ],
+    "display_gloss": "sometimes",
+    "part_of_speech": [
+      "adverb"
+    ],
+    "jlpt": {
+      "level": "N4",
+      "source_id": "demo",
+      "confidence": "community-estimated"
+    },
+    "example": {
+      "ja": "時々映画を見に行きます。",
+      "en": "I sometimes go to see a film."
+    },
+    "source_refs": [
+      {
+        "source_id": "demo",
+        "source_entry_id": "8"
+      }
+    ],
+    "status": "active",
+    "notes": null
+  },
+  {
+    "id": "demo:9-4ab39b",
+    "surface": "消しゴム",
+    "reading": "けしごむ",
+    "ruby_segments": [
+      {
+        "base": "消",
+        "reading": "け"
+      },
+      {
+        "base": "しゴム",
+        "reading": null
+      }
+    ],
+    "glosses": [
+      "eraser"
+    ],
+    "display_gloss": "eraser",
+    "part_of_speech": [
+      "noun"
+    ],
+    "jlpt": {
+      "level": "N4",
+      "source_id": "demo",
+      "confidence": "community-estimated"
+    },
+    "example": {
+      "ja": "消しゴムを貸してください。",
+      "en": "Please lend me an eraser."
+    },
+    "source_refs": [
+      {
+        "source_id": "demo",
+        "source_entry_id": "9"
+      }
+    ],
+    "status": "active",
+    "notes": null
+  }
+]

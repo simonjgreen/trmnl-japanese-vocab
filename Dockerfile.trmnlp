@@ -1,0 +1,16 @@
+# trmnlp plus Japanese fonts.
+#
+# The official trmnl/trmnlp image ships eight Latin fonts and no CJK coverage,
+# so a PNG render of this plugin comes out as tofu boxes and tells you nothing.
+# Adding Noto Sans CJK makes local and CI renders actually representative of
+# what the device shows.
+#
+# No font is bundled into the plugin itself; this is a development and CI
+# rendering tool only.
+FROM trmnl/trmnlp:latest
+
+USER root
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends fonts-noto-cjk fonts-noto-cjk-extra \
+ && fc-cache -f \
+ && rm -rf /var/lib/apt/lists/*

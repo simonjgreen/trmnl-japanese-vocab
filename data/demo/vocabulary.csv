@@ -1,0 +1,26 @@
+id,word,kana,level,meaning,pos,example_ja,example_en
+1,食べる,たべる,N5,to eat,verb,私は毎朝パンを食べます。,I eat bread every morning.
+2,本,ほん,N5,book,noun,図書館で本を借りました。,I borrowed a book from the library.
+3,学校,がっこう,N5,school,noun,毎朝歩いて学校へ行きます。,I walk to school every morning.
+4,ありがとう,ありがとう,N5,thank you,interjection,本当にありがとう。,Thank you very much.
+5,お茶,おちゃ,N5,tea,noun,お茶を一杯いかがですか。,Would you like a cup of tea?
+6,今日,きょう,N4,today,noun,今日はいい天気ですね。,It is fine weather today.
+7,砂,すな,N4,sand,noun,子供が砂で遊んでいます。,The children are playing in the sand.
+8,時々,ときどき,N4,sometimes,adverb,時々映画を見に行きます。,I sometimes go to see a film.
+9,消しゴム,けしごむ,N4,eraser,noun,消しゴムを貸してください。,Please lend me an eraser.
+10,大人,おとな,N4,adult,noun,大人の切符を二枚ください。,Two adult tickets please.
+11,取り除く,とりのぞく,N3,to eliminate,verb,彼は不要なファイルを取り除きました。,He removed the unnecessary files.
+12,混雑,こんざつ,N3,congestion,noun,その道は車で混雑している。,The roads are jammed with cars.
+13,花瓶,かびん,N3,vase,noun,花瓶に水を入れました。,I put water in the vase.
+14,引っ越す,ひっこす,N3,to move house,verb,来月東京に引っ越します。,I am moving to Tokyo next month.
+15,コーヒー,コーヒー,N3,coffee,noun,朝はコーヒーを飲みます。,I drink coffee in the morning.
+16,申し込む,もうしこむ,N2,to apply,verb,来週の試験に申し込みました。,I applied for next week's examination.
+17,飢饉,ききん,N2,famine,noun,その国は飢饉に襲われた。,That country was struck by famine.
+18,国際,こくさい,N2,international,noun,国際会議に出席します。,I will attend the international conference.
+19,経済,けいざい,N2,economy,noun,日本の経済は回復しつつある。,The Japanese economy is recovering.
+20,勧める,すすめる,N2,to recommend,verb,この本を強く勧めます。,I strongly recommend this book.
+21,承る,うけたまわる,N1,to hear,verb,ご用件を承ります。,I will hear your request.
+22,勧告,かんこく,N1,advice,noun,医師の勧告に従いました。,I followed the doctor's advice.
+23,一つ一つ,ひとつひとつ,N1,one by one,adverb,一つ一つ丁寧に確認します。,I will check each one carefully.
+24,ヶ月,かげつ,N1,counter for months,counter,三ヶ月かかりました。,It took three months.
+25,明白,めいはく,N1,obvious,na-adjective,答えは明白です。,The answer is obvious.

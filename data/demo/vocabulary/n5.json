@@ -1,0 +1,185 @@
+[
+  {
+    "id": "demo:1-ec4fa4",
+    "surface": "食べる",
+    "reading": "たべる",
+    "ruby_segments": [
+      {
+        "base": "食",
+        "reading": "た"
+      },
+      {
+        "base": "べる",
+        "reading": null
+      }
+    ],
+    "glosses": [
+      "to eat"
+    ],
+    "display_gloss": "to eat",
+    "part_of_speech": [
+      "verb"
+    ],
+    "jlpt": {
+      "level": "N5",
+      "source_id": "demo",
+      "confidence": "community-estimated"
+    },
+    "example": {
+      "ja": "私は毎朝パンを食べます。",
+      "en": "I eat bread every morning."
+    },
+    "source_refs": [
+      {
+        "source_id": "demo",
+        "source_entry_id": "1"
+      }
+    ],
+    "status": "active",
+    "notes": null
+  },
+  {
+    "id": "demo:2-0ac038",
+    "surface": "本",
+    "reading": "ほん",
+    "ruby_segments": [
+      {
+        "base": "本",
+        "reading": "ほん"
+      }
+    ],
+    "glosses": [
+      "book"
+    ],
+    "display_gloss": "book",
+    "part_of_speech": [
+      "noun"
+    ],
+    "jlpt": {
+      "level": "N5",
+      "source_id": "demo",
+      "confidence": "community-estimated"
+    },
+    "example": {
+      "ja": "図書館で本を借りました。",
+      "en": "I borrowed a book from the library."
+    },
+    "source_refs": [
+      {
+        "source_id": "demo",
+        "source_entry_id": "2"
+      }
+    ],
+    "status": "active",
+    "notes": null
+  },
+  {
+    "id": "demo:3-42edc1",
+    "surface": "学校",
+    "reading": "がっこう",
+    "ruby_segments": [
+      {
+        "base": "学校",
+        "reading": "がっこう"
+      }
+    ],
+    "glosses": [
+      "school"
+    ],
+    "display_gloss": "school",
+    "part_of_speech": [
+      "noun"
+    ],
+    "jlpt": {
+      "level": "N5",
+      "source_id": "demo",
+      "confidence": "community-estimated"
+    },
+    "example": {
+      "ja": "毎朝歩いて学校へ行きます。",
+      "en": "I walk to school every morning."
+    },
+    "source_refs": [
+      {
+        "source_id": "demo",
+        "source_entry_id": "3"
+      }
+    ],
+    "status": "active",
+    "notes": null
+  },
+  {
+    "id": "demo:4-aa8a24",
+    "surface": "ありがとう",
+    "reading": "ありがとう",
+    "ruby_segments": [
+      {
+        "base": "ありがとう",
+        "reading": null
+      }
+    ],
+    "glosses": [
+      "thank you"
+    ],
+    "display_gloss": "thank you",
+    "part_of_speech": [
+      "interjection"
+    ],
+    "jlpt": {
+      "level": "N5",
+      "source_id": "demo",
+      "confidence": "community-estimated"
+    },
+    "example": {
+      "ja": "本当にありがとう。",
+      "en": "Thank you very much."
+    },
+    "source_refs": [
+      {
+        "source_id": "demo",
+        "source_entry_id": "4"
+      }
+    ],
+    "status": "active",
+    "notes": null
+  },
+  {
+    "id": "demo:5-d18ca1",
+    "surface": "お茶",
+    "reading": "おちゃ",
+    "ruby_segments": [
+      {
+        "base": "お",
+        "reading": null
+      },
+      {
+        "base": "茶",
+        "reading": "ちゃ"
+      }
+    ],
+    "glosses": [
+      "tea"
+    ],
+    "display_gloss": "tea",
+    "part_of_speech": [
+      "noun"
+    ],
+    "jlpt": {
+      "level": "N5",
+      "source_id": "demo",
+      "confidence": "community-estimated"
+    },
+    "example": {
+      "ja": "お茶を一杯いかがですか。",
+      "en": "Would you like a cup of tea?"
+    },
+    "source_refs": [
+      {
+        "source_id": "demo",
+        "source_entry_id": "5"
+      }
+    ],
+    "status": "active",
+    "notes": null
+  }
+]

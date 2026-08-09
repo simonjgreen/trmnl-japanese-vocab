@@ -1,0 +1,193 @@
+[
+  {
+    "id": "demo:21-a696ee",
+    "surface": "承る",
+    "reading": "うけたまわる",
+    "ruby_segments": [
+      {
+        "base": "承",
+        "reading": "うけたまわ"
+      },
+      {
+        "base": "る",
+        "reading": null
+      }
+    ],
+    "glosses": [
+      "to hear"
+    ],
+    "display_gloss": "to hear",
+    "part_of_speech": [
+      "verb"
+    ],
+    "jlpt": {
+      "level": "N1",
+      "source_id": "demo",
+      "confidence": "community-estimated"
+    },
+    "example": {
+      "ja": "ご用件を承ります。",
+      "en": "I will hear your request."
+    },
+    "source_refs": [
+      {
+        "source_id": "demo",
+        "source_entry_id": "21"
+      }
+    ],
+    "status": "active",
+    "notes": null
+  },
+  {
+    "id": "demo:22-b45cd6",
+    "surface": "勧告",
+    "reading": "かんこく",
+    "ruby_segments": [
+      {
+        "base": "勧告",
+        "reading": "かんこく"
+      }
+    ],
+    "glosses": [
+      "advice"
+    ],
+    "display_gloss": "advice",
+    "part_of_speech": [
+      "noun"
+    ],
+    "jlpt": {
+      "level": "N1",
+      "source_id": "demo",
+      "confidence": "community-estimated"
+    },
+    "example": {
+      "ja": "医師の勧告に従いました。",
+      "en": "I followed the doctor's advice."
+    },
+    "source_refs": [
+      {
+        "source_id": "demo",
+        "source_entry_id": "22"
+      }
+    ],
+    "status": "active",
+    "notes": null
+  },
+  {
+    "id": "demo:23-b282b8",
+    "surface": "一つ一つ",
+    "reading": "ひとつひとつ",
+    "ruby_segments": [
+      {
+        "base": "一",
+        "reading": "ひと"
+      },
+      {
+        "base": "つ",
+        "reading": null
+      },
+      {
+        "base": "一",
+        "reading": "ひと"
+      },
+      {
+        "base": "つ",
+        "reading": null
+      }
+    ],
+    "glosses": [
+      "one by one"
+    ],
+    "display_gloss": "one by one",
+    "part_of_speech": [
+      "adverb"
+    ],
+    "jlpt": {
+      "level": "N1",
+      "source_id": "demo",
+      "confidence": "community-estimated"
+    },
+    "example": {
+      "ja": "一つ一つ丁寧に確認します。",
+      "en": "I will check each one carefully."
+    },
+    "source_refs": [
+      {
+        "source_id": "demo",
+        "source_entry_id": "23"
+      }
+    ],
+    "status": "active",
+    "notes": null
+  },
+  {
+    "id": "demo:24-76cbf8",
+    "surface": "ヶ月",
+    "reading": "かげつ",
+    "ruby_segments": [
+      {
+        "base": "ヶ月",
+        "reading": "かげつ"
+      }
+    ],
+    "glosses": [
+      "counter for months"
+    ],
+    "display_gloss": "counter for months",
+    "part_of_speech": [
+      "counter"
+    ],
+    "jlpt": {
+      "level": "N1",
+      "source_id": "demo",
+      "confidence": "community-estimated"
+    },
+    "example": {
+      "ja": "三ヶ月かかりました。",
+      "en": "It took three months."
+    },
+    "source_refs": [
+      {
+        "source_id": "demo",
+        "source_entry_id": "24"
+      }
+    ],
+    "status": "active",
+    "notes": null
+  },
+  {
+    "id": "demo:25-916983",
+    "surface": "明白",
+    "reading": "めいはく",
+    "ruby_segments": [
+      {
+        "base": "明白",
+        "reading": "めいはく"
+      }
+    ],
+    "glosses": [
+      "obvious"
+    ],
+    "display_gloss": "obvious",
+    "part_of_speech": [
+      "na-adjective"
+    ],
+    "jlpt": {
+      "level": "N1",
+      "source_id": "demo",
+      "confidence": "community-estimated"
+    },
+    "example": {
+      "ja": "答えは明白です。",
+      "en": "The answer is obvious."
+    },
+    "source_refs": [
+      {
+        "source_id": "demo",
+        "source_entry_id": "25"
+      }
+    ],
+    "status": "active",
+    "notes": null
+  }
+]

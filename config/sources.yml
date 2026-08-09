@@ -1,0 +1,14 @@
+---
+# Production import configuration.
+#
+# The three upstream files are downloaded by `scripts/fetch_sources.py` into
+# `data/raw`, which is gitignored. The import itself performs no network I/O.
+sources:
+  - id: jlpt-waller
+    type: jlpt-jmdict
+    levels_dir: data/raw/jlpt
+    jmdict_path: data/raw/jmdict-examples-eng.json
+    furigana_path: data/raw/JmdictFurigana.txt
+    jmdict_source_id: jmdict
+    furigana_source_id: jmdict-furigana
+    example_source_id: tatoeba

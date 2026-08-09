@@ -1,0 +1,67 @@
+name: TRMNL
+
+# Deploys the plugin definition to TRMNL. Separate from CI so that the API
+# key is never exposed to a pull-request build, and gated on `main`.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - '.trmnlp.yml'
+      - 'scripts/package_plugin.py'
+      - '.github/workflows/trmnl.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: trmnl-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Lint and push
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+
+      - name: Install trmnlp
+        run: gem install trmnl_preview
+
+      - name: Lint the plugin
+        run: trmnlp lint
+
+      - name: Require a committed plugin id
+        # Without an id, `trmnlp push` would create a brand new private plugin
+        # on every run. Bootstrapping is a deliberate one-off performed
+        # locally; CI only ever updates an existing plugin.
+        run: |
+          if ! grep -Eq '^[[:space:]]*id:[[:space:]]*[0-9]+' src/settings.yml; then
+            echo "::error file=src/settings.yml::No plugin id committed."
+            echo ""
+            echo "Bootstrap the plugin once from a local checkout:"
+            echo "    bin/trmnlp login"
+            echo "    bin/trmnlp push"
+            echo "then add the returned id to src/settings.yml as 'id: 123456'"
+            echo "and commit it. The id is not a secret; the API key is."
+            exit 1
+          fi
+          echo "found plugin id: $(grep -Eo '^[[:space:]]*id:[[:space:]]*[0-9]+' src/settings.yml | tr -d ' ')"
+
+      - name: Require the API key
+        run: |
+          if [ -z "${{ secrets.TRMNL_API_KEY }}" ]; then
+            echo "::error::TRMNL_API_KEY secret is not set."
+            echo "Add it under Settings -> Secrets and variables -> Actions."
+            exit 1
+          fi
+
+      - name: Push to TRMNL
+        env:
+          TRMNL_API_KEY: ${{ secrets.TRMNL_API_KEY }}
+        run: trmnlp push --force

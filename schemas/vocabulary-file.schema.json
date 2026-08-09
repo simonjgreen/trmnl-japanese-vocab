@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://simonjgreen.github.io/trmnl-japanese-vocab/schemas/vocabulary-file.schema.json",
+  "title": "Kotoba canonical vocabulary file",
+  "description": "One JSON array of canonical entries per JLPT level, stable-sorted by id.",
+  "type": "array",
+  "items": { "$ref": "vocabulary-entry.schema.json" }
+}

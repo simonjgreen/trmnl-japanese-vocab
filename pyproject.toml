@@ -1,0 +1,36 @@
+[project]
+name = "kotoba"
+version = "1.0.0"
+description = "Build tooling for the Kotoba TRMNL private plugin: JLPT-aligned Japanese word of the day."
+readme = "README.md"
+requires-python = ">=3.12"
+license = { file = "LICENSE" }
+authors = [{ name = "Simon Green" }]
+dependencies = [
+  "PyYAML>=6.0",
+  "jsonschema>=4.21",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+]
+# Only needed to re-import the production corpus from data/raw. The JMdict
+# examples build is ~129 MB of JSON; ijson streams it instead of loading it.
+import = [
+  "ijson>=3.2",
+]
+
+[project.scripts]
+kotoba = "kotoba.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["kotoba*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

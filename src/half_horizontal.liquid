@@ -1,0 +1,19 @@
+{% comment %}
+  Half horizontal — 800 x 240. Room for a single clamped example line; the
+  English translation is suppressed regardless of the setting.
+{% endcomment %}
+<div class="layout layout--col layout--center">
+  <div class="kotoba kotoba--half-h">
+    {% if word and word.surface %}
+      {% render "kotoba_card",
+         word: word,
+         show_example: true,
+         example_lines: 1,
+         show_translation: false %}
+    {% else %}
+      {% render "kotoba_empty", level_display: level_display, date: date %}
+    {% endif %}
+  </div>
+</div>
+
+{% render "kotoba_title_bar", instance_label: instance_label %}

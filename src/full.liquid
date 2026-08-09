@@ -1,0 +1,19 @@
+{% comment %}
+  Full view — 800 x 480. The word dominates; everything else is subordinate.
+  Keep this file about layout only: the card itself lives in shared markup.
+{% endcomment %}
+<div class="layout layout--col layout--center">
+  <div class="kotoba kotoba--full">
+    {% if word and word.surface %}
+      {% render "kotoba_card",
+         word: word,
+         show_example: true,
+         example_lines: 2,
+         show_translation: show_translation %}
+    {% else %}
+      {% render "kotoba_empty", level_display: level_display, date: date %}
+    {% endif %}
+  </div>
+</div>
+
+{% render "kotoba_title_bar", instance_label: instance_label %}

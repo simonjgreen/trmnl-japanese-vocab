@@ -1,0 +1,201 @@
+[
+  {
+    "id": "demo:11-602aba",
+    "surface": "取り除く",
+    "reading": "とりのぞく",
+    "ruby_segments": [
+      {
+        "base": "取",
+        "reading": "と"
+      },
+      {
+        "base": "り",
+        "reading": null
+      },
+      {
+        "base": "除",
+        "reading": "のぞ"
+      },
+      {
+        "base": "く",
+        "reading": null
+      }
+    ],
+    "glosses": [
+      "to eliminate"
+    ],
+    "display_gloss": "to eliminate",
+    "part_of_speech": [
+      "verb"
+    ],
+    "jlpt": {
+      "level": "N3",
+      "source_id": "demo",
+      "confidence": "community-estimated"
+    },
+    "example": {
+      "ja": "彼は不要なファイルを取り除きました。",
+      "en": "He removed the unnecessary files."
+    },
+    "source_refs": [
+      {
+        "source_id": "demo",
+        "source_entry_id": "11"
+      }
+    ],
+    "status": "active",
+    "notes": null
+  },
+  {
+    "id": "demo:12-ba0a50",
+    "surface": "混雑",
+    "reading": "こんざつ",
+    "ruby_segments": [
+      {
+        "base": "混雑",
+        "reading": "こんざつ"
+      }
+    ],
+    "glosses": [
+      "congestion"
+    ],
+    "display_gloss": "congestion",
+    "part_of_speech": [
+      "noun"
+    ],
+    "jlpt": {
+      "level": "N3",
+      "source_id": "demo",
+      "confidence": "community-estimated"
+    },
+    "example": {
+      "ja": "その道は車で混雑している。",
+      "en": "The roads are jammed with cars."
+    },
+    "source_refs": [
+      {
+        "source_id": "demo",
+        "source_entry_id": "12"
+      }
+    ],
+    "status": "active",
+    "notes": null
+  },
+  {
+    "id": "demo:13-f61a0a",
+    "surface": "花瓶",
+    "reading": "かびん",
+    "ruby_segments": [
+      {
+        "base": "花瓶",
+        "reading": "かびん"
+      }
+    ],
+    "glosses": [
+      "vase"
+    ],
+    "display_gloss": "vase",
+    "part_of_speech": [
+      "noun"
+    ],
+    "jlpt": {
+      "level": "N3",
+      "source_id": "demo",
+      "confidence": "community-estimated"
+    },
+    "example": {
+      "ja": "花瓶に水を入れました。",
+      "en": "I put water in the vase."
+    },
+    "source_refs": [
+      {
+        "source_id": "demo",
+        "source_entry_id": "13"
+      }
+    ],
+    "status": "active",
+    "notes": null
+  },
+  {
+    "id": "demo:14-d2b59f",
+    "surface": "引っ越す",
+    "reading": "ひっこす",
+    "ruby_segments": [
+      {
+        "base": "引",
+        "reading": "ひ"
+      },
+      {
+        "base": "っ",
+        "reading": null
+      },
+      {
+        "base": "越",
+        "reading": "こ"
+      },
+      {
+        "base": "す",
+        "reading": null
+      }
+    ],
+    "glosses": [
+      "to move house"
+    ],
+    "display_gloss": "to move house",
+    "part_of_speech": [
+      "verb"
+    ],
+    "jlpt": {
+      "level": "N3",
+      "source_id": "demo",
+      "confidence": "community-estimated"
+    },
+    "example": {
+      "ja": "来月東京に引っ越します。",
+      "en": "I am moving to Tokyo next month."
+    },
+    "source_refs": [
+      {
+        "source_id": "demo",
+        "source_entry_id": "14"
+      }
+    ],
+    "status": "active",
+    "notes": null
+  },
+  {
+    "id": "demo:15-f5f2c2",
+    "surface": "コーヒー",
+    "reading": "コーヒー",
+    "ruby_segments": [
+      {
+        "base": "コーヒー",
+        "reading": null
+      }
+    ],
+    "glosses": [
+      "coffee"
+    ],
+    "display_gloss": "coffee",
+    "part_of_speech": [
+      "noun"
+    ],
+    "jlpt": {
+      "level": "N3",
+      "source_id": "demo",
+      "confidence": "community-estimated"
+    },
+    "example": {
+      "ja": "朝はコーヒーを飲みます。",
+      "en": "I drink coffee in the morning."
+    },
+    "source_refs": [
+      {
+        "source_id": "demo",
+        "source_entry_id": "15"
+      }
+    ],
+    "status": "active",
+    "notes": null
+  }
+]

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "date": "2026-08-09",
+  "level": "n1",
+  "level_display": "N1",
+  "dataset_version": "fixture",
+  "selection_version": "1",
+  "word": {
+    "id": "demo:承る",
+    "surface": "承る",
+    "reading": "うけたまわる",
+    "ruby_segments": [
+      {
+        "base": "承",
+        "reading": "うけたまわ"
+      },
+      {
+        "base": "る",
+        "reading": null
+      }
+    ],
+    "display_gloss": "to hear, to be told",
+    "example": {
+      "ja": "ご用件を承ります。",
+      "en": "I will hear your request."
+    },
+    "display": {
+      "word_size": "short",
+      "example_size": "normal"
+    }
+  },
+  "sequence": {
+    "cycle": 0,
+    "position": 42,
+    "total": 650
+  }
+}

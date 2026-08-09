@@ -1,0 +1,24 @@
+---
+# Demo import configuration.
+#
+# Unlike config/sources.yml this needs no downloads: the source CSV is
+# committed. It exists so that a fresh clone can exercise the whole pipeline
+# — import, validate, build, render — without fetching 135 MB of dictionary
+# data first.
+#
+# It writes to data/demo/vocabulary so it can never overwrite the real corpus.
+sources:
+  - id: demo
+    type: csv
+    path: data/demo/vocabulary.csv
+    encoding: utf-8-sig
+    delimiter: ','
+    mapping:
+      source_entry_id: id
+      surface: word
+      reading: kana
+      level: level
+      gloss: meaning
+      part_of_speech: pos
+      example_ja: example_ja
+      example_en: example_en

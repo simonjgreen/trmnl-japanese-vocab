@@ -1,0 +1,109 @@
+---
+# Provenance register. Every canonical record must reference at least one
+# source declared here, and NOTICE.md is generated from this file.
+#
+# The code in this repository is MIT licensed. The vocabulary data is not: it
+# is derived from the sources below and inherits their terms. JMdict is
+# CC BY-SA 4.0, so the compiled corpus is CC BY-SA 4.0 as well.
+sources:
+  - id: jlpt-waller
+    name: Jonathan Waller's JLPT Resources, via stephenmk/yomitan-jlpt-vocab
+    homepage: https://github.com/stephenmk/yomitan-jlpt-vocab
+    retrieved: '2026-08-09'
+    version: HEAD (original_data/n1..n5.csv)
+    licence: CC-BY-SA-4.0
+    licence_url: https://creativecommons.org/licenses/by-sa/4.0/
+    attribution: >-
+      JLPT level estimates compiled by Jonathan Waller
+      (http://www.tanos.co.uk/jlpt/, Creative Commons Attribution licence),
+      redistributed with JMdict entry identifiers by stephenmk/yomitan-jlpt-vocab
+      under CC BY-SA 4.0.
+    fields_used:
+      - jmdict_seq
+      - kana
+      - kanji
+      - waller_definition
+    checksum: >-
+      sha256:07dc6f197b51cc076c65c3c (n5.csv; see scripts/fetch_sources.py
+      --checksums for the full set)
+    redistribution_notes: >-
+      Level assignments are community estimates, not an official JLPT
+      specification. The Japan Foundation and JEES stopped publishing
+      vocabulary lists in 2010. These lists are over a decade old and are the
+      same data shown by jisho.org. They must never be described as official
+      or endorsed.
+
+  - id: jmdict
+    name: JMdict, via scriptin/jmdict-simplified
+    homepage: https://www.edrdg.org/wiki/index.php/JMdict-EDICT_Dictionary_Project
+    retrieved: '2026-08-09'
+    version: 3.6.2+20260803141815 (jmdict-examples-eng)
+    licence: CC-BY-SA-4.0
+    licence_url: https://www.edrdg.org/edrdg/licence.html
+    attribution: >-
+      JMdict is the property of the Electronic Dictionary Research and
+      Development Group, and is used in conformance with the Group's licence.
+      The project was started in 1991 by Jim Breen. JSON conversion by
+      scriptin/jmdict-simplified, distributed under the same licence.
+    fields_used:
+      - id
+      - sense.gloss
+      - sense.partOfSpeech
+      - sense.examples
+    checksum: >-
+      sha256:924f8297cec4d48eb4a313c (jmdict-examples-eng.json; see
+      scripts/fetch_sources.py --checksums for the full digest)
+    redistribution_notes: >-
+      EDRDG requires that the usage and source of the files be acknowledged in
+      documentation, publicity material and the project website, and that
+      links to the licence be provided. Adding material to the files does not
+      diminish the Group's copyright; no copyright is claimed here over the
+      JMdict-derived content. Attribution is carried in README.md, NOTICE.md,
+      the generated Pages index and the plugin description.
+
+  - id: jmdict-furigana
+    name: JmdictFurigana by Doublevil
+    homepage: https://github.com/Doublevil/JmdictFurigana
+    retrieved: '2026-08-09'
+    version: 2.3.1+2026-07-25
+    licence: CC-BY-SA-4.0
+    licence_url: https://creativecommons.org/licenses/by-sa/4.0/
+    attribution: >-
+      Furigana segmentation from JmdictFurigana by Doublevil, distributed under
+      the same licence as JMdict (Creative Commons Attribution-ShareAlike).
+    fields_used:
+      - surface
+      - reading
+      - ruby segment offsets
+    checksum: >-
+      sha256:2d5a6a11195ecfbaa565867 (JmdictFurigana.txt; see
+      scripts/fetch_sources.py --checksums for the full digest)
+    redistribution_notes: >-
+      The repository's LICENSE file states MIT, which covers the C# generator.
+      The README states the data is distributed under the same licence as
+      JMdict. As a JMdict derivative the data is treated here as CC BY-SA 4.0,
+      which is the stricter and safer reading.
+
+  - id: tatoeba
+    name: Tatoeba Project example sentences
+    homepage: https://tatoeba.org/
+    retrieved: '2026-08-09'
+    version: via jmdict-examples-eng 3.6.2+20260803141815
+    licence: CC-BY-2.0-FR
+    licence_url: https://creativecommons.org/licenses/by/2.0/fr/
+    attribution: >-
+      Example sentences from the Tatoeba Project (https://tatoeba.org/),
+      licensed CC BY 2.0 FR, selected and sense-aligned by the EDRDG examples
+      build. Individual sentence authors are credited on Tatoeba; each entry
+      records its Tatoeba sentence ID, which resolves to
+      https://tatoeba.org/en/sentences/show/<id>.
+    fields_used:
+      - sentence text (Japanese)
+      - sentence text (English)
+      - sentence id
+    redistribution_notes: >-
+      Tatoeba's terms ask for attribution of the individual sentence author.
+      The upstream export carries only the numeric sentence ID, not the author
+      name, so attribution here is at sentence-ID level plus a project-level
+      credit. This is the customary practice for JMdict-derived example data
+      and is a pragmatic rather than literal reading of the per-author clause.

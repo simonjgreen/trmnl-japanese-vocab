@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "date": "2026-08-09",
+  "level": "n2",
+  "level_display": "N2",
+  "dataset_version": "fixture",
+  "selection_version": "1",
+  "word": {
+    "id": "demo:飢饉",
+    "surface": "飢饉",
+    "reading": "ききん",
+    "ruby_segments": [
+      {
+        "base": "飢",
+        "reading": "き"
+      },
+      {
+        "base": "饉",
+        "reading": "きん"
+      }
+    ],
+    "display_gloss": "famine",
+    "example": {
+      "ja": "これらの国はしばしば飢饉に襲われ、多くの人が苦しんできました。",
+      "en": "These countries were often visited with famine and many people suffered."
+    },
+    "display": {
+      "word_size": "short",
+      "example_size": "compact"
+    }
+  },
+  "sequence": {
+    "cycle": 0,
+    "position": 42,
+    "total": 650
+  }
+}

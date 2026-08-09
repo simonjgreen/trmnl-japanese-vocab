@@ -1,0 +1,88 @@
+name: Pages
+
+# Builds and deploys the static data API. Runs only from `main`, so a pull
+# request can never trigger a deployment.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/**'
+      - 'schemas/**'
+      - 'kotoba/**'
+      - 'config/**'
+      - '.github/workflows/pages.yml'
+  schedule:
+    # Weekly, to roll the date horizon forward. The ten-year cushion means a
+    # missed run is not an outage.
+    - cron: '17 4 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Let a newer build supersede a queued one, but never cancel a deployment
+# that is already in flight.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build and validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e '.[dev]'
+
+      - name: Validate corpus
+        run: python -m kotoba.cli validate
+
+      - name: Run tests
+        run: python -m pytest -q
+
+      - name: Build the full rolling site
+        run: python -m kotoba.cli build-site --output site --commit-sha "${GITHUB_SHA::8}"
+
+      - name: Validate the generated API
+        run: python -m kotoba.cli validate-site --site site
+
+      - name: Job summary
+        run: |
+          {
+            echo '## Kotoba data build'
+            echo
+            echo '```'
+            python -m kotoba.cli manifest --site site
+            echo '```'
+            echo
+            echo "Total files: $(find site/api/v1/daily -name '*.json' | wc -l)"
+            echo "Site size:   $(du -sh site | cut -f1)"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

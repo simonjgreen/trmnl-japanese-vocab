@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "date": "2026-08-09",
+  "level": "n1",
+  "level_display": "N1",
+  "dataset_version": "fixture",
+  "selection_version": "1",
+  "word": {
+    "id": "demo:勧告",
+    "surface": "勧告",
+    "reading": "かんこく",
+    "ruby_segments": [
+      {
+        "base": "勧",
+        "reading": "かん"
+      },
+      {
+        "base": "告",
+        "reading": "こく"
+      }
+    ],
+    "display_gloss": "advice",
+    "display": {
+      "word_size": "short",
+      "example_size": "normal"
+    }
+  },
+  "sequence": {
+    "cycle": 0,
+    "position": 42,
+    "total": 650
+  }
+}

@@ -1,0 +1,29 @@
+---
+# Illustrative configuration for the generic adapters. Column names live here,
+# never in Python, so a new source needs configuration rather than code.
+sources:
+  - id: primary-vocabulary
+    type: csv
+    path: data/raw/vocabulary.csv
+    encoding: utf-8-sig
+    delimiter: ','
+    mapping:
+      source_entry_id: id
+      surface: word
+      reading: kana
+      level: jlpt_level
+      gloss: meaning
+      example_ja: example_japanese
+      example_en: example_english
+
+  - id: secondary-vocabulary
+    type: json
+    path: data/raw/vocabulary.json
+    root_path: words
+    # One file per level: supply the level here when records do not carry one.
+    level: N3
+    mapping:
+      source_entry_id: id
+      surface: kanji.0.text
+      reading: kana.0.text
+      gloss: sense.0.gloss.0.text

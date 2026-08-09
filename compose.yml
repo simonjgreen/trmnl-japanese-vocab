@@ -1,0 +1,43 @@
+# Local preview stack.
+#
+# Two services on one network:
+#   data   - serves the generated site/ over HTTP
+#   trmnlp - the plugin preview, which polls `data` by name
+#
+# The static service is named `data` so that the `data_base_url` in
+# .trmnlp.yml (http://data:8000/api/v1) resolves from inside the trmnlp
+# container. Run `make preview`, which builds a short date range first.
+services:
+  data:
+    image: python:3.12-alpine
+    command: python -m http.server 8000 --directory /srv
+    working_dir: /srv
+    volumes:
+      - ./site:/srv:ro
+    expose:
+      - '8000'
+    healthcheck:
+      # 127.0.0.1, not localhost: inside this image localhost resolves to ::1
+      # first and http.server binds IPv4 only, so the check would never pass.
+      test: ['CMD', 'wget', '-q', '-O', '-', 'http://127.0.0.1:8000/health.json']
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  trmnlp:
+    # Built locally: the official image has no CJK fonts, so Japanese renders
+    # as tofu. See Dockerfile.trmnlp.
+    build:
+      context: .
+      dockerfile: Dockerfile.trmnlp
+    image: kotoba/trmnlp:latest
+    command: serve
+    ports:
+      - '4567:4567'
+    volumes:
+      - .:/plugin
+      - ${XDG_CONFIG_HOME:-${HOME}/.config}/trmnlp:/root/.config/trmnlp
+    working_dir: /plugin
+    depends_on:
+      data:
+        condition: service_healthy

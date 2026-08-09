@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "date": "2026-08-09",
+  "level": "n2",
+  "level_display": "N2",
+  "dataset_version": "fixture",
+  "selection_version": "1",
+  "word": {
+    "id": "demo:デモンストレーション",
+    "surface": "デモンストレーション",
+    "reading": "デモンストレーション",
+    "ruby_segments": [
+      {
+        "base": "デモンストレーション",
+        "reading": null
+      }
+    ],
+    "display_gloss": "demonstration",
+    "example": {
+      "ja": "彼らは新製品のデモンストレーションを行った。",
+      "en": "They gave a demonstration of the new product."
+    },
+    "display": {
+      "word_size": "xlong",
+      "example_size": "compact"
+    }
+  },
+  "sequence": {
+    "cycle": 0,
+    "position": 42,
+    "total": 650
+  }
+}

@@ -1,0 +1,24 @@
+{% comment %}
+  Half vertical — 400 x 480. The example is shown only when it fits cleanly:
+  a tiny example, or an extra-long word, means the sentence is dropped rather
+  than allowed to crowd the word.
+{% endcomment %}
+{% assign fits_example = true %}
+{% if word.display.example_size == "tiny" %}{% assign fits_example = false %}{% endif %}
+{% if word.display.word_size == "xlong" %}{% assign fits_example = false %}{% endif %}
+
+<div class="layout layout--col layout--center">
+  <div class="kotoba kotoba--half-v">
+    {% if word and word.surface %}
+      {% render "kotoba_card",
+         word: word,
+         show_example: fits_example,
+         example_lines: 2,
+         show_translation: false %}
+    {% else %}
+      {% render "kotoba_empty", level_display: level_display, date: date %}
+    {% endif %}
+  </div>
+</div>
+
+{% render "kotoba_title_bar", instance_label: instance_label %}

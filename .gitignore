@@ -1,0 +1,25 @@
+# Generated output — never commit
+site/
+dist/
+_build/
+data/review/*
+!data/review/.gitkeep
+
+# Raw third-party source downloads (licence-dependent; not redistributed)
+data/raw/*
+!data/raw/.gitkeep
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Rendered artefacts
+*.png
+!docs/images/*.png
+
+# OS
+.DS_Store

@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "date": "2026-08-09",
+  "level": "n3",
+  "level_display": "N3",
+  "dataset_version": "fixture",
+  "selection_version": "1",
+  "word": {
+    "id": "demo:取り除く",
+    "surface": "取り除く",
+    "reading": "とりのぞく",
+    "ruby_segments": [
+      {
+        "base": "取",
+        "reading": "と"
+      },
+      {
+        "base": "り",
+        "reading": null
+      },
+      {
+        "base": "除",
+        "reading": "のぞ"
+      },
+      {
+        "base": "く",
+        "reading": null
+      }
+    ],
+    "display_gloss": "eliminate",
+    "example": {
+      "ja": "彼は不要なファイルを取り除きました。",
+      "en": "He removed the unnecessary files."
+    },
+    "display": {
+      "word_size": "medium",
+      "example_size": "normal"
+    }
+  },
+  "sequence": {
+    "cycle": 0,
+    "position": 42,
+    "total": 650
+  }
+}

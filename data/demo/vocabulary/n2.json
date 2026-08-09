@@ -1,0 +1,193 @@
+[
+  {
+    "id": "demo:16-f8e063",
+    "surface": "申し込む",
+    "reading": "もうしこむ",
+    "ruby_segments": [
+      {
+        "base": "申",
+        "reading": "もう"
+      },
+      {
+        "base": "し",
+        "reading": null
+      },
+      {
+        "base": "込",
+        "reading": "こ"
+      },
+      {
+        "base": "む",
+        "reading": null
+      }
+    ],
+    "glosses": [
+      "to apply"
+    ],
+    "display_gloss": "to apply",
+    "part_of_speech": [
+      "verb"
+    ],
+    "jlpt": {
+      "level": "N2",
+      "source_id": "demo",
+      "confidence": "community-estimated"
+    },
+    "example": {
+      "ja": "来週の試験に申し込みました。",
+      "en": "I applied for next week's examination."
+    },
+    "source_refs": [
+      {
+        "source_id": "demo",
+        "source_entry_id": "16"
+      }
+    ],
+    "status": "active",
+    "notes": null
+  },
+  {
+    "id": "demo:17-050b37",
+    "surface": "飢饉",
+    "reading": "ききん",
+    "ruby_segments": [
+      {
+        "base": "飢饉",
+        "reading": "ききん"
+      }
+    ],
+    "glosses": [
+      "famine"
+    ],
+    "display_gloss": "famine",
+    "part_of_speech": [
+      "noun"
+    ],
+    "jlpt": {
+      "level": "N2",
+      "source_id": "demo",
+      "confidence": "community-estimated"
+    },
+    "example": {
+      "ja": "その国は飢饉に襲われた。",
+      "en": "That country was struck by famine."
+    },
+    "source_refs": [
+      {
+        "source_id": "demo",
+        "source_entry_id": "17"
+      }
+    ],
+    "status": "active",
+    "notes": null
+  },
+  {
+    "id": "demo:18-16a0df",
+    "surface": "国際",
+    "reading": "こくさい",
+    "ruby_segments": [
+      {
+        "base": "国際",
+        "reading": "こくさい"
+      }
+    ],
+    "glosses": [
+      "international"
+    ],
+    "display_gloss": "international",
+    "part_of_speech": [
+      "noun"
+    ],
+    "jlpt": {
+      "level": "N2",
+      "source_id": "demo",
+      "confidence": "community-estimated"
+    },
+    "example": {
+      "ja": "国際会議に出席します。",
+      "en": "I will attend the international conference."
+    },
+    "source_refs": [
+      {
+        "source_id": "demo",
+        "source_entry_id": "18"
+      }
+    ],
+    "status": "active",
+    "notes": null
+  },
+  {
+    "id": "demo:19-b8d677",
+    "surface": "経済",
+    "reading": "けいざい",
+    "ruby_segments": [
+      {
+        "base": "経済",
+        "reading": "けいざい"
+      }
+    ],
+    "glosses": [
+      "economy"
+    ],
+    "display_gloss": "economy",
+    "part_of_speech": [
+      "noun"
+    ],
+    "jlpt": {
+      "level": "N2",
+      "source_id": "demo",
+      "confidence": "community-estimated"
+    },
+    "example": {
+      "ja": "日本の経済は回復しつつある。",
+      "en": "The Japanese economy is recovering."
+    },
+    "source_refs": [
+      {
+        "source_id": "demo",
+        "source_entry_id": "19"
+      }
+    ],
+    "status": "active",
+    "notes": null
+  },
+  {
+    "id": "demo:20-31ddcd",
+    "surface": "勧める",
+    "reading": "すすめる",
+    "ruby_segments": [
+      {
+        "base": "勧",
+        "reading": "すす"
+      },
+      {
+        "base": "める",
+        "reading": null
+      }
+    ],
+    "glosses": [
+      "to recommend"
+    ],
+    "display_gloss": "to recommend",
+    "part_of_speech": [
+      "verb"
+    ],
+    "jlpt": {
+      "level": "N2",
+      "source_id": "demo",
+      "confidence": "community-estimated"
+    },
+    "example": {
+      "ja": "この本を強く勧めます。",
+      "en": "I strongly recommend this book."
+    },
+    "source_refs": [
+      {
+        "source_id": "demo",
+        "source_entry_id": "20"
+      }
+    ],
+    "status": "active",
+    "notes": null
+  }
+]

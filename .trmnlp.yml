@@ -1,0 +1,20 @@
+# TRMNLP local development configuration.
+# `{{ env.VARIABLE }}` interpolation is available here.
+---
+watch:
+  - .trmnlp.yml
+  - src
+
+# Local values for the fields a user would set in the TRMNL UI. `data` is the
+# static service defined in compose.yml, so `make preview` resolves the API
+# from inside the trmnlp container.
+custom_fields:
+  jlpt_level: n3
+  show_example_translation: 'false'
+  show_rotation_progress: 'false'
+  data_base_url: http://data:8000/api/v1
+
+time_zone: Europe/London
+
+variables:
+  trmnl: {}

@@ -1,0 +1,10 @@
+---
+# Manual furigana overrides, keyed by stable entry ID.
+# An override supplies the complete final segment list and beats automatic
+# alignment. Use it for readings the aligner refuses to guess.
+#
+# overrides:
+#   jlpt-waller:1234567:
+#     - base: 明白
+#       reading: あからさま
+overrides: {}

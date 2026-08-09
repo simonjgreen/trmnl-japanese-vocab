@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "date": "2026-08-09",
+  "level": "n5",
+  "level_display": "N5",
+  "dataset_version": "fixture",
+  "selection_version": "1",
+  "word": {
+    "id": "demo:言葉",
+    "surface": "言葉",
+    "reading": "ことば",
+    "ruby_segments": [
+      {
+        "base": "言",
+        "reading": "こと"
+      },
+      {
+        "base": "葉",
+        "reading": "ば"
+      }
+    ],
+    "display_gloss": "word",
+    "example": {
+      "ja": "新しい言葉を覚えました。",
+      "en": "I learned a new word."
+    },
+    "display": {
+      "word_size": "short",
+      "example_size": "normal"
+    }
+  },
+  "sequence": {
+    "cycle": 0,
+    "position": 42,
+    "total": 650
+  }
+}
