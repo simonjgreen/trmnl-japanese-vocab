@@ -59,7 +59,7 @@ jobs:
         run: |
           python -m kotoba.cli manifest --site site >> "$GITHUB_STEP_SUMMARY" 2>&1 || true
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: build-reports
@@ -113,7 +113,7 @@ jobs:
       - name: Package the manual-import ZIP
         run: python scripts/package_plugin.py
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: renders
