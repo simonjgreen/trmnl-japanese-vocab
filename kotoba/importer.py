@@ -99,17 +99,28 @@ def load_overrides(path: Path) -> dict[str, list[RubySegment]]:
 def choose_display_gloss(glosses: Iterable[str]) -> str:
     """Pick a concise, screen-safe gloss from the source's sense list.
 
-    The aim is a single learnable phrase, not a dictionary entry. Parenthetical
-    qualifiers are dropped, and the shortest of the first few senses wins
-    provided it is not uselessly terse.
+    The first gloss wins. JMdict orders glosses within a sense by prominence,
+    so the leading one is the meaning a learner should take away.
+
+    An earlier version picked the *shortest* of the first few glosses, on the
+    theory that brevity suits a small screen. It does not: brevity is not
+    accuracy. That rule turned 混雑 into "crush" rather than "congestion",
+    ぐっすり into "fast" rather than "soundly (asleep)", and — worst of all —
+    いらっしゃい into "go" when it means "come". It rewrote the meaning of
+    roughly two entries in five. A slightly longer, correct gloss beats a
+    short, misleading one every time.
+
+    Later glosses are consulted only when the first genuinely will not fit.
     """
     candidates: list[str] = []
     for gloss in glosses:
         text = clean_text(gloss)
         if not text:
             continue
-        # Drop trailing qualifiers such as "to eat (colloquial)".
-        if "(" in text:
+        # Drop a trailing qualifier such as "to eat (colloquial)", but only
+        # when what remains still carries the meaning. "(be) still" and
+        # "(flower) vase" lead with the bracket and must be left alone.
+        if "(" in text and not text.startswith("("):
             head = text.split("(", 1)[0].strip()
             if len(head) >= 3:
                 text = head
@@ -120,11 +131,16 @@ def choose_display_gloss(glosses: Iterable[str]) -> str:
     if not candidates:
         return ""
 
-    short = [c for c in candidates[:3] if len(c) <= DISPLAY_GLOSS_TARGET]
-    chosen = min(short, key=len) if short else candidates[0]
-    if len(chosen) > DISPLAY_GLOSS_TARGET:
-        chosen = chosen[: DISPLAY_GLOSS_TARGET - 1].rstrip(" ,;") + "…"
-    return chosen
+    if len(candidates[0]) <= DISPLAY_GLOSS_TARGET:
+        return candidates[0]
+
+    # The primary gloss is too long for the screen. Prefer a shorter
+    # alternative from the same sense over truncating mid-phrase.
+    for alternative in candidates[1:4]:
+        if len(alternative) <= DISPLAY_GLOSS_TARGET:
+            return alternative
+
+    return candidates[0][: DISPLAY_GLOSS_TARGET - 1].rstrip(" ,;") + "…"
 
 
 def build_entry(

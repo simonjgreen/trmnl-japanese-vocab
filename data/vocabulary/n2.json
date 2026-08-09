@@ -59,7 +59,7 @@
       "aimlessly",
       "without purpose"
     ],
-    "display_gloss": "aimlessly",
+    "display_gloss": "restlessly",
     "part_of_speech": [
       "adverb",
       "adv-to"
@@ -104,7 +104,7 @@
       "errr ...",
       "uhh ..."
     ],
-    "display_gloss": "well",
+    "display_gloss": "let me see",
     "part_of_speech": [
       "interjection"
     ],
@@ -299,7 +299,7 @@
       "please excuse the intrusion",
       "I'm coming in"
     ],
-    "display_gloss": "I'm coming in",
+    "display_gloss": "please excuse the intrusion",
     "part_of_speech": [
       "expression"
     ],
@@ -465,7 +465,7 @@
       "take care of yourself",
       "get well soon"
     ],
-    "display_gloss": "get well soon",
+    "display_gloss": "take care of yourself",
     "part_of_speech": [
       "expression"
     ],
@@ -509,7 +509,7 @@
       "trendy",
       "chic"
     ],
-    "display_gloss": "trendy",
+    "display_gloss": "stylish",
     "part_of_speech": [
       "na-adjective"
     ],
@@ -553,7 +553,7 @@
       "with pleasure",
       "understood!"
     ],
-    "display_gloss": "very well",
+    "display_gloss": "certainly!",
     "part_of_speech": [
       "expression"
     ],
@@ -729,7 +729,7 @@
       "to stick to",
       "to cling to"
     ],
-    "display_gloss": "to stick to",
+    "display_gloss": "to adhere to",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -774,7 +774,7 @@
       "to paste",
       "to glue"
     ],
-    "display_gloss": "to paste",
+    "display_gloss": "to attach",
     "part_of_speech": [
       "ichidan verb",
       "transitive verb"
@@ -853,7 +853,7 @@
       "secretly",
       "in secret"
     ],
-    "display_gloss": "secretly",
+    "display_gloss": "stealthily",
     "part_of_speech": [
       "adverb",
       "adv-to"
@@ -897,7 +897,7 @@
       "lately",
       "recently"
     ],
-    "display_gloss": "lately",
+    "display_gloss": "the other day",
     "part_of_speech": [
       "noun",
       "adverb"
@@ -1073,7 +1073,7 @@
       "fully",
       "heartily"
     ],
-    "display_gloss": "fully",
+    "display_gloss": "keenly",
     "part_of_speech": [
       "adverb",
       "adv-to"
@@ -1246,7 +1246,7 @@
       "rock-paper-scissors (game)",
       "janken"
     ],
-    "display_gloss": "janken",
+    "display_gloss": "rock-paper-scissors",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -1292,7 +1292,7 @@
       "pleasantly",
       "(a weight) off one's shoulder"
     ],
-    "display_gloss": "pleasantly",
+    "display_gloss": "refreshingly",
     "part_of_speech": [
       "adverb",
       "adv-to",
@@ -1338,7 +1338,7 @@
       "all the way",
       "throughout"
     ],
-    "display_gloss": "all the way",
+    "display_gloss": "continuously",
     "part_of_speech": [
       "adverb"
     ],
@@ -1381,7 +1381,7 @@
       "to move",
       "to slide"
     ],
-    "display_gloss": "to move",
+    "display_gloss": "to shift",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -1470,7 +1470,7 @@
       "at most",
       "(even) just"
     ],
-    "display_gloss": "at most",
+    "display_gloss": "at least",
     "part_of_speech": [
       "adverb"
     ],
@@ -1514,7 +1514,7 @@
       "hasty",
       "rash"
     ],
-    "display_gloss": "hasty",
+    "display_gloss": "careless",
     "part_of_speech": [
       "i-adjective"
     ],
@@ -1732,7 +1732,7 @@
       "untidy",
       "undisciplined"
     ],
-    "display_gloss": "sloppy",
+    "display_gloss": "slovenly",
     "part_of_speech": [
       "i-adjective"
     ],
@@ -1776,7 +1776,7 @@
       "either way",
       "after all"
     ],
-    "display_gloss": "regardless",
+    "display_gloss": "in any case",
     "part_of_speech": [
       "adverb"
     ],
@@ -1818,7 +1818,7 @@
       "pleased to meet you",
       "how do you do"
     ],
-    "display_gloss": "how do you do",
+    "display_gloss": "pleased to meet you",
     "part_of_speech": [
       "expression"
     ],
@@ -1862,7 +1862,7 @@
       "pit-a-pat",
       "pitapat"
     ],
-    "display_gloss": "bang-bang",
+    "display_gloss": "thump-thump",
     "part_of_speech": [
       "adverb",
       "adv-to"
@@ -1907,7 +1907,7 @@
       "roaring",
       "whooping"
     ],
-    "display_gloss": "roaring",
+    "display_gloss": "bursting out",
     "part_of_speech": [
       "adverb"
     ],
@@ -2129,7 +2129,7 @@
       "to collide with",
       "to hit"
     ],
-    "display_gloss": "to run into",
+    "display_gloss": "to bump into",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -2259,7 +2259,7 @@
       "not (so) bad",
       "reasonable"
     ],
-    "display_gloss": "not",
+    "display_gloss": "so-so",
     "part_of_speech": [
       "no-adjective",
       "na-adjective",
@@ -2343,7 +2343,7 @@
       "visibly",
       "considerably"
     ],
-    "display_gloss": "visibly",
+    "display_gloss": "remarkably",
     "part_of_speech": [
       "adverb",
       "adv-to"
@@ -2388,7 +2388,7 @@
       "perchance",
       "by some chance"
     ],
-    "display_gloss": "maybe",
+    "display_gloss": "perhaps",
     "part_of_speech": [
       "expression",
       "adverb"
@@ -2433,7 +2433,7 @@
       "maybe",
       "by some chance"
     ],
-    "display_gloss": "maybe",
+    "display_gloss": "perhaps",
     "part_of_speech": [
       "adverb"
     ],
@@ -2888,7 +2888,7 @@
       "courtesy",
       "etiquette"
     ],
-    "display_gloss": "courtesy",
+    "display_gloss": "politeness",
     "part_of_speech": [
       "noun"
     ],
@@ -3172,7 +3172,7 @@
       "turn",
       "bend"
     ],
-    "display_gloss": "turn",
+    "display_gloss": "curve",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -3594,7 +3594,7 @@
       "route",
       "trail"
     ],
-    "display_gloss": "route",
+    "display_gloss": "course",
     "part_of_speech": [
       "noun"
     ],
@@ -3763,7 +3763,7 @@
       "competition",
       "contest"
     ],
-    "display_gloss": "contest",
+    "display_gloss": "competition",
     "part_of_speech": [
       "noun"
     ],
@@ -3847,7 +3847,7 @@
       "(wall) socket",
       "power point"
     ],
-    "display_gloss": "power point",
+    "display_gloss": "(electrical) outlet",
     "part_of_speech": [
       "noun"
     ],
@@ -3932,7 +3932,7 @@
       "club (e.g. company sports club)",
       "circle"
     ],
-    "display_gloss": "club",
+    "display_gloss": "group with a common interest",
     "part_of_speech": [
       "noun"
     ],
@@ -4006,7 +4006,7 @@
       "company man",
       "salaryman"
     ],
-    "display_gloss": "company man",
+    "display_gloss": "office worker",
     "part_of_speech": [
       "noun"
     ],
@@ -4421,7 +4421,7 @@
       "program",
       "calendar"
     ],
-    "display_gloss": "program",
+    "display_gloss": "schedule",
     "part_of_speech": [
       "noun"
     ],
@@ -5483,7 +5483,7 @@
       "with a friendly grin",
       "smilingly"
     ],
-    "display_gloss": "smilingly",
+    "display_gloss": "with a friendly grin",
     "part_of_speech": [
       "adverb",
       "adv-to",
@@ -5609,7 +5609,7 @@
       "bucket",
       "pail"
     ],
-    "display_gloss": "pail",
+    "display_gloss": "bucket",
     "part_of_speech": [
       "noun"
     ],
@@ -5861,7 +5861,7 @@
       "briefs",
       "panties"
     ],
-    "display_gloss": "pants",
+    "display_gloss": "underpants",
     "part_of_speech": [
       "noun"
     ],
@@ -5988,7 +5988,7 @@
       "multi-storey building",
       "tall building"
     ],
-    "display_gloss": "tall building",
+    "display_gloss": "multi-floor building",
     "part_of_speech": [
       "noun"
     ],
@@ -6108,7 +6108,7 @@
       "zipper",
       "zip"
     ],
-    "display_gloss": "zip",
+    "display_gloss": "zip fastener",
     "part_of_speech": [
       "noun"
     ],
@@ -6807,7 +6807,7 @@
       "(thick) scarf",
       "muffler"
     ],
-    "display_gloss": "muffler",
+    "display_gloss": "(thick) scarf",
     "part_of_speech": [
       "noun"
     ],
@@ -6975,7 +6975,7 @@
       "milli-",
       "10^-3"
     ],
-    "display_gloss": "10^-3",
+    "display_gloss": "milli-",
     "part_of_speech": [
       "prefix"
     ],
@@ -8037,7 +8037,7 @@
       "from now on",
       "hereafter"
     ],
-    "display_gloss": "hereafter",
+    "display_gloss": "after this",
     "part_of_speech": [
       "noun",
       "adverb"
@@ -8089,7 +8089,7 @@
       "from ... onward",
       "since"
     ],
-    "display_gloss": "since",
+    "display_gloss": "on and after",
     "part_of_speech": [
       "noun",
       "adverb"
@@ -8198,7 +8198,7 @@
       "to swagger",
       "to act arrogantly"
     ],
-    "display_gloss": "to swagger",
+    "display_gloss": "to put on airs",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -8305,7 +8305,7 @@
       "unkind",
       "mean"
     ],
-    "display_gloss": "unkind",
+    "display_gloss": "malicious",
     "part_of_speech": [
       "na-adjective",
       "noun"
@@ -8357,7 +8357,7 @@
       "to console",
       "to amuse"
     ],
-    "display_gloss": "to amuse",
+    "display_gloss": "to comfort",
     "part_of_speech": [
       "ichidan verb",
       "transitive verb"
@@ -8398,7 +8398,7 @@
       "money order",
       "draft"
     ],
-    "display_gloss": "draft",
+    "display_gloss": "money order",
     "part_of_speech": [
       "noun"
     ],
@@ -8548,7 +8548,7 @@
       "food, clothing and shelter",
       "necessities of life"
     ],
-    "display_gloss": "necessities of life",
+    "display_gloss": "food, clothing and shelter",
     "part_of_speech": [
       "noun"
     ],
@@ -8649,7 +8649,7 @@
       "nursing",
       "upbringing"
     ],
-    "display_gloss": "nursing",
+    "display_gloss": "childcare",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -8760,7 +8760,7 @@
       "breather",
       "break"
     ],
-    "display_gloss": "break",
+    "display_gloss": "(short) rest",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -8812,7 +8812,7 @@
       "simultaneous",
       "all at once"
     ],
-    "display_gloss": "all at once",
+    "display_gloss": "simultaneous",
     "part_of_speech": [
       "adverb",
       "noun"
@@ -8966,7 +8966,7 @@
       "briefly (look over, explain, etc.)",
       "roughly"
     ],
-    "display_gloss": "briefly",
+    "display_gloss": "generally",
     "part_of_speech": [
       "noun",
       "no-adjective",
@@ -9068,7 +9068,7 @@
       "top-flight",
       "top-ranking"
     ],
-    "display_gloss": "first-rate",
+    "display_gloss": "first-class",
     "part_of_speech": [
       "no-adjective",
       "noun"
@@ -9116,7 +9116,7 @@
       "to brim over",
       "to flood"
     ],
-    "display_gloss": "to flood",
+    "display_gloss": "to overflow",
     "part_of_speech": [
       "ichidan verb",
       "intransitive verb"
@@ -9223,7 +9223,7 @@
       "to come back",
       "to return"
     ],
-    "display_gloss": "to go back",
+    "display_gloss": "to turn back",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -9292,7 +9292,7 @@
       "to turn over",
       "to capsize"
     ],
-    "display_gloss": "to turn over",
+    "display_gloss": "to be overturned",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -9351,7 +9351,7 @@
       "to be caught in",
       "to be stuck in"
     ],
-    "display_gloss": "to be stuck in",
+    "display_gloss": "to be caught in",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -9411,7 +9411,7 @@
       "to sink",
       "to cave in"
     ],
-    "display_gloss": "to sink",
+    "display_gloss": "to draw back",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -9463,7 +9463,7 @@
       "affinity",
       "gravitational pull"
     ],
-    "display_gloss": "affinity",
+    "display_gloss": "attraction",
     "part_of_speech": [
       "noun"
     ],
@@ -9514,7 +9514,7 @@
       "plume",
       "down"
     ],
-    "display_gloss": "down",
+    "display_gloss": "feather",
     "part_of_speech": [
       "noun"
     ],
@@ -9613,7 +9613,7 @@
       "(navigable) canal",
       "waterway"
     ],
-    "display_gloss": "waterway",
+    "display_gloss": "(navigable) canal",
     "part_of_speech": [
       "noun"
     ],
@@ -9665,7 +9665,7 @@
       "to come out (photo)",
       "to be projected"
     ],
-    "display_gloss": "to come out",
+    "display_gloss": "to be reflected",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -9717,7 +9717,7 @@
       "English sentence",
       "English text"
     ],
-    "display_gloss": "English text",
+    "display_gloss": "English writing",
     "part_of_speech": [
       "noun"
     ],
@@ -9859,7 +9859,7 @@
       "to cross over (e.g. mountain)",
       "to go across"
     ],
-    "display_gloss": "to go across",
+    "display_gloss": "to cross over",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -9954,7 +9954,7 @@
       "horticulture",
       "gardening"
     ],
-    "display_gloss": "gardening",
+    "display_gloss": "horticulture",
     "part_of_speech": [
       "noun",
       "no-adjective"
@@ -10209,7 +10209,7 @@
       "funnel (of a ship)",
       "stovepipe"
     ],
-    "display_gloss": "funnel",
+    "display_gloss": "chimney",
     "part_of_speech": [
       "noun"
     ],
@@ -10309,7 +10309,7 @@
       "excursion",
       "outing"
     ],
-    "display_gloss": "excursion",
+    "display_gloss": "school trip",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -10363,7 +10363,7 @@
       "to soil",
       "to make dirty"
     ],
-    "display_gloss": "to soil",
+    "display_gloss": "to pollute",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -10416,7 +10416,7 @@
       "to yield",
       "to give"
     ],
-    "display_gloss": "to yield",
+    "display_gloss": "to be dented",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -10506,7 +10506,7 @@
       "going and returning",
       "coming and going"
     ],
-    "display_gloss": "coming and going",
+    "display_gloss": "making a round trip",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -10660,7 +10660,7 @@
       "attending to",
       "handling"
     ],
-    "display_gloss": "receiving",
+    "display_gloss": "dealing with",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -10762,7 +10762,7 @@
       "to beat",
       "to punch"
     ],
-    "display_gloss": "to hit",
+    "display_gloss": "to strike",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -10898,7 +10898,7 @@
       "outdoors",
       "outside"
     ],
-    "display_gloss": "outside",
+    "display_gloss": "outdoors",
     "part_of_speech": [
       "noun",
       "no-adjective"
@@ -11053,7 +11053,7 @@
       "conservatory",
       "glasshouse"
     ],
-    "display_gloss": "hothouse",
+    "display_gloss": "greenhouse",
     "part_of_speech": [
       "noun"
     ],
@@ -11299,7 +11299,7 @@
       "drop",
       "decline"
     ],
-    "display_gloss": "fall",
+    "display_gloss": "descent",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -11505,7 +11505,7 @@
       "gutter",
       "sewerage"
     ],
-    "display_gloss": "ditch",
+    "display_gloss": "drainage",
     "part_of_speech": [
       "noun"
     ],
@@ -11860,7 +11860,7 @@
       "anyhow",
       "anyway"
     ],
-    "display_gloss": "anyhow",
+    "display_gloss": "in any case",
     "part_of_speech": [
       "adverb"
     ],
@@ -11904,7 +11904,7 @@
       "extremely",
       "terribly"
     ],
-    "display_gloss": "very",
+    "display_gloss": "really",
     "part_of_speech": [
       "adverb"
     ],
@@ -11948,7 +11948,7 @@
       "unnoticed",
       "unawares"
     ],
-    "display_gloss": "unnoticed",
+    "display_gloss": "before one knows",
     "part_of_speech": [
       "adverb"
     ],
@@ -11996,7 +11996,7 @@
       "(a) little",
       "of some kind"
     ],
-    "display_gloss": "any",
+    "display_gloss": "some",
     "part_of_speech": [
       "noun",
       "no-adjective"
@@ -12047,7 +12047,7 @@
       "acceleration",
       "speeding up"
     ],
-    "display_gloss": "speeding up",
+    "display_gloss": "acceleration",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -12190,7 +12190,7 @@
       "to dote on",
       "to show one's love (for)"
     ],
-    "display_gloss": "to dote on",
+    "display_gloss": "to be affectionate to",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -12238,7 +12238,7 @@
       "adoption (of a motion, bill, etc.)",
       "passage"
     ],
-    "display_gloss": "passage",
+    "display_gloss": "approval",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -12391,7 +12391,7 @@
       "nut",
       "berry"
     ],
-    "display_gloss": "nut",
+    "display_gloss": "fruit",
     "part_of_speech": [
       "noun"
     ],
@@ -12443,7 +12443,7 @@
       "fanciful",
       "fabricated"
     ],
-    "display_gloss": "fanciful",
+    "display_gloss": "fictitious",
     "part_of_speech": [
       "no-adjective",
       "noun"
@@ -12538,7 +12538,7 @@
       "(volcanic) crater",
       "caldera"
     ],
-    "display_gloss": "caldera",
+    "display_gloss": "(volcanic) crater",
     "part_of_speech": [
       "noun"
     ],
@@ -12882,7 +12882,7 @@
       "error",
       "blunder"
     ],
-    "display_gloss": "error",
+    "display_gloss": "accident",
     "part_of_speech": [
       "noun"
     ],
@@ -12986,7 +12986,7 @@
       "course",
       "mechanism"
     ],
-    "display_gloss": "course",
+    "display_gloss": "process",
     "part_of_speech": [
       "noun"
     ],
@@ -13135,7 +13135,7 @@
       "to encounter",
       "to see"
     ],
-    "display_gloss": "to see",
+    "display_gloss": "to meet",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -13231,7 +13231,7 @@
       "breaking up (a meeting, gathering, etc.)",
       "dispersal (e.g. of a crowd)"
     ],
-    "display_gloss": "dispersal",
+    "display_gloss": "breaking up",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -13285,7 +13285,7 @@
       "exposition",
       "elucidation"
     ],
-    "display_gloss": "commentary",
+    "display_gloss": "explanation",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -13500,7 +13500,7 @@
       "frequency",
       "count"
     ],
-    "display_gloss": "count",
+    "display_gloss": "number of times",
     "part_of_speech": [
       "noun"
     ],
@@ -13607,7 +13607,7 @@
       "turn",
       "spin"
     ],
-    "display_gloss": "turn",
+    "display_gloss": "rotation",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -13712,7 +13712,7 @@
       "cloudless weather",
       "good weather"
     ],
-    "display_gloss": "good weather",
+    "display_gloss": "clear weather",
     "part_of_speech": [
       "noun",
       "no-adjective"
@@ -13868,7 +13868,7 @@
       "over again",
       "once again"
     ],
-    "display_gloss": "again",
+    "display_gloss": "another time",
     "part_of_speech": [
       "adverb"
     ],
@@ -13920,7 +13920,7 @@
       "to revise",
       "to replace"
     ],
-    "display_gloss": "to alter",
+    "display_gloss": "to change",
     "part_of_speech": [
       "ichidan verb",
       "transitive verb"
@@ -14135,7 +14135,7 @@
       "seawater bath",
       "going for a dip in the ocean"
     ],
-    "display_gloss": "sea bathing",
+    "display_gloss": "swimming in the ocean",
     "part_of_speech": [
       "noun"
     ],
@@ -14185,7 +14185,7 @@
       "ocean",
       "sea"
     ],
-    "display_gloss": "sea",
+    "display_gloss": "ocean",
     "part_of_speech": [
       "noun"
     ],
@@ -14547,7 +14547,7 @@
       "to be off",
       "to be out (e.g. of gear)"
     ],
-    "display_gloss": "to be off",
+    "display_gloss": "to be disconnected",
     "part_of_speech": [
       "ichidan verb",
       "intransitive verb"
@@ -14699,7 +14699,7 @@
       "outline",
       "general remarks"
     ],
-    "display_gloss": "outline",
+    "display_gloss": "introduction",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -14742,7 +14742,7 @@
       "lid",
       "cap"
     ],
-    "display_gloss": "lid",
+    "display_gloss": "cover",
     "part_of_speech": [
       "noun"
     ],
@@ -15102,7 +15102,7 @@
       "exceptional",
       "especial"
     ],
-    "display_gloss": "special",
+    "display_gloss": "particular",
     "part_of_speech": [
       "no-adjective",
       "na-adjective",
@@ -15152,7 +15152,7 @@
       "hull",
       "pod"
     ],
-    "display_gloss": "husk",
+    "display_gloss": "shell",
     "part_of_speech": [
       "noun"
     ],
@@ -15203,7 +15203,7 @@
       "likelihood",
       "chances"
     ],
-    "display_gloss": "chances",
+    "display_gloss": "probability",
     "part_of_speech": [
       "noun"
     ],
@@ -15305,7 +15305,7 @@
       "to partition",
       "to divide"
     ],
-    "display_gloss": "to isolate",
+    "display_gloss": "to separate",
     "part_of_speech": [
       "ichidan verb",
       "transitive verb"
@@ -15408,7 +15408,7 @@
       "academy",
       "academic meeting"
     ],
-    "display_gloss": "academy",
+    "display_gloss": "learned society",
     "part_of_speech": [
       "noun"
     ],
@@ -15560,7 +15560,7 @@
       "academic year",
       "school year"
     ],
-    "display_gloss": "school year",
+    "display_gloss": "academic year",
     "part_of_speech": [
       "noun"
     ],
@@ -15612,7 +15612,7 @@
       "college",
       "department"
     ],
-    "display_gloss": "school",
+    "display_gloss": "faculty",
     "part_of_speech": [
       "noun"
     ],
@@ -15664,7 +15664,7 @@
       "knowledge",
       "literary ability"
     ],
-    "display_gloss": "knowledge",
+    "display_gloss": "scholarly ability",
     "part_of_speech": [
       "noun"
     ],
@@ -15863,7 +15863,7 @@
       "moveable type",
       "printing type"
     ],
-    "display_gloss": "movable type",
+    "display_gloss": "(piece of) type",
     "part_of_speech": [
       "noun"
     ],
@@ -15967,7 +15967,7 @@
       "energy",
       "dynamism"
     ],
-    "display_gloss": "energy",
+    "display_gloss": "vitality",
     "part_of_speech": [
       "noun"
     ],
@@ -16064,7 +16064,7 @@
       "iron pot",
       "kettle"
     ],
-    "display_gloss": "kettle",
+    "display_gloss": "iron pot",
     "part_of_speech": [
       "noun"
     ],
@@ -16200,7 +16200,7 @@
       "drying (e.g. clothes)",
       "dehydration"
     ],
-    "display_gloss": "drying",
+    "display_gloss": "dryness",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -16353,7 +16353,7 @@
       "mistaken idea",
       "wrong guess"
     ],
-    "display_gloss": "wrong guess",
+    "display_gloss": "misunderstanding",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -16456,7 +16456,7 @@
       "clamorous",
       "boisterous"
     ],
-    "display_gloss": "loud",
+    "display_gloss": "noisy",
     "part_of_speech": [
       "i-adjective"
     ],
@@ -16503,7 +16503,7 @@
       "government agency",
       "authorities"
     ],
-    "display_gloss": "authorities",
+    "display_gloss": "government office",
     "part_of_speech": [
       "noun"
     ],
@@ -16548,7 +16548,7 @@
       "impression",
       "inspiration"
     ],
-    "display_gloss": "impression",
+    "display_gloss": "deep emotion",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -16602,7 +16602,7 @@
       "feelings",
       "reactions"
     ],
-    "display_gloss": "thoughts",
+    "display_gloss": "impressions",
     "part_of_speech": [
       "noun"
     ],
@@ -16792,7 +16792,7 @@
       "to pamper",
       "to spoil"
     ],
-    "display_gloss": "to spoil",
+    "display_gloss": "to pamper",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -16845,7 +16845,7 @@
       "billboard",
       "hoarding"
     ],
-    "display_gloss": "sign",
+    "display_gloss": "signboard",
     "part_of_speech": [
       "noun"
     ],
@@ -17047,7 +17047,7 @@
       "survey",
       "measurement"
     ],
-    "display_gloss": "survey",
+    "display_gloss": "observation",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -17558,7 +17558,7 @@
       "to be pleased",
       "to rejoice"
     ],
-    "display_gloss": "to be glad",
+    "display_gloss": "to be delighted",
     "part_of_speech": [
       "godan verb",
       "transitive verb",
@@ -17612,7 +17612,7 @@
       "tool",
       "instrument"
     ],
-    "display_gloss": "tool",
+    "display_gloss": "utensil",
     "part_of_speech": [
       "noun"
     ],
@@ -17662,7 +17662,7 @@
       "foundation",
       "basis"
     ],
-    "display_gloss": "basis",
+    "display_gloss": "foundation",
     "part_of_speech": [
       "noun",
       "no-adjective"
@@ -18022,7 +18022,7 @@
       "locomotive",
       "engine"
     ],
-    "display_gloss": "engine",
+    "display_gloss": "locomotive",
     "part_of_speech": [
       "noun"
     ],
@@ -18123,7 +18123,7 @@
       "atmospheric pressure",
       "air pressure"
     ],
-    "display_gloss": "air pressure",
+    "display_gloss": "atmospheric pressure",
     "part_of_speech": [
       "noun"
     ],
@@ -18227,7 +18227,7 @@
       "hint",
       "sensation"
     ],
-    "display_gloss": "sign",
+    "display_gloss": "indication",
     "part_of_speech": [
       "noun"
     ],
@@ -18486,7 +18486,7 @@
       "ritual",
       "service"
     ],
-    "display_gloss": "rite",
+    "display_gloss": "ceremony",
     "part_of_speech": [
       "noun"
     ],
@@ -18537,7 +18537,7 @@
       "to be filled",
       "to be full (e.g. of a schedule)"
     ],
-    "display_gloss": "to be full",
+    "display_gloss": "to be packed",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -18590,7 +18590,7 @@
       "instead",
       "all the more"
     ],
-    "display_gloss": "rather",
+    "display_gloss": "on the contrary",
     "part_of_speech": [
       "adverb"
     ],
@@ -18642,7 +18642,7 @@
       "parlour",
       "guest room"
     ],
-    "display_gloss": "parlor",
+    "display_gloss": "drawing room",
     "part_of_speech": [
       "noun"
     ],
@@ -18798,7 +18798,7 @@
       "shutdown",
       "holiday"
     ],
-    "display_gloss": "shutdown",
+    "display_gloss": "suspension of business",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -19147,7 +19147,7 @@
       "fishing industry",
       "fishery"
     ],
-    "display_gloss": "fishery",
+    "display_gloss": "fishing industry",
     "part_of_speech": [
       "noun"
     ],
@@ -19297,7 +19297,7 @@
       "limit",
       "bounds"
     ],
-    "display_gloss": "limit",
+    "display_gloss": "boundary",
     "part_of_speech": [
       "noun"
     ],
@@ -19349,7 +19349,7 @@
       "pushy",
       "forcible"
     ],
-    "display_gloss": "pushy",
+    "display_gloss": "overbearing",
     "part_of_speech": [
       "na-adjective",
       "noun"
@@ -19402,7 +19402,7 @@
       "reinforcement",
       "enhancement"
     ],
-    "display_gloss": "intensifying",
+    "display_gloss": "strengthening",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -19456,7 +19456,7 @@
       "self-assured",
       "firm"
     ],
-    "display_gloss": "assured",
+    "display_gloss": "confident",
     "part_of_speech": [
       "na-adjective",
       "no-adjective",
@@ -19509,7 +19509,7 @@
       "being (very) grateful",
       "being thankful"
     ],
-    "display_gloss": "being",
+    "display_gloss": "feeling",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -19613,7 +19613,7 @@
       "to learn",
       "to take lessons in"
     ],
-    "display_gloss": "to learn",
+    "display_gloss": "to be taught",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -19666,7 +19666,7 @@
       "cultivation",
       "sophistication"
     ],
-    "display_gloss": "cultivation",
+    "display_gloss": "(understanding or appreciation of) culture",
     "part_of_speech": [
       "noun"
     ],
@@ -19860,7 +19860,7 @@
       "to bow",
       "to curve"
     ],
-    "display_gloss": "to bow",
+    "display_gloss": "to bend",
     "part_of_speech": [
       "ichidan verb",
       "transitive verb"
@@ -20366,7 +20366,7 @@
       "demarcation",
       "partition"
     ],
-    "display_gloss": "section",
+    "display_gloss": "division",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -20420,7 +20420,7 @@
       "objection",
       "grievance"
     ],
-    "display_gloss": "troubles",
+    "display_gloss": "complaint",
     "part_of_speech": [
       "noun"
     ],
@@ -20526,7 +20526,7 @@
       "to provide",
       "to install"
     ],
-    "display_gloss": "to provide",
+    "display_gloss": "to furnish with",
     "part_of_speech": [
       "ichidan verb",
       "transitive verb"
@@ -20632,7 +20632,7 @@
       "fancy",
       "vision"
     ],
-    "display_gloss": "fancy",
+    "display_gloss": "daydream",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -20685,7 +20685,7 @@
       "midair",
       "sky"
     ],
-    "display_gloss": "sky",
+    "display_gloss": "(in) the air",
     "part_of_speech": [
       "noun"
     ],
@@ -20978,7 +20978,7 @@
       "district",
       "county"
     ],
-    "display_gloss": "county",
+    "display_gloss": "district",
     "part_of_speech": [
       "noun"
     ],
@@ -21187,7 +21187,7 @@
       "to honour",
       "to honor"
     ],
-    "display_gloss": "to revere",
+    "display_gloss": "to show respect for",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -21444,7 +21444,7 @@
       "maintenance",
       "persistence"
     ],
-    "display_gloss": "continuance",
+    "display_gloss": "continuation",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -21497,7 +21497,7 @@
       "link",
       "relationship"
     ],
-    "display_gloss": "link",
+    "display_gloss": "connection",
     "part_of_speech": [
       "noun"
     ],
@@ -21549,7 +21549,7 @@
       "to be linked",
       "to be tied together"
     ],
-    "display_gloss": "to be linked",
+    "display_gloss": "to be connected",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -21652,7 +21652,7 @@
       "guard",
       "policing"
     ],
-    "display_gloss": "guard",
+    "display_gloss": "defense",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -21704,7 +21704,7 @@
       "public entertainment",
       "performing arts"
     ],
-    "display_gloss": "performing arts",
+    "display_gloss": "public entertainment",
     "part_of_speech": [
       "noun"
     ],
@@ -21748,7 +21748,7 @@
       "sharp increase",
       "sudden rise"
     ],
-    "display_gloss": "sudden rise",
+    "display_gloss": "sharp increase",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -21844,7 +21844,7 @@
       "girder",
       "crossbeam"
     ],
-    "display_gloss": "beam",
+    "display_gloss": "column",
     "part_of_speech": [
       "noun"
     ],
@@ -21896,7 +21896,7 @@
       "chef d'oeuvre",
       "fine piece of work"
     ],
-    "display_gloss": "masterwork",
+    "display_gloss": "masterpiece",
     "part_of_speech": [
       "noun"
     ],
@@ -22599,7 +22599,7 @@
       "title",
       "caption"
     ],
-    "display_gloss": "title",
+    "display_gloss": "heading",
     "part_of_speech": [
       "noun"
     ],
@@ -22758,7 +22758,7 @@
       "to ask after (e.g. someone's health)",
       "to inquire after"
     ],
-    "display_gloss": "to go to see",
+    "display_gloss": "to visit and comfort or console",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -22967,7 +22967,7 @@
       "inaccessible",
       "impregnable"
     ],
-    "display_gloss": "rugged",
+    "display_gloss": "precipitous",
     "part_of_speech": [
       "i-adjective"
     ],
@@ -23072,7 +23072,7 @@
       "draft",
       "notes"
     ],
-    "display_gloss": "copy",
+    "display_gloss": "manuscript",
     "part_of_speech": [
       "noun"
     ],
@@ -23122,7 +23122,7 @@
       "place of origin",
       "habitat"
     ],
-    "display_gloss": "habitat",
+    "display_gloss": "place of origin",
     "part_of_speech": [
       "noun",
       "no-adjective"
@@ -23220,7 +23220,7 @@
       "theory",
       "fundamental truth"
     ],
-    "display_gloss": "theory",
+    "display_gloss": "principle",
     "part_of_speech": [
       "noun"
     ],
@@ -23270,7 +23270,7 @@
       "raw materials",
       "ingredient"
     ],
-    "display_gloss": "ingredient",
+    "display_gloss": "raw materials",
     "part_of_speech": [
       "noun"
     ],
@@ -23373,7 +23373,7 @@
       "actually",
       "really"
     ],
-    "display_gloss": "really",
+    "display_gloss": "actually",
     "part_of_speech": [
       "adverb"
     ],
@@ -23427,7 +23427,7 @@
       "to broach (a matter)",
       "to bring up"
     ],
-    "display_gloss": "to broach",
+    "display_gloss": "to begin to say",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -23649,7 +23649,7 @@
       "individual",
       "specimen"
     ],
-    "display_gloss": "specimen",
+    "display_gloss": "individual",
     "part_of_speech": [
       "noun",
       "no-adjective"
@@ -23753,7 +23753,7 @@
       "to hail",
       "to address"
     ],
-    "display_gloss": "to hail",
+    "display_gloss": "to call out to",
     "part_of_speech": [
       "ichidan verb",
       "transitive verb"
@@ -23918,7 +23918,7 @@
       "closet",
       "wardrobe"
     ],
-    "display_gloss": "locker",
+    "display_gloss": "cupboard",
     "part_of_speech": [
       "noun"
     ],
@@ -23969,7 +23969,7 @@
       "to be blasted",
       "to die"
     ],
-    "display_gloss": "to die",
+    "display_gloss": "to wither",
     "part_of_speech": [
       "ichidan verb",
       "intransitive verb"
@@ -24016,7 +24016,7 @@
       "paste",
       "glue"
     ],
-    "display_gloss": "glue",
+    "display_gloss": "paste",
     "part_of_speech": [
       "noun"
     ],
@@ -24352,7 +24352,7 @@
       "luckily",
       "by God's grace"
     ],
-    "display_gloss": "luckily",
+    "display_gloss": "thankfully",
     "part_of_speech": [
       "expression"
     ],
@@ -24435,7 +24435,7 @@
       "Messrs",
       "for the attention of ..."
     ],
-    "display_gloss": "Messrs",
+    "display_gloss": "... and Company",
     "part_of_speech": [
       "n-suf"
     ],
@@ -24488,7 +24488,7 @@
       "neglecting (failing) to write (call, visit, etc.)",
       "long silence"
     ],
-    "display_gloss": "neglecting",
+    "display_gloss": "not writing or contacting for a while",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -24783,7 +24783,7 @@
       "transportation facilities",
       "transportation system"
     ],
-    "display_gloss": "transport",
+    "display_gloss": "(means of) transportation",
     "part_of_speech": [
       "noun"
     ],
@@ -25034,7 +25034,7 @@
       "official",
       "formal"
     ],
-    "display_gloss": "formal",
+    "display_gloss": "official",
     "part_of_speech": [
       "no-adjective",
       "noun",
@@ -25189,7 +25189,7 @@
       "official announcement",
       "proclamation"
     ],
-    "display_gloss": "proclamation",
+    "display_gloss": "official announcement",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -25241,7 +25241,7 @@
       "official business",
       "public business"
     ],
-    "display_gloss": "public business",
+    "display_gloss": "official business",
     "part_of_speech": [
       "noun"
     ],
@@ -25397,7 +25397,7 @@
       "brazen",
       "cheeky"
     ],
-    "display_gloss": "brazen",
+    "display_gloss": "impudent",
     "part_of_speech": [
       "i-adjective"
     ],
@@ -25557,7 +25557,7 @@
       "preferences",
       "pickiness (esp. about food)"
     ],
-    "display_gloss": "tastes",
+    "display_gloss": "likes and dislikes",
     "part_of_speech": [
       "noun"
     ],
@@ -25701,7 +25701,7 @@
       "industrial arts",
       "craft"
     ],
-    "display_gloss": "craft",
+    "display_gloss": "industrial arts",
     "part_of_speech": [
       "noun"
     ],
@@ -25963,7 +25963,7 @@
       "plaza",
       "piazza"
     ],
-    "display_gloss": "plaza",
+    "display_gloss": "public square",
     "part_of_speech": [
       "noun"
     ],
@@ -26054,7 +26054,7 @@
       "to be flustered",
       "to panic"
     ],
-    "display_gloss": "to panic",
+    "display_gloss": "to become confused",
     "part_of_speech": [
       "ichidan verb",
       "intransitive verb"
@@ -26154,7 +26154,7 @@
       "to advance",
       "to wear on"
     ],
-    "display_gloss": "to advance",
+    "display_gloss": "to get late",
     "part_of_speech": [
       "ichidan verb",
       "intransitive verb"
@@ -26205,7 +26205,7 @@
       "school building",
       "schoolhouse"
     ],
-    "display_gloss": "schoolhouse",
+    "display_gloss": "school building",
     "part_of_speech": [
       "noun"
     ],
@@ -26309,7 +26309,7 @@
       "makeup",
       "framework"
     ],
-    "display_gloss": "makeup",
+    "display_gloss": "structure",
     "part_of_speech": [
       "noun"
     ],
@@ -26460,7 +26460,7 @@
       "plantation",
       "farmland"
     ],
-    "display_gloss": "farmland",
+    "display_gloss": "arable land",
     "part_of_speech": [
       "noun"
     ],
@@ -26557,7 +26557,7 @@
       "violent",
       "rude"
     ],
-    "display_gloss": "wild",
+    "display_gloss": "rough",
     "part_of_speech": [
       "i-adjective"
     ],
@@ -26906,7 +26906,7 @@
       "perfume",
       "scent"
     ],
-    "display_gloss": "scent",
+    "display_gloss": "perfume",
     "part_of_speech": [
       "noun"
     ],
@@ -26958,7 +26958,7 @@
       "to boost",
       "to enhance"
     ],
-    "display_gloss": "to lift",
+    "display_gloss": "to raise",
     "part_of_speech": [
       "ichidan verb",
       "transitive verb"
@@ -27111,7 +27111,7 @@
       "height",
       "elevation"
     ],
-    "display_gloss": "height",
+    "display_gloss": "altitude",
     "part_of_speech": [
       "noun"
     ],
@@ -27215,7 +27215,7 @@
       "joining",
       "incorporation"
     ],
-    "display_gloss": "union",
+    "display_gloss": "combination",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -27305,7 +27305,7 @@
       "flowing together",
       "joining"
     ],
-    "display_gloss": "joining",
+    "display_gloss": "confluence",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -27669,7 +27669,7 @@
       "immediately",
       "right away"
     ],
-    "display_gloss": "in a moment",
+    "display_gloss": "in an instant",
     "part_of_speech": [
       "adverb"
     ],
@@ -27752,7 +27752,7 @@
       "malice",
       "bitterness"
     ],
-    "display_gloss": "grudge",
+    "display_gloss": "resentment",
     "part_of_speech": [
       "noun"
     ],
@@ -27804,7 +27804,7 @@
       "to blame",
       "to curse"
     ],
-    "display_gloss": "to blame",
+    "display_gloss": "to bear a grudge against",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -27960,7 +27960,7 @@
       "mixture",
       "meld"
     ],
-    "display_gloss": "meld",
+    "display_gloss": "mixing",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -28057,7 +28057,7 @@
       "goodbye",
       "so long"
     ],
-    "display_gloss": "adieu",
+    "display_gloss": "farewell",
     "part_of_speech": [
       "interjection"
     ],
@@ -28112,7 +28112,7 @@
       "subtraction",
       "balance"
     ],
-    "display_gloss": "balance",
+    "display_gloss": "deduction",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -28311,7 +28311,7 @@
       "demanding",
       "demand"
     ],
-    "display_gloss": "urging",
+    "display_gloss": "pressing",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -28363,7 +28363,7 @@
       "again and again",
       "repeatedly"
     ],
-    "display_gloss": "repeatedly",
+    "display_gloss": "again and again",
     "part_of_speech": [
       "adverb",
       "no-adjective"
@@ -28836,7 +28836,7 @@
       "national holiday",
       "festival day"
     ],
-    "display_gloss": "festival day",
+    "display_gloss": "national holiday",
     "part_of_speech": [
       "noun",
       "no-adjective"
@@ -29097,7 +29097,7 @@
       "writer",
       "artist"
     ],
-    "display_gloss": "author",
+    "display_gloss": "creator",
     "part_of_speech": [
       "noun"
     ],
@@ -29201,7 +29201,7 @@
       "manufacture",
       "production"
     ],
-    "display_gloss": "production",
+    "display_gloss": "manufacture",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -29302,7 +29302,7 @@
       "erasure",
       "striking out"
     ],
-    "display_gloss": "erasure",
+    "display_gloss": "deletion",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -29449,7 +29449,7 @@
       "filming",
       "shooting"
     ],
-    "display_gloss": "filming",
+    "display_gloss": "photography",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -29602,7 +29602,7 @@
       "house-cloth",
       "dust cloth"
     ],
-    "display_gloss": "dust cloth",
+    "display_gloss": "house-cloth",
     "part_of_speech": [
       "noun"
     ],
@@ -29751,7 +29751,7 @@
       "crescent moon",
       "young moon"
     ],
-    "display_gloss": "young moon",
+    "display_gloss": "crescent moon",
     "part_of_speech": [
       "noun"
     ],
@@ -29797,7 +29797,7 @@
       "forest land",
       "woodland"
     ],
-    "display_gloss": "forest land",
+    "display_gloss": "mountain forest",
     "part_of_speech": [
       "noun"
     ],
@@ -29839,7 +29839,7 @@
       "unhappy",
       "sad"
     ],
-    "display_gloss": "unhappy",
+    "display_gloss": "miserable",
     "part_of_speech": [
       "na-adjective"
     ],
@@ -29886,7 +29886,7 @@
       "to sprinkle",
       "to strew"
     ],
-    "display_gloss": "to strew",
+    "display_gloss": "to scatter",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -29938,7 +29938,7 @@
       "to leave untidy",
       "to make a mess"
     ],
-    "display_gloss": "to make a mess",
+    "display_gloss": "to scatter around",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -30328,7 +30328,7 @@
       "to lop (off)",
       "to cut (off)"
     ],
-    "display_gloss": "to lop",
+    "display_gloss": "to kill",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -30378,7 +30378,7 @@
       "to be completed",
       "to be done"
     ],
-    "display_gloss": "to be done",
+    "display_gloss": "to be finished",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -30473,7 +30473,7 @@
       "to pierce",
       "to get stuck (in)"
     ],
-    "display_gloss": "to prick",
+    "display_gloss": "to stick into",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -30526,7 +30526,7 @@
       "to prick",
       "to stick"
     ],
-    "display_gloss": "to stab",
+    "display_gloss": "to pierce",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -30727,7 +30727,7 @@
       "quadrilateral",
       "square"
     ],
-    "display_gloss": "square",
+    "display_gloss": "quadrilateral",
     "part_of_speech": [
       "na-adjective",
       "no-adjective",
@@ -31100,7 +31100,7 @@
       "position",
       "stance"
     ],
-    "display_gloss": "pose",
+    "display_gloss": "posture",
     "part_of_speech": [
       "noun"
     ],
@@ -31151,7 +31151,7 @@
       "progeny",
       "offspring"
     ],
-    "display_gloss": "progeny",
+    "display_gloss": "descendant",
     "part_of_speech": [
       "noun"
     ],
@@ -31205,7 +31205,7 @@
       "to feel sure (that)",
       "to assume (that)"
     ],
-    "display_gloss": "to feel sure",
+    "display_gloss": "to be convinced",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -31266,7 +31266,7 @@
       "as hard as one can",
       "with all one's strength"
     ],
-    "display_gloss": "as hard as one can",
+    "display_gloss": "to one's heart's content",
     "part_of_speech": [
       "adverb"
     ],
@@ -31312,7 +31312,7 @@
       "assignment",
       "appointment"
     ],
-    "display_gloss": "assignment",
+    "display_gloss": "designation",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -31417,7 +31417,7 @@
       "cadaver",
       "carcass"
     ],
-    "display_gloss": "corpse",
+    "display_gloss": "dead body",
     "part_of_speech": [
       "noun"
     ],
@@ -31467,7 +31467,7 @@
       "(full) name",
       "identity"
     ],
-    "display_gloss": "identity",
+    "display_gloss": "(full) name",
     "part_of_speech": [
       "noun"
     ],
@@ -31611,7 +31611,7 @@
       "note",
       "bill"
     ],
-    "display_gloss": "note",
+    "display_gloss": "paper money",
     "part_of_speech": [
       "noun"
     ],
@@ -31811,7 +31811,7 @@
       "data",
       "information"
     ],
-    "display_gloss": "data",
+    "display_gloss": "material",
     "part_of_speech": [
       "noun"
     ],
@@ -32011,7 +32011,7 @@
       "taking",
       "carrying"
     ],
-    "display_gloss": "taking",
+    "display_gloss": "bringing",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -32067,7 +32067,7 @@
       "timetable (esp. a weekly school timetable)",
       "schedule"
     ],
-    "display_gloss": "schedule",
+    "display_gloss": "timetable",
     "part_of_speech": [
       "noun"
     ],
@@ -32368,7 +32368,7 @@
       "self-government",
       "autonomy"
     ],
-    "display_gloss": "autonomy",
+    "display_gloss": "self-government",
     "part_of_speech": [
       "noun"
     ],
@@ -32575,7 +32575,7 @@
       "unrequited love",
       "being lovelorn"
     ],
-    "display_gloss": "broken heart",
+    "display_gloss": "disappointed love",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -32622,7 +32622,7 @@
       "to become moist",
       "to become wet"
     ],
-    "display_gloss": "to become wet",
+    "display_gloss": "to become damp",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -32821,7 +32821,7 @@
       "a long time ago",
       "already"
     ],
-    "display_gloss": "already",
+    "display_gloss": "long ago",
     "part_of_speech": [
       "adverb"
     ],
@@ -32867,7 +32867,7 @@
       "to bear fruit",
       "to ripen"
     ],
-    "display_gloss": "to ripen",
+    "display_gloss": "to bear fruit",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -33075,7 +33075,7 @@
       "original",
       "actual"
     ],
-    "display_gloss": "actual",
+    "display_gloss": "real thing",
     "part_of_speech": [
       "noun",
       "no-adjective"
@@ -33126,7 +33126,7 @@
       "practical use",
       "utility"
     ],
-    "display_gloss": "utility",
+    "display_gloss": "practical use",
     "part_of_speech": [
       "noun"
     ],
@@ -33178,7 +33178,7 @@
       "merit",
       "efficiency"
     ],
-    "display_gloss": "merit",
+    "display_gloss": "(real) ability",
     "part_of_speech": [
       "noun"
     ],
@@ -33276,7 +33276,7 @@
       "bar",
       "streak"
     ],
-    "display_gloss": "bar",
+    "display_gloss": "stripe",
     "part_of_speech": [
       "noun",
       "n-suf",
@@ -33328,7 +33328,7 @@
       "to be photographed",
       "to be projected"
     ],
-    "display_gloss": "to be projected",
+    "display_gloss": "to be photographed",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -33479,7 +33479,7 @@
       "to dump",
       "to discard"
     ],
-    "display_gloss": "to dump",
+    "display_gloss": "to throw away",
     "part_of_speech": [
       "ichidan verb",
       "transitive verb"
@@ -33532,7 +33532,7 @@
       "sloping",
       "diagonal"
     ],
-    "display_gloss": "tilted",
+    "display_gloss": "slanting",
     "part_of_speech": [
       "no-adjective",
       "na-adjective",
@@ -33746,7 +33746,7 @@
       "leading article",
       "leader"
     ],
-    "display_gloss": "leader",
+    "display_gloss": "editorial",
     "part_of_speech": [
       "noun"
     ],
@@ -33798,7 +33798,7 @@
       "depot (for trains, buses, etc.)",
       "shed"
     ],
-    "display_gloss": "depot",
+    "display_gloss": "garage",
     "part_of_speech": [
       "noun"
     ],
@@ -33946,7 +33946,7 @@
       "faucet",
       "tap"
     ],
-    "display_gloss": "tap",
+    "display_gloss": "faucet",
     "part_of_speech": [
       "noun"
     ],
@@ -34044,7 +34044,7 @@
       "shortcoming",
       "defect"
     ],
-    "display_gloss": "weakness",
+    "display_gloss": "weak point",
     "part_of_speech": [
       "noun"
     ],
@@ -34204,7 +34204,7 @@
       "to produce",
       "to pick out"
     ],
-    "display_gloss": "to produce",
+    "display_gloss": "to take out",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -34479,7 +34479,7 @@
       "washing one's hands",
       "water (or basin, etc.) for washing one's hands"
     ],
-    "display_gloss": "water",
+    "display_gloss": "washing one's hands",
     "part_of_speech": [
       "noun"
     ],
@@ -34530,7 +34530,7 @@
       "in front of one",
       "nearby"
     ],
-    "display_gloss": "nearby",
+    "display_gloss": "before oneself",
     "part_of_speech": [
       "noun"
     ],
@@ -34798,7 +34798,7 @@
       "receiving",
       "receipt"
     ],
-    "display_gloss": "receipt",
+    "display_gloss": "receiving",
     "part_of_speech": [
       "noun"
     ],
@@ -34902,7 +34902,7 @@
       "life",
       "lifetime"
     ],
-    "display_gloss": "life",
+    "display_gloss": "lifespan",
     "part_of_speech": [
       "noun"
     ],
@@ -34954,7 +34954,7 @@
       "environs",
       "around"
     ],
-    "display_gloss": "environs",
+    "display_gloss": "circumference",
     "part_of_speech": [
       "noun",
       "n-suf"
@@ -35007,7 +35007,7 @@
       "inauguration",
       "installation"
     ],
-    "display_gloss": "taking up",
+    "display_gloss": "assumption",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -35409,7 +35409,7 @@
       "gathering",
       "assembly"
     ],
-    "display_gloss": "assembly",
+    "display_gloss": "meeting up",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -35553,7 +35553,7 @@
       "juice",
       "sap"
     ],
-    "display_gloss": "sap",
+    "display_gloss": "juice",
     "part_of_speech": [
       "noun",
       "n-suf"
@@ -35760,7 +35760,7 @@
       "stress",
       "importance"
     ],
-    "display_gloss": "stress",
+    "display_gloss": "important point",
     "part_of_speech": [
       "noun"
     ],
@@ -35811,7 +35811,7 @@
       "executive",
       "top management"
     ],
-    "display_gloss": "executive",
+    "display_gloss": "(company) director",
     "part_of_speech": [
       "noun"
     ],
@@ -35961,7 +35961,7 @@
       "national holiday",
       "public holiday"
     ],
-    "display_gloss": "public holiday",
+    "display_gloss": "national holiday",
     "part_of_speech": [
       "noun",
       "no-adjective"
@@ -36066,7 +36066,7 @@
       "to condense",
       "to shrink"
     ],
-    "display_gloss": "to reduce",
+    "display_gloss": "to shorten",
     "part_of_speech": [
       "ichidan verb",
       "transitive verb"
@@ -36165,7 +36165,7 @@
       "cut",
       "cutback"
     ],
-    "display_gloss": "cut",
+    "display_gloss": "reduction",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -36381,7 +36381,7 @@
       "attendance (at work)",
       "being at work"
     ],
-    "display_gloss": "attendance",
+    "display_gloss": "going to work",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -36439,7 +36439,7 @@
       "picking up",
       "welcoming"
     ],
-    "display_gloss": "picking up",
+    "display_gloss": "(going out and) receiving (someone)",
     "part_of_speech": [
       "noun"
     ],
@@ -36705,7 +36705,7 @@
       "completion",
       "finish"
     ],
-    "display_gloss": "finish",
+    "display_gloss": "completion",
     "part_of_speech": [
       "noun"
     ],
@@ -36758,7 +36758,7 @@
       "to be finished",
       "to be ready (e.g. to serve or eat)"
     ],
-    "display_gloss": "to be ready",
+    "display_gloss": "to be completed",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -36854,7 +36854,7 @@
       "cycle",
       "loop"
     ],
-    "display_gloss": "cycle",
+    "display_gloss": "circulation",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -36907,7 +36907,7 @@
       "naivete",
       "innocence"
     ],
-    "display_gloss": "naivete",
+    "display_gloss": "pure heart",
     "part_of_speech": [
       "noun",
       "na-adjective"
@@ -37058,7 +37058,7 @@
       "policeman",
       "constable"
     ],
-    "display_gloss": "policeman",
+    "display_gloss": "police officer",
     "part_of_speech": [
       "noun"
     ],
@@ -37108,7 +37108,7 @@
       "in order",
       "in turn"
     ],
-    "display_gloss": "in turn",
+    "display_gloss": "in order",
     "part_of_speech": [
       "adverb",
       "noun"
@@ -37209,7 +37209,7 @@
       "elementary level",
       "beginner level"
     ],
-    "display_gloss": "beginner level",
+    "display_gloss": "elementary level",
     "part_of_speech": [
       "noun",
       "no-adjective"
@@ -37454,7 +37454,7 @@
       "to be rescued",
       "to survive"
     ],
-    "display_gloss": "to survive",
+    "display_gloss": "to be saved",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -37663,7 +37663,7 @@
       "occasion",
       "chance"
     ],
-    "display_gloss": "chance",
+    "display_gloss": "opportunity",
     "part_of_speech": [
       "noun"
     ],
@@ -37707,7 +37707,7 @@
       "victory or defeat",
       "outcome (of a game, battle, etc.)"
     ],
-    "display_gloss": "outcome",
+    "display_gloss": "victory or defeat",
     "part_of_speech": [
       "noun"
     ],
@@ -37807,7 +37807,7 @@
       "trade",
       "business"
     ],
-    "display_gloss": "trade",
+    "display_gloss": "commerce",
     "part_of_speech": [
       "noun",
       "no-adjective"
@@ -38013,7 +38013,7 @@
       "primary school student",
       "grade school student"
     ],
-    "display_gloss": "grade school student",
+    "display_gloss": "elementary school student",
     "part_of_speech": [
       "noun"
     ],
@@ -38069,7 +38069,7 @@
       "pin money",
       "allowance"
     ],
-    "display_gloss": "pin money",
+    "display_gloss": "pocket money",
     "part_of_speech": [
       "noun"
     ],
@@ -38120,7 +38120,7 @@
       "pinky",
       "fourth (occ. fifth) finger"
     ],
-    "display_gloss": "pinky",
+    "display_gloss": "little finger",
     "part_of_speech": [
       "noun"
     ],
@@ -38264,7 +38264,7 @@
       "barber shop",
       "barber"
     ],
-    "display_gloss": "barber",
+    "display_gloss": "barbershop",
     "part_of_speech": [
       "noun"
     ],
@@ -38423,7 +38423,7 @@
       "half-hearted",
       "unmotivated"
     ],
-    "display_gloss": "passive",
+    "display_gloss": "negative",
     "part_of_speech": [
       "na-adjective"
     ],
@@ -38883,7 +38883,7 @@
       "monetary award",
       "reward"
     ],
-    "display_gloss": "reward",
+    "display_gloss": "prize money",
     "part_of_speech": [
       "noun"
     ],
@@ -39125,7 +39125,7 @@
       "to go up",
       "to climb"
     ],
-    "display_gloss": "to go up",
+    "display_gloss": "to ascend",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -39178,7 +39178,7 @@
       "above and below",
       "upper and lower ends"
     ],
-    "display_gloss": "high and low",
+    "display_gloss": "top and bottom",
     "part_of_speech": [
       "noun"
     ],
@@ -39230,7 +39230,7 @@
       "high rank",
       "advanced level"
     ],
-    "display_gloss": "high rank",
+    "display_gloss": "upper level",
     "part_of_speech": [
       "noun",
       "no-adjective"
@@ -39638,7 +39638,7 @@
       "ornament",
       "trimmings"
     ],
-    "display_gloss": "ornament",
+    "display_gloss": "decoration",
     "part_of_speech": [
       "noun",
       "n-suf"
@@ -39689,7 +39689,7 @@
       "to wipe",
       "to dry"
     ],
-    "display_gloss": "to dry",
+    "display_gloss": "to wipe",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -39742,7 +39742,7 @@
       "tradesman",
       "worker"
     ],
-    "display_gloss": "artisan",
+    "display_gloss": "craftsman",
     "part_of_speech": [
       "noun"
     ],
@@ -39933,7 +39933,7 @@
       "to lengthen",
       "to grow (of hair, height, grass, etc.)"
     ],
-    "display_gloss": "to extend",
+    "display_gloss": "to stretch",
     "part_of_speech": [
       "ichidan verb",
       "intransitive verb"
@@ -40039,7 +40039,7 @@
       "raid",
       "aggression"
     ],
-    "display_gloss": "raid",
+    "display_gloss": "invasion",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -40139,7 +40139,7 @@
       "sleepwear",
       "pyjamas"
     ],
-    "display_gloss": "nightwear",
+    "display_gloss": "nightclothes",
     "part_of_speech": [
       "noun"
     ],
@@ -40189,7 +40189,7 @@
       "sleepwear",
       "pyjamas"
     ],
-    "display_gloss": "nightwear",
+    "display_gloss": "nightclothes",
     "part_of_speech": [
       "noun"
     ],
@@ -40289,7 +40289,7 @@
       "idea (of)",
       "inkling"
     ],
-    "display_gloss": "idea",
+    "display_gloss": "having in mind",
     "part_of_speech": [
       "noun"
     ],
@@ -40496,7 +40496,7 @@
       "forest",
       "woods"
     ],
-    "display_gloss": "woods",
+    "display_gloss": "forest",
     "part_of_speech": [
       "noun",
       "no-adjective"
@@ -40650,7 +40650,7 @@
       "request",
       "petition"
     ],
-    "display_gloss": "request",
+    "display_gloss": "application",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -41066,7 +41066,7 @@
       "relation",
       "kin"
     ],
-    "display_gloss": "kin",
+    "display_gloss": "relative",
     "part_of_speech": [
       "noun"
     ],
@@ -41117,7 +41117,7 @@
       "to have a look at",
       "to check (a patient's pulse)"
     ],
-    "display_gloss": "to check",
+    "display_gloss": "to examine",
     "part_of_speech": [
       "ichidan verb",
       "transitive verb"
@@ -41222,7 +41222,7 @@
       "position",
       "rank"
     ],
-    "display_gloss": "status",
+    "display_gloss": "(social) standing",
     "part_of_speech": [
       "noun"
     ],
@@ -41367,7 +41367,7 @@
       "imitation",
       "synthetic"
     ],
-    "display_gloss": "man-made",
+    "display_gloss": "artificial",
     "part_of_speech": [
       "noun",
       "no-adjective"
@@ -41479,7 +41479,7 @@
       "humanities",
       "arts"
     ],
-    "display_gloss": "arts",
+    "display_gloss": "humanities",
     "part_of_speech": [
       "noun"
     ],
@@ -41677,7 +41677,7 @@
       "illustrated reference book",
       "identification manual"
     ],
-    "display_gloss": "picture book",
+    "display_gloss": "pictorial book",
     "part_of_speech": [
       "noun"
     ],
@@ -41728,7 +41728,7 @@
       "shape",
       "graphic"
     ],
-    "display_gloss": "shape",
+    "display_gloss": "figure",
     "part_of_speech": [
       "noun"
     ],
@@ -41821,7 +41821,7 @@
       "snow storm",
       "blizzard"
     ],
-    "display_gloss": "blizzard",
+    "display_gloss": "snow storm",
     "part_of_speech": [
       "noun"
     ],
@@ -41922,7 +41922,7 @@
       "presumption",
       "assumption"
     ],
-    "display_gloss": "assumption",
+    "display_gloss": "presumption",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -41979,7 +41979,7 @@
       "water vapor",
       "steam"
     ],
-    "display_gloss": "steam",
+    "display_gloss": "water vapour",
     "part_of_speech": [
       "noun"
     ],
@@ -42129,7 +42129,7 @@
       "water bottle",
       "thermos"
     ],
-    "display_gloss": "flask",
+    "display_gloss": "canteen",
     "part_of_speech": [
       "noun"
     ],
@@ -42232,7 +42232,7 @@
       "level",
       "even"
     ],
-    "display_gloss": "even",
+    "display_gloss": "horizontal",
     "part_of_speech": [
       "na-adjective",
       "no-adjective",
@@ -42446,7 +42446,7 @@
       "drunk person",
       "(a) drunk"
     ],
-    "display_gloss": "(a) drunk",
+    "display_gloss": "drunk person",
     "part_of_speech": [
       "noun"
     ],
@@ -42696,7 +42696,7 @@
       "extent",
       "dimension"
     ],
-    "display_gloss": "size",
+    "display_gloss": "measurement",
     "part_of_speech": [
       "noun"
     ],
@@ -42752,7 +42752,7 @@
       "china",
       "pottery"
     ],
-    "display_gloss": "china",
+    "display_gloss": "earthenware",
     "part_of_speech": [
       "noun"
     ],
@@ -43002,7 +43002,7 @@
       "(distinction of) sex",
       "gender"
     ],
-    "display_gloss": "gender",
+    "display_gloss": "(distinction of) sex",
     "part_of_speech": [
       "noun"
     ],
@@ -43053,7 +43053,7 @@
       "component",
       "composition"
     ],
-    "display_gloss": "component",
+    "display_gloss": "ingredient",
     "part_of_speech": [
       "noun"
     ],
@@ -43249,7 +43249,7 @@
       "maintenance",
       "servicing"
     ],
-    "display_gloss": "servicing",
+    "display_gloss": "maintenance",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -43713,7 +43713,7 @@
       "to yield",
       "to cause"
     ],
-    "display_gloss": "to yield",
+    "display_gloss": "to produce",
     "part_of_speech": [
       "vz",
       "transitive verb"
@@ -43770,7 +43770,7 @@
       "cheeky",
       "impudent"
     ],
-    "display_gloss": "saucy",
+    "display_gloss": "impertinent",
     "part_of_speech": [
       "na-adjective",
       "noun"
@@ -43823,7 +43823,7 @@
       "life",
       "survival"
     ],
-    "display_gloss": "life",
+    "display_gloss": "existence",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -43935,7 +43935,7 @@
       "date of birth",
       "DOB"
     ],
-    "display_gloss": "DOB",
+    "display_gloss": "birth date",
     "part_of_speech": [
       "noun"
     ],
@@ -44032,7 +44032,7 @@
       "manufacture",
       "production"
     ],
-    "display_gloss": "production",
+    "display_gloss": "manufacture",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -44086,7 +44086,7 @@
       "Christian Era",
       "anno domini"
     ],
-    "display_gloss": "CE",
+    "display_gloss": "Common Era",
     "part_of_speech": [
       "noun"
     ],
@@ -44138,7 +44138,7 @@
       "to take an oath",
       "to pledge"
     ],
-    "display_gloss": "to vow",
+    "display_gloss": "to swear",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -44194,7 +44194,7 @@
       "youth",
       "the younger generation"
     ],
-    "display_gloss": "youth",
+    "display_gloss": "young people",
     "part_of_speech": [
       "noun"
     ],
@@ -44399,7 +44399,7 @@
       "to pile up",
       "to stack"
     ],
-    "display_gloss": "to stack",
+    "display_gloss": "to pile up",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -44595,7 +44595,7 @@
       "drawing nearer",
       "approaching"
     ],
-    "display_gloss": "approaching",
+    "display_gloss": "getting closer",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -44649,7 +44649,7 @@
       "union",
       "join"
     ],
-    "display_gloss": "union",
+    "display_gloss": "connection",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -44703,7 +44703,7 @@
       "continually",
       "steadily"
     ],
-    "display_gloss": "always",
+    "display_gloss": "constantly",
     "part_of_speech": [
       "adverb"
     ],
@@ -44806,7 +44806,7 @@
       "point",
       "cusp (of a leaf, crescent moon, etc.)"
     ],
-    "display_gloss": "tip",
+    "display_gloss": "pointed end",
     "part_of_speech": [
       "noun"
     ],
@@ -44858,7 +44858,7 @@
       "just now",
       "some time ago"
     ],
-    "display_gloss": "just now",
+    "display_gloss": "a short while ago",
     "part_of_speech": [
       "noun",
       "adverb"
@@ -44914,7 +44914,7 @@
       "to tear to shreds",
       "to tear up"
     ],
-    "display_gloss": "to tear up",
+    "display_gloss": "to tear to pieces",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -44959,7 +44959,7 @@
       "to tell someone's fortune",
       "to divine (the future)"
     ],
-    "display_gloss": "to divine",
+    "display_gloss": "to tell someone's fortune",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -45111,7 +45111,7 @@
       "to become pointed",
       "to become sharp"
     ],
-    "display_gloss": "to become sharp",
+    "display_gloss": "to taper to a point",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -45266,7 +45266,7 @@
       "cleaning agent",
       "washing material"
     ],
-    "display_gloss": "cleanser",
+    "display_gloss": "detergent",
     "part_of_speech": [
       "noun"
     ],
@@ -45424,7 +45424,7 @@
       "railroad",
       "railway"
     ],
-    "display_gloss": "railroad",
+    "display_gloss": "railway track",
     "part_of_speech": [
       "noun"
     ],
@@ -45576,7 +45576,7 @@
       "surface mail (by ship)",
       "sea mail"
     ],
-    "display_gloss": "sea mail",
+    "display_gloss": "surface mail",
     "part_of_speech": [
       "noun"
     ],
@@ -46028,7 +46028,7 @@
       "coarse",
       "rough"
     ],
-    "display_gloss": "rough",
+    "display_gloss": "coarse",
     "part_of_speech": [
       "i-adjective"
     ],
@@ -46117,7 +46117,7 @@
       "talent",
       "qualities"
     ],
-    "display_gloss": "talent",
+    "display_gloss": "makings",
     "part_of_speech": [
       "noun"
     ],
@@ -46165,7 +46165,7 @@
       "ordinary person",
       "novice"
     ],
-    "display_gloss": "layman",
+    "display_gloss": "amateur",
     "part_of_speech": [
       "noun"
     ],
@@ -46217,7 +46217,7 @@
       "docile",
       "unaffected"
     ],
-    "display_gloss": "meek",
+    "display_gloss": "obedient",
     "part_of_speech": [
       "na-adjective",
       "noun"
@@ -46278,7 +46278,7 @@
       "to set up",
       "to construct"
     ],
-    "display_gloss": "to set up",
+    "display_gloss": "to assemble",
     "part_of_speech": [
       "ichidan verb",
       "transitive verb"
@@ -46329,7 +46329,7 @@
       "to go upstream",
       "to go up (a river)"
     ],
-    "display_gloss": "to go up",
+    "display_gloss": "to go upstream",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -46435,7 +46435,7 @@
       "warehouse",
       "godown"
     ],
-    "display_gloss": "godown",
+    "display_gloss": "storehouse",
     "part_of_speech": [
       "noun"
     ],
@@ -46838,7 +46838,7 @@
       "discrepancy",
       "variation"
     ],
-    "display_gloss": "variation",
+    "display_gloss": "difference",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -46982,7 +46982,7 @@
       "teller window",
       "ticket window"
     ],
-    "display_gloss": "window",
+    "display_gloss": "counter",
     "part_of_speech": [
       "noun"
     ],
@@ -47040,7 +47040,7 @@
       "prime minister (as the head of a cabinet government)",
       "premier"
     ],
-    "display_gloss": "premier",
+    "display_gloss": "prime minister",
     "part_of_speech": [
       "noun"
     ],
@@ -47187,7 +47187,7 @@
       "kana written after a kanji to complete the full (usually kun) reading of the word",
       "declensional kana ending"
     ],
-    "display_gloss": "declensional kana ending",
+    "display_gloss": "kana written after a kanji to complete the full",
     "part_of_speech": [
       "noun"
     ],
@@ -47384,7 +47384,7 @@
       "increase and decrease",
       "fluctuation"
     ],
-    "display_gloss": "fluctuation",
+    "display_gloss": "increase and decrease",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -47430,7 +47430,7 @@
       "enlargement",
       "increase"
     ],
-    "display_gloss": "increase",
+    "display_gloss": "enlargement",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -47733,7 +47733,7 @@
       "measurement",
       "surveying"
     ],
-    "display_gloss": "surveying",
+    "display_gloss": "measurement",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -47785,7 +47785,7 @@
       "to be sufficient",
       "to be enough"
     ],
-    "display_gloss": "to be enough",
+    "display_gloss": "to be sufficient",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -48079,7 +48079,7 @@
       "to get together",
       "to complete (a collection)"
     ],
-    "display_gloss": "to gather",
+    "display_gloss": "to collect",
     "part_of_speech": [
       "ichidan verb",
       "transitive verb"
@@ -48336,7 +48336,7 @@
       "ellipse",
       "oval"
     ],
-    "display_gloss": "oval",
+    "display_gloss": "ellipse",
     "part_of_speech": [
       "noun"
     ],
@@ -48485,7 +48485,7 @@
       "capacity",
       "volume"
     ],
-    "display_gloss": "volume",
+    "display_gloss": "capacity",
     "part_of_speech": [
       "noun"
     ],
@@ -48589,7 +48589,7 @@
       "countermeasure",
       "counterplan"
     ],
-    "display_gloss": "step",
+    "display_gloss": "measure",
     "part_of_speech": [
       "noun"
     ],
@@ -48693,7 +48693,7 @@
       "opposition",
       "antagonism"
     ],
-    "display_gloss": "opposition",
+    "display_gloss": "confrontation",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -49060,7 +49060,7 @@
       "(not) very much",
       "(not) particularly"
     ],
-    "display_gloss": "(not) so",
+    "display_gloss": "(not) very",
     "part_of_speech": [
       "adverb"
     ],
@@ -49259,7 +49259,7 @@
       "mild",
       "meek"
     ],
-    "display_gloss": "mild",
+    "display_gloss": "gentle",
     "part_of_speech": [
       "i-adjective"
     ],
@@ -49362,7 +49362,7 @@
       "avenue",
       "boulevard"
     ],
-    "display_gloss": "avenue",
+    "display_gloss": "main street",
     "part_of_speech": [
       "noun"
     ],
@@ -49413,7 +49413,7 @@
       "greatly",
       "a lot"
     ],
-    "display_gloss": "a lot",
+    "display_gloss": "considerably",
     "part_of_speech": [
       "adverb"
     ],
@@ -49862,7 +49862,7 @@
       "single",
       "one"
     ],
-    "display_gloss": "one",
+    "display_gloss": "single",
     "part_of_speech": [
       "no-adjective",
       "noun"
@@ -49960,7 +49960,7 @@
       "to grope for",
       "to search for"
     ],
-    "display_gloss": "to grope for",
+    "display_gloss": "to feel around for",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -50155,7 +50155,7 @@
       "cabinet",
       "tansu"
     ],
-    "display_gloss": "bureau",
+    "display_gloss": "chest of drawers",
     "part_of_speech": [
       "noun"
     ],
@@ -50201,7 +50201,7 @@
       "multi-unit apartments",
       "apartment complex"
     ],
-    "display_gloss": "apartment complex",
+    "display_gloss": "multi-unit apartments",
     "part_of_speech": [
       "noun"
     ],
@@ -50245,7 +50245,7 @@
       "suspension of water supply",
       "water outage"
     ],
-    "display_gloss": "water outage",
+    "display_gloss": "suspension of water supply",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -50299,7 +50299,7 @@
       "judgement",
       "declaration"
     ],
-    "display_gloss": "decision",
+    "display_gloss": "conclusion",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -50352,7 +50352,7 @@
       "step",
       "phase"
     ],
-    "display_gloss": "step",
+    "display_gloss": "stage",
     "part_of_speech": [
       "noun"
     ],
@@ -50606,7 +50606,7 @@
       "crust (earth)",
       "bed (gravel, river, etc.)"
     ],
-    "display_gloss": "bed",
+    "display_gloss": "ground",
     "part_of_speech": [
       "noun"
     ],
@@ -50703,7 +50703,7 @@
       "place name",
       "toponym"
     ],
-    "display_gloss": "toponym",
+    "display_gloss": "place name",
     "part_of_speech": [
       "noun"
     ],
@@ -50799,7 +50799,7 @@
       "to dress",
       "to clothe"
     ],
-    "display_gloss": "to dress",
+    "display_gloss": "to put clothes on",
     "part_of_speech": [
       "ichidan verb",
       "transitive verb"
@@ -51106,7 +51106,7 @@
       "partway",
       "mid-course"
     ],
-    "display_gloss": "midway",
+    "display_gloss": "halfway",
     "part_of_speech": [
       "noun"
     ],
@@ -51158,7 +51158,7 @@
       "midlife",
       "one's middle years"
     ],
-    "display_gloss": "midlife",
+    "display_gloss": "middle-age",
     "part_of_speech": [
       "noun",
       "no-adjective"
@@ -51215,7 +51215,7 @@
       "making peace (with)",
       "being friends again"
     ],
-    "display_gloss": "making up",
+    "display_gloss": "reconciliation",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -51273,7 +51273,7 @@
       "good friend",
       "bosom buddy"
     ],
-    "display_gloss": "good friend",
+    "display_gloss": "close friendship",
     "part_of_speech": [
       "noun",
       "no-adjective"
@@ -51370,7 +51370,7 @@
       "sleeping during the day",
       "siesta"
     ],
-    "display_gloss": "siesta",
+    "display_gloss": "(afternoon) nap",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -51519,7 +51519,7 @@
       "to droop",
       "to shrivel"
     ],
-    "display_gloss": "to wilt",
+    "display_gloss": "to wither",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -51576,7 +51576,7 @@
       "to be enthusiastic",
       "to be eager"
     ],
-    "display_gloss": "to be enthusiastic",
+    "display_gloss": "to be in high spirits",
     "part_of_speech": [
       "godan verb"
     ],
@@ -51781,7 +51781,7 @@
       "adjustment",
       "control"
     ],
-    "display_gloss": "control",
+    "display_gloss": "regulation",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -52092,7 +52092,7 @@
       "virtue",
       "advantage"
     ],
-    "display_gloss": "merit",
+    "display_gloss": "strong point",
     "part_of_speech": [
       "noun"
     ],
@@ -52289,7 +52289,7 @@
       "rectangle",
       "oblong"
     ],
-    "display_gloss": "oblong",
+    "display_gloss": "rectangle",
     "part_of_speech": [
       "noun",
       "no-adjective"
@@ -52340,7 +52340,7 @@
       "vertex",
       "apex"
     ],
-    "display_gloss": "apex",
+    "display_gloss": "vertex",
     "part_of_speech": [
       "noun"
     ],
@@ -52646,7 +52646,7 @@
       "direct current",
       "DC"
     ],
-    "display_gloss": "DC",
+    "display_gloss": "direct current",
     "part_of_speech": [
       "noun"
     ],
@@ -53119,7 +53119,7 @@
       "circulation",
       "currency"
     ],
-    "display_gloss": "current use",
+    "display_gloss": "(common) use (of a language, currency, etc.)",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -53225,7 +53225,7 @@
       "to dip",
       "to dunk"
     ],
-    "display_gloss": "to dip",
+    "display_gloss": "to soak",
     "part_of_speech": [
       "ichidan verb",
       "transitive verb"
@@ -53637,7 +53637,7 @@
       "halt",
       "standstill"
     ],
-    "display_gloss": "halt",
+    "display_gloss": "stoppage",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -53689,7 +53689,7 @@
       "stopping (of a train, car, etc.)",
       "stop"
     ],
-    "display_gloss": "stop",
+    "display_gloss": "stopping",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -53743,7 +53743,7 @@
       "power cut",
       "blackout"
     ],
-    "display_gloss": "power cut",
+    "display_gloss": "power outage",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -53836,7 +53836,7 @@
       "quota",
       "numerical limit"
     ],
-    "display_gloss": "quota",
+    "display_gloss": "fixed number",
     "part_of_speech": [
       "noun"
     ],
@@ -54045,7 +54045,7 @@
       "fixed day off",
       "regular closing day"
     ],
-    "display_gloss": "fixed day off",
+    "display_gloss": "regular holiday",
     "part_of_speech": [
       "noun"
     ],
@@ -54184,7 +54184,7 @@
       "exact",
       "appropriate"
     ],
-    "display_gloss": "exact",
+    "display_gloss": "accurate",
     "part_of_speech": [
       "na-adjective",
       "noun"
@@ -54237,7 +54237,7 @@
       "exact",
       "appropriate"
     ],
-    "display_gloss": "exact",
+    "display_gloss": "accurate",
     "part_of_speech": [
       "na-adjective",
       "noun"
@@ -54288,7 +54288,7 @@
       "railway bridge",
       "iron bridge"
     ],
-    "display_gloss": "iron bridge",
+    "display_gloss": "railway bridge",
     "part_of_speech": [
       "noun"
     ],
@@ -54390,7 +54390,7 @@
       "progression",
       "unfolding"
     ],
-    "display_gloss": "evolution",
+    "display_gloss": "development",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -54444,7 +54444,7 @@
       "to integrate",
       "to consolidate"
     ],
-    "display_gloss": "to put",
+    "display_gloss": "to collect",
     "part_of_speech": [
       "ichidan verb",
       "transitive verb"
@@ -55003,7 +55003,7 @@
       "battery",
       "cell"
     ],
-    "display_gloss": "cell",
+    "display_gloss": "battery",
     "part_of_speech": [
       "noun"
     ],
@@ -55055,7 +55055,7 @@
       "telephone pole",
       "telegraph pole"
     ],
-    "display_gloss": "power pole",
+    "display_gloss": "utility pole",
     "part_of_speech": [
       "noun"
     ],
@@ -55106,7 +55106,7 @@
       "reception",
       "signal"
     ],
-    "display_gloss": "signal",
+    "display_gloss": "radio wave",
     "part_of_speech": [
       "noun"
     ],
@@ -55452,7 +55452,7 @@
       "to shout (in anger)",
       "to yell"
     ],
-    "display_gloss": "to yell",
+    "display_gloss": "to shout",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -55992,7 +55992,7 @@
       "that very day",
       "the day (of issue, publication, etc.)"
     ],
-    "display_gloss": "appointed day",
+    "display_gloss": "day in question",
     "part_of_speech": [
       "noun",
       "adverb"
@@ -56044,7 +56044,7 @@
       "person on duty",
       "one's turn"
     ],
-    "display_gloss": "one's turn",
+    "display_gloss": "being on duty",
     "part_of_speech": [
       "noun",
       "no-adjective"
@@ -56095,7 +56095,7 @@
       "division into equal parts",
       "equal parts"
     ],
-    "display_gloss": "equal parts",
+    "display_gloss": "division into equal parts",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -56253,7 +56253,7 @@
       "to let go",
       "to release"
     ],
-    "display_gloss": "to let go",
+    "display_gloss": "to set free",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -56313,7 +56313,7 @@
       "to be see-through",
       "to be clear"
     ],
-    "display_gloss": "to be clear",
+    "display_gloss": "to be transparent",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -56358,7 +56358,7 @@
       "transparent",
       "clear"
     ],
-    "display_gloss": "clear",
+    "display_gloss": "transparent",
     "part_of_speech": [
       "na-adjective",
       "no-adjective",
@@ -56462,7 +56462,7 @@
       "motion",
       "gesture"
     ],
-    "display_gloss": "action",
+    "display_gloss": "movement",
     "part_of_speech": [
       "noun"
     ],
@@ -56512,7 +56512,7 @@
       "the same rank",
       "equality"
     ],
-    "display_gloss": "equality",
+    "display_gloss": "the same rank",
     "part_of_speech": [
       "noun",
       "no-adjective",
@@ -56656,7 +56656,7 @@
       "children's story",
       "fairy tale"
     ],
-    "display_gloss": "fairy tale",
+    "display_gloss": "children's story",
     "part_of_speech": [
       "noun"
     ],
@@ -56703,7 +56703,7 @@
       "highest point on a mountain road",
       "ridge"
     ],
-    "display_gloss": "ridge",
+    "display_gloss": "(mountain) pass",
     "part_of_speech": [
       "noun",
       "n-suf"
@@ -56804,7 +56804,7 @@
       "peculiarity",
       "distinguishing quality"
     ],
-    "display_gloss": "peculiarity",
+    "display_gloss": "characteristic",
     "part_of_speech": [
       "noun"
     ],
@@ -56856,7 +56856,7 @@
       "merit",
       "strength"
     ],
-    "display_gloss": "forte",
+    "display_gloss": "strong point",
     "part_of_speech": [
       "noun"
     ],
@@ -57226,7 +57226,7 @@
       "to prick",
       "to stab"
     ],
-    "display_gloss": "to stab",
+    "display_gloss": "to prick",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -57287,7 +57287,7 @@
       "to stuff",
       "to shove"
     ],
-    "display_gloss": "to cram",
+    "display_gloss": "to thrust",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -57388,7 +57388,7 @@
       "indoor wiring",
       "inner line"
     ],
-    "display_gloss": "inner line",
+    "display_gloss": "phone extension",
     "part_of_speech": [
       "noun"
     ],
@@ -57530,7 +57530,7 @@
       "north and south",
       "north to south"
     ],
-    "display_gloss": "north to south",
+    "display_gloss": "north and south",
     "part_of_speech": [
       "noun"
     ],
@@ -57786,7 +57786,7 @@
       "daily work",
       "daily lesson"
     ],
-    "display_gloss": "daily work",
+    "display_gloss": "daily routine",
     "part_of_speech": [
       "noun"
     ],
@@ -57942,7 +57942,7 @@
       "programme",
       "agenda"
     ],
-    "display_gloss": "program",
+    "display_gloss": "schedule",
     "part_of_speech": [
       "noun"
     ],
@@ -57996,7 +57996,7 @@
       "daily necessities",
       "everyday item"
     ],
-    "display_gloss": "everyday item",
+    "display_gloss": "daily necessities",
     "part_of_speech": [
       "noun"
     ],
@@ -58256,7 +58256,7 @@
       "to wrench",
       "to turn (a tap, switch, etc.)"
     ],
-    "display_gloss": "to turn",
+    "display_gloss": "to twist",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -58307,7 +58307,7 @@
       "concentration",
       "density"
     ],
-    "display_gloss": "density",
+    "display_gloss": "concentration",
     "part_of_speech": [
       "noun"
     ],
@@ -58453,7 +58453,7 @@
       "agricultural community",
       "farm village"
     ],
-    "display_gloss": "farm village",
+    "display_gloss": "agricultural community",
     "part_of_speech": [
       "noun"
     ],
@@ -58498,7 +58498,7 @@
       "agrochemical",
       "agrichemical"
     ],
-    "display_gloss": "agrochemical",
+    "display_gloss": "agricultural chemical",
     "part_of_speech": [
       "noun"
     ],
@@ -58600,7 +58600,7 @@
       "flashy",
       "gaudy"
     ],
-    "display_gloss": "loud",
+    "display_gloss": "showy",
     "part_of_speech": [
       "na-adjective",
       "noun"
@@ -58653,7 +58653,7 @@
       "to rip",
       "to break"
     ],
-    "display_gloss": "to rip",
+    "display_gloss": "to get torn",
     "part_of_speech": [
       "ichidan verb",
       "intransitive verb"
@@ -58808,7 +58808,7 @@
       "to do reverence (e.g. before a statue of the Buddha)",
       "to pay one's respects"
     ],
-    "display_gloss": "to do reverence",
+    "display_gloss": "to assume the posture of praying",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -58915,7 +58915,7 @@
       "to deliver",
       "to deal out"
     ],
-    "display_gloss": "to deliver",
+    "display_gloss": "to distribute",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -59335,7 +59335,7 @@
       "to put up",
       "to accommodate"
     ],
-    "display_gloss": "to lodge",
+    "display_gloss": "to give shelter to",
     "part_of_speech": [
       "ichidan verb",
       "transitive verb"
@@ -59388,7 +59388,7 @@
       "to thin",
       "to lighten (e.g. a color)"
     ],
-    "display_gloss": "to thin",
+    "display_gloss": "to dilute",
     "part_of_speech": [
       "ichidan verb",
       "transitive verb"
@@ -59593,7 +59593,7 @@
       "lingerie",
       "chemise"
     ],
-    "display_gloss": "lingerie",
+    "display_gloss": "underwear",
     "part_of_speech": [
       "noun"
     ],
@@ -59640,7 +59640,7 @@
       "pot",
       "basin"
     ],
-    "display_gloss": "pot",
+    "display_gloss": "bowl",
     "part_of_speech": [
       "noun"
     ],
@@ -59850,7 +59850,7 @@
       "generation of electricity",
       "power generation"
     ],
-    "display_gloss": "power generation",
+    "display_gloss": "generation of electricity",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -60244,7 +60244,7 @@
       "house number",
       "address"
     ],
-    "display_gloss": "address",
+    "display_gloss": "house number",
     "part_of_speech": [
       "noun"
     ],
@@ -60294,7 +60294,7 @@
       "cowardly",
       "craven"
     ],
-    "display_gloss": "craven",
+    "display_gloss": "cowardly",
     "part_of_speech": [
       "na-adjective",
       "noun"
@@ -60349,7 +60349,7 @@
       "comparatively",
       "relatively"
     ],
-    "display_gloss": "relatively",
+    "display_gloss": "comparatively",
     "part_of_speech": [
       "adverb"
     ],
@@ -60655,7 +60655,7 @@
       "requisite",
       "essentials"
     ],
-    "display_gloss": "requisite",
+    "display_gloss": "necessities",
     "part_of_speech": [
       "noun"
     ],
@@ -60707,7 +60707,7 @@
       "copying",
       "noting"
     ],
-    "display_gloss": "copying",
+    "display_gloss": "writing down",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -60863,7 +60863,7 @@
       "norm",
       "model"
     ],
-    "display_gloss": "norm",
+    "display_gloss": "standard",
     "part_of_speech": [
       "noun"
     ],
@@ -60913,7 +60913,7 @@
       "specimen",
       "sample"
     ],
-    "display_gloss": "sample",
+    "display_gloss": "specimen",
     "part_of_speech": [
       "noun"
     ],
@@ -61015,7 +61015,7 @@
       "review",
       "comment"
     ],
-    "display_gloss": "review",
+    "display_gloss": "criticism",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -61120,7 +61120,7 @@
       "ill luck",
       "ill fortune"
     ],
-    "display_gloss": "bad luck",
+    "display_gloss": "misfortune",
     "part_of_speech": [
       "noun",
       "na-adjective"
@@ -61177,7 +61177,7 @@
       "unsteady",
       "disorderly"
     ],
-    "display_gloss": "unsteady",
+    "display_gloss": "irregular",
     "part_of_speech": [
       "na-adjective",
       "noun"
@@ -61230,7 +61230,7 @@
       "unsanitary",
       "filthy"
     ],
-    "display_gloss": "dirty",
+    "display_gloss": "unclean",
     "part_of_speech": [
       "na-adjective",
       "noun"
@@ -61283,7 +61283,7 @@
       "stoppage",
       "tie-up"
     ],
-    "display_gloss": "stoppage",
+    "display_gloss": "suspension",
     "part_of_speech": [
       "noun"
     ],
@@ -61335,7 +61335,7 @@
       "to connect",
       "to add"
     ],
-    "display_gloss": "to join",
+    "display_gloss": "to attach",
     "part_of_speech": [
       "ichidan verb",
       "transitive verb"
@@ -61388,7 +61388,7 @@
       "vicinity",
       "environs"
     ],
-    "display_gloss": "vicinity",
+    "display_gloss": "neighborhood",
     "part_of_speech": [
       "noun",
       "n-suf"
@@ -61439,7 +61439,7 @@
       "husband and wife",
       "married couple"
     ],
-    "display_gloss": "married couple",
+    "display_gloss": "husband and wife",
     "part_of_speech": [
       "noun"
     ],
@@ -61489,7 +61489,7 @@
       "to spread out (e.g. a futon)",
       "to lay out"
     ],
-    "display_gloss": "to lay out",
+    "display_gloss": "to spread out",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -61542,7 +61542,7 @@
       "lot",
       "grounds"
     ],
-    "display_gloss": "lot",
+    "display_gloss": "site",
     "part_of_speech": [
       "noun"
     ],
@@ -61594,7 +61594,7 @@
       "popularization",
       "promulgation"
     ],
-    "display_gloss": "spread",
+    "display_gloss": "diffusion",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -61799,7 +61799,7 @@
       "father and mother",
       "parents"
     ],
-    "display_gloss": "parents",
+    "display_gloss": "father and mother",
     "part_of_speech": [
       "noun"
     ],
@@ -62302,7 +62302,7 @@
       "to deposit",
       "to pay in"
     ],
-    "display_gloss": "to pay in",
+    "display_gloss": "to deposit",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -62584,7 +62584,7 @@
       "troubled",
       "disturbed"
     ],
-    "display_gloss": "troubled",
+    "display_gloss": "dangerous",
     "part_of_speech": [
       "na-adjective",
       "noun"
@@ -62636,7 +62636,7 @@
       "storeroom",
       "lumber room"
     ],
-    "display_gloss": "storeroom",
+    "display_gloss": "storage room",
     "part_of_speech": [
       "noun"
     ],
@@ -62886,7 +62886,7 @@
       "categorization",
       "sorting"
     ],
-    "display_gloss": "sorting",
+    "display_gloss": "classification",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -63083,7 +63083,7 @@
       "books (reference)",
       "document"
     ],
-    "display_gloss": "books",
+    "display_gloss": "literature",
     "part_of_speech": [
       "noun"
     ],
@@ -63286,7 +63286,7 @@
       "military",
       "troops"
     ],
-    "display_gloss": "troops",
+    "display_gloss": "armed forces",
     "part_of_speech": [
       "noun"
     ],
@@ -63490,7 +63490,7 @@
       "commonplace",
       "mediocre"
     ],
-    "display_gloss": "common",
+    "display_gloss": "ordinary",
     "part_of_speech": [
       "na-adjective",
       "noun"
@@ -63591,7 +63591,7 @@
       "going side-by-side",
       "going abreast"
     ],
-    "display_gloss": "going abreast",
+    "display_gloss": "going side-by-side",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -63689,7 +63689,7 @@
       "vacation home",
       "villa"
     ],
-    "display_gloss": "villa",
+    "display_gloss": "holiday house",
     "part_of_speech": [
       "noun"
     ],
@@ -64049,7 +64049,7 @@
       "stationery",
       "notepaper"
     ],
-    "display_gloss": "notepaper",
+    "display_gloss": "writing paper",
     "part_of_speech": [
       "noun"
     ],
@@ -64100,7 +64100,7 @@
       "hygiene",
       "sanitation"
     ],
-    "display_gloss": "hygiene",
+    "display_gloss": "preservation of health",
     "part_of_speech": [
       "noun"
     ],
@@ -64256,7 +64256,7 @@
       "selection",
       "advertisement"
     ],
-    "display_gloss": "selection",
+    "display_gloss": "recruitment",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -64507,7 +64507,7 @@
       "to collapse",
       "to crumble"
     ],
-    "display_gloss": "to crumble",
+    "display_gloss": "to collapse",
     "part_of_speech": [
       "ichidan verb",
       "intransitive verb"
@@ -64560,7 +64560,7 @@
       "to hurl",
       "to toss"
     ],
-    "display_gloss": "to hurl",
+    "display_gloss": "to throw",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -64657,7 +64657,7 @@
       "direction",
       "way"
     ],
-    "display_gloss": "way",
+    "display_gloss": "direction",
     "part_of_speech": [
       "noun"
     ],
@@ -64759,7 +64759,7 @@
       "plan (of action)",
       "principle"
     ],
-    "display_gloss": "plan",
+    "display_gloss": "policy",
     "part_of_speech": [
       "noun"
     ],
@@ -64813,7 +64813,7 @@
       "equation",
       "formula"
     ],
-    "display_gloss": "formula",
+    "display_gloss": "equation",
     "part_of_speech": [
       "noun"
     ],
@@ -64864,7 +64864,7 @@
       "district",
       "area"
     ],
-    "display_gloss": "area",
+    "display_gloss": "direction",
     "part_of_speech": [
       "noun",
       "n-suf"
@@ -65068,7 +65068,7 @@
       "Buddhist priest",
       "monk"
     ],
-    "display_gloss": "monk",
+    "display_gloss": "Buddhist priest",
     "part_of_speech": [
       "noun"
     ],
@@ -65224,7 +65224,7 @@
       "to struggle",
       "to be riotous"
     ],
-    "display_gloss": "to rage",
+    "display_gloss": "to act violently",
     "part_of_speech": [
       "ichidan verb",
       "intransitive verb"
@@ -65383,7 +65383,7 @@
       "to get big",
       "to become inflated"
     ],
-    "display_gloss": "to swell",
+    "display_gloss": "to expand",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -65434,7 +65434,7 @@
       "prevention",
       "check"
     ],
-    "display_gloss": "check",
+    "display_gloss": "prevention",
     "part_of_speech": [
       "noun",
       "n-suf",
@@ -65713,7 +65713,7 @@
       "head office",
       "main office"
     ],
-    "display_gloss": "head office",
+    "display_gloss": "headquarters",
     "part_of_speech": [
       "noun"
     ],
@@ -65763,7 +65763,7 @@
       "originally",
       "primarily"
     ],
-    "display_gloss": "primarily",
+    "display_gloss": "originally",
     "part_of_speech": [
       "adverb",
       "noun",
@@ -66053,7 +66053,7 @@
       "always",
       "often"
     ],
-    "display_gloss": "always",
+    "display_gloss": "each time",
     "part_of_speech": [
       "adverb",
       "noun"
@@ -66203,7 +66203,7 @@
       "sold out",
       "standing room only"
     ],
-    "display_gloss": "sold out",
+    "display_gloss": "full house",
     "part_of_speech": [
       "noun",
       "no-adjective"
@@ -66308,7 +66308,7 @@
       "under",
       "below"
     ],
-    "display_gloss": "under",
+    "display_gloss": "less than",
     "part_of_speech": [
       "n-suf",
       "noun",
@@ -66509,7 +66509,7 @@
       "countless",
       "numberless"
     ],
-    "display_gloss": "countless",
+    "display_gloss": "innumerable",
     "part_of_speech": [
       "no-adjective",
       "na-adjective",
@@ -66666,7 +66666,7 @@
       "masterpiece",
       "masterwork"
     ],
-    "display_gloss": "masterwork",
+    "display_gloss": "masterpiece",
     "part_of_speech": [
       "noun"
     ],
@@ -66816,7 +66816,7 @@
       "place of (scenic or historical) interest",
       "sights (to see)"
     ],
-    "display_gloss": "place of",
+    "display_gloss": "famous place",
     "part_of_speech": [
       "noun"
     ],
@@ -66868,7 +66868,7 @@
       "speciality",
       "specialty"
     ],
-    "display_gloss": "speciality",
+    "display_gloss": "famous product",
     "part_of_speech": [
       "noun"
     ],
@@ -67433,7 +67433,7 @@
       "tiresome",
       "bother to do"
     ],
-    "display_gloss": "tiresome",
+    "display_gloss": "bothersome",
     "part_of_speech": [
       "i-adjective"
     ],
@@ -67485,7 +67485,7 @@
       "to be rampant",
       "to luxuriate"
     ],
-    "display_gloss": "to be rampant",
+    "display_gloss": "to grow thickly",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -67537,7 +67537,7 @@
       "woolen yarn",
       "woollen yarn"
     ],
-    "display_gloss": "woolen yarn",
+    "display_gloss": "knitting wool",
     "part_of_speech": [
       "noun",
       "no-adjective"
@@ -67692,7 +67692,7 @@
       "to earn",
       "to gain"
     ],
-    "display_gloss": "to get",
+    "display_gloss": "to profit",
     "part_of_speech": [
       "ichidan verb",
       "transitive verb"
@@ -67744,7 +67744,7 @@
       "timber",
       "wood"
     ],
-    "display_gloss": "wood",
+    "display_gloss": "lumber",
     "part_of_speech": [
       "noun"
     ],
@@ -67796,7 +67796,7 @@
       "yardstick",
       "reference"
     ],
-    "display_gloss": "standard",
+    "display_gloss": "criterion",
     "part_of_speech": [
       "noun"
     ],
@@ -67892,7 +67892,7 @@
       "inferior",
       "inferiors"
     ],
-    "display_gloss": "inferior",
+    "display_gloss": "subordinate",
     "part_of_speech": [
       "noun"
     ],
@@ -68043,7 +68043,7 @@
       "table of contents",
       "contents"
     ],
-    "display_gloss": "contents",
+    "display_gloss": "table of contents",
     "part_of_speech": [
       "noun"
     ],
@@ -68088,7 +68088,7 @@
       "superiors",
       "senior"
     ],
-    "display_gloss": "senior",
+    "display_gloss": "superior",
     "part_of_speech": [
       "noun"
     ],
@@ -68142,7 +68142,7 @@
       "to be conspicuous",
       "to stand out"
     ],
-    "display_gloss": "to stand out",
+    "display_gloss": "to be conspicuous",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -68239,7 +68239,7 @@
       "questions and answers",
       "dialogue"
     ],
-    "display_gloss": "dialogue",
+    "display_gloss": "questions and answers",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -68383,7 +68383,7 @@
       "at random",
       "recklessly"
     ],
-    "display_gloss": "blindly",
+    "display_gloss": "indiscriminately",
     "part_of_speech": [
       "adverb",
       "adv-to"
@@ -68480,7 +68480,7 @@
       "government office",
       "public office"
     ],
-    "display_gloss": "public office",
+    "display_gloss": "government office",
     "part_of_speech": [
       "noun"
     ],
@@ -68732,7 +68732,7 @@
       "medicine",
       "drug"
     ],
-    "display_gloss": "drug",
+    "display_gloss": "medicine",
     "part_of_speech": [
       "noun"
     ],
@@ -68940,7 +68940,7 @@
       "transit",
       "conveyance"
     ],
-    "display_gloss": "transit",
+    "display_gloss": "transport",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -69093,7 +69093,7 @@
       "welcome",
       "appreciated"
     ],
-    "display_gloss": "welcome",
+    "display_gloss": "grateful",
     "part_of_speech": [
       "i-adjective"
     ],
@@ -69143,7 +69143,7 @@
       "existence or nonexistence",
       "presence or absence"
     ],
-    "display_gloss": "presence or absence",
+    "display_gloss": "existence or nonexistence",
     "part_of_speech": [
       "noun"
     ],
@@ -69194,7 +69194,7 @@
       "paid",
       "not free"
     ],
-    "display_gloss": "paid",
+    "display_gloss": "fee-charging",
     "part_of_speech": [
       "no-adjective",
       "noun"
@@ -69350,7 +69350,7 @@
       "evening edition (of a daily newspaper)",
       "evening paper"
     ],
-    "display_gloss": "evening paper",
+    "display_gloss": "evening edition",
     "part_of_speech": [
       "noun"
     ],
@@ -69450,7 +69450,7 @@
       "(sudden, heavy) shower (on a summer afternoon or evening)",
       "evening shower"
     ],
-    "display_gloss": "evening shower",
+    "display_gloss": "(sudden, heavy) shower (on a summer afternoon or evening)",
     "part_of_speech": [
       "noun"
     ],
@@ -69500,7 +69500,7 @@
       "reserve",
       "spare"
     ],
-    "display_gloss": "spare",
+    "display_gloss": "reserve",
     "part_of_speech": [
       "noun",
       "no-adjective"
@@ -69606,7 +69606,7 @@
       "too much",
       "too many"
     ],
-    "display_gloss": "more",
+    "display_gloss": "extra",
     "part_of_speech": [
       "na-adjective"
     ],
@@ -69658,7 +69658,7 @@
       "to keep",
       "to hold on to"
     ],
-    "display_gloss": "to keep",
+    "display_gloss": "to look after",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -69709,7 +69709,7 @@
       "young child",
       "toddler"
     ],
-    "display_gloss": "toddler",
+    "display_gloss": "young child",
     "part_of_speech": [
       "noun"
     ],
@@ -69812,7 +69812,7 @@
       "kindergarten (in Japan, non-compulsory education from age 3 until primary school)",
       "preschool"
     ],
-    "display_gloss": "preschool",
+    "display_gloss": "kindergarten",
     "part_of_speech": [
       "noun"
     ],
@@ -69864,7 +69864,7 @@
       "vessel",
       "packaging"
     ],
-    "display_gloss": "vessel",
+    "display_gloss": "container",
     "part_of_speech": [
       "noun"
     ],
@@ -69914,7 +69914,7 @@
       "capacity",
       "volume"
     ],
-    "display_gloss": "volume",
+    "display_gloss": "capacity",
     "part_of_speech": [
       "noun"
     ],
@@ -70377,7 +70377,7 @@
       "key points",
       "essentials"
     ],
-    "display_gloss": "gist",
+    "display_gloss": "(main) point",
     "part_of_speech": [
       "noun"
     ],
@@ -70429,7 +70429,7 @@
       "essentials",
       "tenets"
     ],
-    "display_gloss": "gist",
+    "display_gloss": "point",
     "part_of_speech": [
       "noun"
     ],
@@ -70537,7 +70537,7 @@
       "visit to Japan",
       "arrival in Japan"
     ],
-    "display_gloss": "visit to Japan",
+    "display_gloss": "coming to Japan",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -70695,7 +70695,7 @@
       "rowdiness",
       "wildness"
     ],
-    "display_gloss": "assault",
+    "display_gloss": "violence",
     "part_of_speech": [
       "noun",
       "na-adjective",
@@ -70744,7 +70744,7 @@
       "column",
       "page"
     ],
-    "display_gloss": "page",
+    "display_gloss": "section",
     "part_of_speech": [
       "noun",
       "n-suf"
@@ -70795,7 +70795,7 @@
       "advantages and disadvantages",
       "interests (of parties)"
     ],
-    "display_gloss": "interests",
+    "display_gloss": "advantages and disadvantages",
     "part_of_speech": [
       "noun"
     ],
@@ -70950,7 +70950,7 @@
       "to turn the other way",
       "to turn (something) over"
     ],
-    "display_gloss": "to turn",
+    "display_gloss": "to turn inside out",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -71063,7 +71063,7 @@
       "to abridge",
       "to shorten"
     ],
-    "display_gloss": "to abridge",
+    "display_gloss": "to abbreviate",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -71116,7 +71116,7 @@
       "river basin",
       "watershed"
     ],
-    "display_gloss": "river basin",
+    "display_gloss": "drainage basin",
     "part_of_speech": [
       "noun"
     ],
@@ -71214,7 +71214,7 @@
       "just as you'd expect (from)",
       "just like (someone)"
     ],
-    "display_gloss": "just like",
+    "display_gloss": "as one would expect",
     "part_of_speech": [
       "adverb",
       "na-adjective"
@@ -71319,7 +71319,7 @@
       "to save",
       "to accumulate"
     ],
-    "display_gloss": "to save",
+    "display_gloss": "to collect",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -71425,7 +71425,7 @@
       "bead",
       "drop"
     ],
-    "display_gloss": "bead",
+    "display_gloss": "grain",
     "part_of_speech": [
       "noun"
     ],
@@ -71522,7 +71522,7 @@
       "to cool off",
       "to enjoy the cool air"
     ],
-    "display_gloss": "to cool off",
+    "display_gloss": "to cool oneself",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -71662,7 +71662,7 @@
       "forceful",
       "vigorous"
     ],
-    "display_gloss": "strong",
+    "display_gloss": "powerful",
     "part_of_speech": [
       "i-adjective"
     ],
@@ -71707,7 +71707,7 @@
       "provisional",
       "interim"
     ],
-    "display_gloss": "interim",
+    "display_gloss": "temporary",
     "part_of_speech": [
       "no-adjective",
       "noun"
@@ -71859,7 +71859,7 @@
       "to cool down",
       "to get cold"
     ],
-    "display_gloss": "to get cold",
+    "display_gloss": "to cool down",
     "part_of_speech": [
       "ichidan verb",
       "intransitive verb"
@@ -72057,7 +72057,7 @@
       "to drop",
       "to shed (tears)"
     ],
-    "display_gloss": "to drop",
+    "display_gloss": "to spill",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -72251,7 +72251,7 @@
       "longed for",
       "missed"
     ],
-    "display_gloss": "missed",
+    "display_gloss": "yearned for",
     "part_of_speech": [
       "i-adjective"
     ],
@@ -72406,7 +72406,7 @@
       "sunny",
       "melodious"
     ],
-    "display_gloss": "merry",
+    "display_gloss": "cheerful",
     "part_of_speech": [
       "na-adjective"
     ],
@@ -72703,7 +72703,7 @@
       "to accost a person",
       "to talk (to someone)"
     ],
-    "display_gloss": "to talk",
+    "display_gloss": "to address",
     "part_of_speech": [
       "ichidan verb",
       "transitive verb"
@@ -72874,7 +72874,7 @@
       "to lean on",
       "to recline on"
     ],
-    "display_gloss": "to lean on",
+    "display_gloss": "to lean against",
     "part_of_speech": [
       "ichidan verb",
       "intransitive verb"
@@ -72972,7 +72972,7 @@
       "to whisper",
       "to murmur"
     ],
-    "display_gloss": "to murmur",
+    "display_gloss": "to whisper",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -73065,7 +73065,7 @@
       "to kid",
       "to josh"
     ],
-    "display_gloss": "to kid",
+    "display_gloss": "to joke",
     "part_of_speech": [
       "ichidan verb",
       "intransitive verb"
@@ -73347,7 +73347,7 @@
       "jest",
       "witticism"
     ],
-    "display_gloss": "pun",
+    "display_gloss": "joke",
     "part_of_speech": [
       "noun"
     ],
@@ -73393,7 +73393,7 @@
       "to warm (e.g. one's hands over a fire)",
       "to dry"
     ],
-    "display_gloss": "to dry",
+    "display_gloss": "to warm",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -73572,7 +73572,7 @@
       "dazzling",
       "radiant"
     ],
-    "display_gloss": "radiant",
+    "display_gloss": "dazzling",
     "part_of_speech": [
       "i-adjective"
     ],
@@ -73615,7 +73615,7 @@
       "giddiness",
       "vertigo"
     ],
-    "display_gloss": "vertigo",
+    "display_gloss": "dizziness",
     "part_of_speech": [
       "noun"
     ],
@@ -73870,7 +73870,7 @@
       "tedious",
       "wordy"
     ],
-    "display_gloss": "tedious",
+    "display_gloss": "repetitious",
     "part_of_speech": [
       "i-adjective"
     ],
@@ -73912,7 +73912,7 @@
       "to hesitate",
       "to waver"
     ],
-    "display_gloss": "to waver",
+    "display_gloss": "to hesitate",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -74085,7 +74085,7 @@
       "two days before yesterday",
       "three days back (ago)"
     ],
-    "display_gloss": "three days back",
+    "display_gloss": "two days before yesterday",
     "part_of_speech": [
       "noun",
       "adverb"
@@ -74320,7 +74320,7 @@
       "to veer away",
       "to swerve from"
     ],
-    "display_gloss": "to bear off",
+    "display_gloss": "to turn away",
     "part_of_speech": [
       "ichidan verb",
       "intransitive verb"
@@ -74461,7 +74461,7 @@
       "to menace",
       "to intimidate"
     ],
-    "display_gloss": "to menace",
+    "display_gloss": "to threaten",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -74562,7 +74562,7 @@
       "to lurch",
       "to heel over"
     ],
-    "display_gloss": "to slant",
+    "display_gloss": "to incline toward",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -74615,7 +74615,7 @@
       "autumn colours",
       "fall colors"
     ],
-    "display_gloss": "red leaves",
+    "display_gloss": "leaves turning red",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -74669,7 +74669,7 @@
       "pee",
       "urination"
     ],
-    "display_gloss": "pee",
+    "display_gloss": "urine",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -74723,7 +74723,7 @@
       "using up",
       "dissipation"
     ],
-    "display_gloss": "using up",
+    "display_gloss": "exhaustion",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -74931,7 +74931,7 @@
       "second finger",
       "tall finger"
     ],
-    "display_gloss": "long finger",
+    "display_gloss": "middle finger",
     "part_of_speech": [
       "noun"
     ],
@@ -75117,7 +75117,7 @@
       "ruggedness",
       "bumpiness"
     ],
-    "display_gloss": "roughness",
+    "display_gloss": "unevenness",
     "part_of_speech": [
       "noun",
       "no-adjective",
@@ -75266,7 +75266,7 @@
       "grey hair",
       "gray hair"
     ],
-    "display_gloss": "grey hair",
+    "display_gloss": "white hair",
     "part_of_speech": [
       "noun",
       "no-adjective"
@@ -75651,7 +75651,7 @@
       "being comfortable",
       "relaxing"
     ],
-    "display_gloss": "relaxing",
+    "display_gloss": "being comfortable",
     "part_of_speech": [
       "noun"
     ],
@@ -75742,7 +75742,7 @@
       "to warm up",
       "to get warm"
     ],
-    "display_gloss": "to warm up",
+    "display_gloss": "to warm oneself",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -75845,7 +75845,7 @@
       "(addressee's) name",
       "addressee"
     ],
-    "display_gloss": "addressee",
+    "display_gloss": "name and address",
     "part_of_speech": [
       "noun"
     ],
@@ -75939,7 +75939,7 @@
       "knitted material",
       "crochet"
     ],
-    "display_gloss": "crochet",
+    "display_gloss": "knitting",
     "part_of_speech": [
       "noun",
       "no-adjective"
@@ -75992,7 +75992,7 @@
       "questionable",
       "dodgy"
     ],
-    "display_gloss": "dubious",
+    "display_gloss": "suspicious",
     "part_of_speech": [
       "i-adjective"
     ],
@@ -76136,7 +76136,7 @@
       "all the more",
       "increasingly"
     ],
-    "display_gloss": "all the more",
+    "display_gloss": "more and more",
     "part_of_speech": [
       "adverb"
     ],
@@ -76187,7 +76187,7 @@
       "case",
       "receptacle"
     ],
-    "display_gloss": "case",
+    "display_gloss": "container",
     "part_of_speech": [
       "noun"
     ],
@@ -76237,7 +76237,7 @@
       "garden plant",
       "garden tree"
     ],
-    "display_gloss": "garden tree",
+    "display_gloss": "garden plant",
     "part_of_speech": [
       "noun"
     ],
@@ -76288,7 +76288,7 @@
       "briefing session",
       "(making) advance arrangements"
     ],
-    "display_gloss": "briefing session",
+    "display_gloss": "(preparatory) meeting",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -76337,7 +76337,7 @@
       "to reflect",
       "to cast (shadow)"
     ],
-    "display_gloss": "to cast",
+    "display_gloss": "to project",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -76390,7 +76390,7 @@
       "proceeds",
       "takings"
     ],
-    "display_gloss": "sales",
+    "display_gloss": "amount sold",
     "part_of_speech": [
       "noun"
     ],
@@ -76490,7 +76490,7 @@
       "small dish (usu. one of several accompanying rice)",
       "side dish"
     ],
-    "display_gloss": "side dish",
+    "display_gloss": "small dish",
     "part_of_speech": [
       "noun"
     ],
@@ -76895,7 +76895,7 @@
       "to convert",
       "to change"
     ],
-    "display_gloss": "to change",
+    "display_gloss": "to replace",
     "part_of_speech": [
       "ichidan verb",
       "transitive verb"
@@ -77000,7 +77000,7 @@
       "registered post",
       "registration (of mail)"
     ],
-    "display_gloss": "registration",
+    "display_gloss": "registered mail",
     "part_of_speech": [
       "noun",
       "no-adjective"
@@ -77051,7 +77051,7 @@
       "writing down from other written material",
       "writing kanji text from hiragana"
     ],
-    "display_gloss": "writing kanji text from hiragana",
+    "display_gloss": "writing down from other written material",
     "part_of_speech": [
       "noun"
     ],
@@ -77215,7 +77215,7 @@
       "part",
       "spot"
     ],
-    "display_gloss": "part",
+    "display_gloss": "place",
     "part_of_speech": [
       "noun"
     ],
@@ -77609,7 +77609,7 @@
       "norm",
       "benchmark"
     ],
-    "display_gloss": "norm",
+    "display_gloss": "standard",
     "part_of_speech": [
       "noun"
     ],
@@ -77661,7 +77661,7 @@
       "norm",
       "benchmark"
     ],
-    "display_gloss": "norm",
+    "display_gloss": "standard",
     "part_of_speech": [
       "noun"
     ],
@@ -77709,7 +77709,7 @@
       "cue",
       "excuse"
     ],
-    "display_gloss": "cue",
+    "display_gloss": "chance",
     "part_of_speech": [
       "noun"
     ],
@@ -77764,7 +77764,7 @@
       "to pay attention",
       "to take care"
     ],
-    "display_gloss": "to take care",
+    "display_gloss": "to be careful",
     "part_of_speech": [
       "expression",
       "ichidan verb"
@@ -77873,7 +77873,7 @@
       "assortment",
       "set"
     ],
-    "display_gloss": "set",
+    "display_gloss": "combination",
     "part_of_speech": [
       "noun"
     ],
@@ -77921,7 +77921,7 @@
       "chagrined",
       "(bitterly) disappointed"
     ],
-    "display_gloss": "annoyed",
+    "display_gloss": "frustrated",
     "part_of_speech": [
       "i-adjective"
     ],
@@ -78134,7 +78134,7 @@
       "to pass through",
       "to pass over (out of)"
     ],
-    "display_gloss": "to cross",
+    "display_gloss": "to cross over",
     "part_of_speech": [
       "ichidan verb",
       "transitive verb"
@@ -78190,7 +78190,7 @@
       "to send (via someone else)",
       "to leave (a message) with someone"
     ],
-    "display_gloss": "to send",
+    "display_gloss": "to have someone send",
     "part_of_speech": [
       "ichidan verb",
       "transitive verb"
@@ -78349,7 +78349,7 @@
       "to hunt for",
       "to seek"
     ],
-    "display_gloss": "to look for",
+    "display_gloss": "to search for",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -78541,7 +78541,7 @@
       "to quiet down",
       "to quieten down"
     ],
-    "display_gloss": "to quiet down",
+    "display_gloss": "to become quiet",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -78644,7 +78644,7 @@
       "closing",
       "cut-off"
     ],
-    "display_gloss": "closing",
+    "display_gloss": "deadline",
     "part_of_speech": [
       "noun"
     ],
@@ -78702,7 +78702,7 @@
       "to close up",
       "to shut up (e.g. behind doors)"
     ],
-    "display_gloss": "to shut up",
+    "display_gloss": "to close up",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -78754,7 +78754,7 @@
       "soya sauce",
       "shoyu"
     ],
-    "display_gloss": "shoyu",
+    "display_gloss": "soy sauce",
     "part_of_speech": [
       "noun"
     ],
@@ -78858,7 +78858,7 @@
       "to move (out of the way)",
       "to make way"
     ],
-    "display_gloss": "to move",
+    "display_gloss": "to step aside",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -79008,7 +79008,7 @@
       "rug",
       "runner"
     ],
-    "display_gloss": "rug",
+    "display_gloss": "carpet",
     "part_of_speech": [
       "noun"
     ],
@@ -79158,7 +79158,7 @@
       "residence",
       "address"
     ],
-    "display_gloss": "house",
+    "display_gloss": "dwelling",
     "part_of_speech": [
       "noun"
     ],
@@ -79249,7 +79249,7 @@
       "brazen",
       "forward"
     ],
-    "display_gloss": "brazen",
+    "display_gloss": "impudent",
     "part_of_speech": [
       "i-adjective"
     ],
@@ -79503,7 +79503,7 @@
       "boisterous",
       "clamorous"
     ],
-    "display_gloss": "loud",
+    "display_gloss": "noisy",
     "part_of_speech": [
       "i-adjective"
     ],
@@ -79853,7 +79853,7 @@
       "to be erected",
       "to be built"
     ],
-    "display_gloss": "to be built",
+    "display_gloss": "to be erected",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -79906,7 +79906,7 @@
       "to speak figuratively",
       "to use a simile"
     ],
-    "display_gloss": "to liken",
+    "display_gloss": "to compare",
     "part_of_speech": [
       "ichidan verb",
       "transitive verb"
@@ -80007,7 +80007,7 @@
       "(coal) pit",
       "colliery"
     ],
-    "display_gloss": "colliery",
+    "display_gloss": "coal mine",
     "part_of_speech": [
       "noun"
     ],
@@ -80058,7 +80058,7 @@
       "short film",
       "short poem"
     ],
-    "display_gloss": "short film",
+    "display_gloss": "short story",
     "part_of_speech": [
       "noun"
     ],
@@ -80153,7 +80153,7 @@
       "tea cup",
       "teacup"
     ],
-    "display_gloss": "teacup",
+    "display_gloss": "rice bowl",
     "part_of_speech": [
       "noun"
     ],
@@ -80258,7 +80258,7 @@
       "to go out with",
       "to go steady with"
     ],
-    "display_gloss": "to go out with",
+    "display_gloss": "to associate with",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -80419,7 +80419,7 @@
       "proceedings",
       "formalities"
     ],
-    "display_gloss": "process",
+    "display_gloss": "procedure",
     "part_of_speech": [
       "noun"
     ],
@@ -80519,7 +80519,7 @@
       "sporadically",
       "scattered in drops"
     ],
-    "display_gloss": "sporadically",
+    "display_gloss": "here and there",
     "part_of_speech": [
       "adverb",
       "adv-to"
@@ -80629,7 +80629,7 @@
       "to depart",
       "to start"
     ],
-    "display_gloss": "to leave",
+    "display_gloss": "to go out",
     "part_of_speech": [
       "ichidan verb",
       "intransitive verb"
@@ -80689,7 +80689,7 @@
       "query",
       "enquiry"
     ],
-    "display_gloss": "query",
+    "display_gloss": "inquiry",
     "part_of_speech": [
       "noun"
     ],
@@ -80739,7 +80739,7 @@
       "here and there",
       "in places"
     ],
-    "display_gloss": "in places",
+    "display_gloss": "here and there",
     "part_of_speech": [
       "adverb",
       "noun"
@@ -80957,7 +80957,7 @@
       "to take (a measure, course of action, etc.)",
       "to decide on"
     ],
-    "display_gloss": "to take",
+    "display_gloss": "to adopt",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -81009,7 +81009,7 @@
       "interior",
       "filling"
     ],
-    "display_gloss": "filling",
+    "display_gloss": "contents",
     "part_of_speech": [
       "noun"
     ],
@@ -81060,7 +81060,7 @@
       "interior",
       "filling"
     ],
-    "display_gloss": "filling",
+    "display_gloss": "contents",
     "part_of_speech": [
       "noun"
     ],
@@ -81198,7 +81198,7 @@
       "roadside trees",
       "row of trees"
     ],
-    "display_gloss": "row of trees",
+    "display_gloss": "roadside trees",
     "part_of_speech": [
       "noun"
     ],
@@ -81250,7 +81250,7 @@
       "to copy",
       "to emulate"
     ],
-    "display_gloss": "to copy",
+    "display_gloss": "to imitate",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -81344,7 +81344,7 @@
       "to be fragrant",
       "to smell (good)"
     ],
-    "display_gloss": "to smell",
+    "display_gloss": "to be fragrant",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -81545,7 +81545,7 @@
       "change",
       "connection"
     ],
-    "display_gloss": "change",
+    "display_gloss": "transfer",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -81652,7 +81652,7 @@
       "to survey",
       "to time (sound, gauge, estimate)"
     ],
-    "display_gloss": "to weigh",
+    "display_gloss": "to measure",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -81705,7 +81705,7 @@
       "to survey",
       "to time (sound, gauge, estimate)"
     ],
-    "display_gloss": "to weigh",
+    "display_gloss": "to measure",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -81758,7 +81758,7 @@
       "to rip off",
       "to strip off"
     ],
-    "display_gloss": "to rip off",
+    "display_gloss": "to tear off",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -81809,7 +81809,7 @@
       "to hold between (e.g. one's fingers, chopsticks)",
       "to grip (from both sides)"
     ],
-    "display_gloss": "to grip",
+    "display_gloss": "to hold between",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -81861,7 +81861,7 @@
       "just as one thought",
       "sure enough"
     ],
-    "display_gloss": "sure enough",
+    "display_gloss": "as was expected",
     "part_of_speech": [
       "adverb"
     ],
@@ -81917,7 +81917,7 @@
       "tête-à-tête",
       "conference"
     ],
-    "display_gloss": "talk",
+    "display_gloss": "discussion",
     "part_of_speech": [
       "noun",
       "suru verb"
@@ -82182,7 +82182,7 @@
       "exposure to the sun",
       "sunny place"
     ],
-    "display_gloss": "sunny place",
+    "display_gloss": "exposure to the sun",
     "part_of_speech": [
       "noun"
     ],
@@ -82238,7 +82238,7 @@
       "to accept",
       "to take charge of"
     ],
-    "display_gloss": "to accept",
+    "display_gloss": "to take on",
     "part_of_speech": [
       "ichidan verb",
       "transitive verb"
@@ -82406,7 +82406,7 @@
       "to restrain",
       "to stop"
     ],
-    "display_gloss": "to check",
+    "display_gloss": "to detain",
     "part_of_speech": [
       "ichidan verb",
       "transitive verb"
@@ -82525,7 +82525,7 @@
       "to turn up",
       "to turn inside out"
     ],
-    "display_gloss": "to turn up",
+    "display_gloss": "to turn over",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -82637,7 +82637,7 @@
       "forefinger",
       "first (occ. second) finger"
     ],
-    "display_gloss": "first",
+    "display_gloss": "index finger",
     "part_of_speech": [
       "noun"
     ],
@@ -82875,7 +82875,7 @@
       "extensive",
       "spacious"
     ],
-    "display_gloss": "spacious",
+    "display_gloss": "extensive",
     "part_of_speech": [
       "adv-to",
       "adverb",
@@ -83033,7 +83033,7 @@
       "to block (up)",
       "to plug up"
     ],
-    "display_gloss": "to block",
+    "display_gloss": "to stop up",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -83086,7 +83086,7 @@
       "belonging (to)",
       "going with"
     ],
-    "display_gloss": "belonging",
+    "display_gloss": "being attached",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -83140,7 +83140,7 @@
       "train crossing",
       "level crossing"
     ],
-    "display_gloss": "train crossing",
+    "display_gloss": "railway crossing",
     "part_of_speech": [
       "noun"
     ],
@@ -83191,7 +83191,7 @@
       "to add to",
       "to augment"
     ],
-    "display_gloss": "to add to",
+    "display_gloss": "to increase",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -83243,7 +83243,7 @@
       "to add to",
       "to augment"
     ],
-    "display_gloss": "to add to",
+    "display_gloss": "to increase",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -83299,7 +83299,7 @@
       "to conduct oneself",
       "to act"
     ],
-    "display_gloss": "to act",
+    "display_gloss": "to behave",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -83612,7 +83612,7 @@
       "boy",
       "young master"
     ],
-    "display_gloss": "boy",
+    "display_gloss": "(another's) son",
     "part_of_speech": [
       "noun"
     ],
@@ -83865,7 +83865,7 @@
       "jet-black",
       "black"
     ],
-    "display_gloss": "black",
+    "display_gloss": "pitch-black",
     "part_of_speech": [
       "na-adjective",
       "no-adjective",
@@ -84014,7 +84014,7 @@
       "perfect score",
       "full marks"
     ],
-    "display_gloss": "full marks",
+    "display_gloss": "perfect score",
     "part_of_speech": [
       "noun"
     ],
@@ -84234,7 +84234,7 @@
       "to become accustomed to seeing",
       "to be familiar with"
     ],
-    "display_gloss": "to be familiar with",
+    "display_gloss": "to get used to seeing",
     "part_of_speech": [
       "ichidan verb",
       "intransitive verb"
@@ -84382,7 +84382,7 @@
       "wasteful",
       "a waste"
     ],
-    "display_gloss": "a waste",
+    "display_gloss": "wasteful",
     "part_of_speech": [
       "i-adjective"
     ],
@@ -84584,7 +84584,7 @@
       "leisurely",
       "composed"
     ],
-    "display_gloss": "calm",
+    "display_gloss": "quiet",
     "part_of_speech": [
       "adj-t",
       "adv-to"
@@ -84794,7 +84794,7 @@
       "to grasp",
       "to see"
     ],
-    "display_gloss": "to grasp",
+    "display_gloss": "to understand",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -84846,7 +84846,7 @@
       "to fork",
       "to diverge"
     ],
-    "display_gloss": "to fork",
+    "display_gloss": "to branch",
     "part_of_speech": [
       "ichidan verb",
       "intransitive verb"
@@ -84902,7 +84902,7 @@
       "young",
       "young-looking"
     ],
-    "display_gloss": "young",
+    "display_gloss": "youthful",
     "part_of_speech": [
       "i-adjective"
     ],
@@ -85103,7 +85103,7 @@
       "reduction",
       "rebate"
     ],
-    "display_gloss": "rebate",
+    "display_gloss": "discount",
     "part_of_speech": [
       "noun"
     ],
@@ -85309,7 +85309,7 @@
       "gap",
       "emptiness"
     ],
-    "display_gloss": "gap",
+    "display_gloss": "space",
     "part_of_speech": [
       "noun"
     ],
@@ -85369,7 +85369,7 @@
       "freshly",
       "animatedly"
     ],
-    "display_gloss": "vividly",
+    "display_gloss": "in a lively way",
     "part_of_speech": [
       "adverb",
       "adv-to",
@@ -85422,7 +85422,7 @@
       "to seem to hate",
       "to express dislike"
     ],
-    "display_gloss": "to seem to hate",
+    "display_gloss": "to appear uncomfortable",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -85527,7 +85527,7 @@
       "to respond",
       "to meet"
     ],
-    "display_gloss": "to meet",
+    "display_gloss": "to answer",
     "part_of_speech": [
       "vz",
       "intransitive verb"
@@ -85573,7 +85573,7 @@
       "Europe and America",
       "the West"
     ],
-    "display_gloss": "the West",
+    "display_gloss": "Europe and the United States",
     "part_of_speech": [
       "noun"
     ],
@@ -85872,7 +85872,7 @@
       "to add (liquid)",
       "to serve (drinks)"
     ],
-    "display_gloss": "to add",
+    "display_gloss": "to pour",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -85971,7 +85971,7 @@
       "aquatic products",
       "fisheries"
     ],
-    "display_gloss": "fisheries",
+    "display_gloss": "aquatic products",
     "part_of_speech": [
       "noun"
     ],
@@ -86120,7 +86120,7 @@
       "by chance",
       "casual"
     ],
-    "display_gloss": "by chance",
+    "display_gloss": "unexpected",
     "part_of_speech": [
       "i-adjective"
     ],
@@ -86212,7 +86212,7 @@
       "at all costs",
       "absolutely"
     ],
-    "display_gloss": "absolutely",
+    "display_gloss": "by all means",
     "part_of_speech": [
       "adverb"
     ],
@@ -86264,7 +86264,7 @@
       "to take a long time",
       "to persist"
     ],
-    "display_gloss": "to drag on",
+    "display_gloss": "to be prolonged",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -86469,7 +86469,7 @@
       "date (of a planned event, act, etc.)",
       "day"
     ],
-    "display_gloss": "day",
+    "display_gloss": "date",
     "part_of_speech": [
       "noun"
     ],
@@ -86609,7 +86609,7 @@
       "to be agreed on",
       "to be completed"
     ],
-    "display_gloss": "to be settled",
+    "display_gloss": "to find resolution",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -86707,7 +86707,7 @@
       "course",
       "directions"
     ],
-    "display_gloss": "way",
+    "display_gloss": "route",
     "part_of_speech": [
       "noun"
     ],
@@ -86758,7 +86758,7 @@
       "to be rich in",
       "to abound in"
     ],
-    "display_gloss": "to abound in",
+    "display_gloss": "to be blessed with",
     "part_of_speech": [
       "ichidan verb",
       "intransitive verb"
@@ -86866,7 +86866,7 @@
       "cannot be helped",
       "unavoidable"
     ],
-    "display_gloss": "unavoidable",
+    "display_gloss": "cannot be helped",
     "part_of_speech": [
       "expression",
       "i-adjective"
@@ -86999,7 +86999,7 @@
       "all around",
       "all over"
     ],
-    "display_gloss": "all around",
+    "display_gloss": "here and there",
     "part_of_speech": [
       "pronoun",
       "adverb",
@@ -87045,7 +87045,7 @@
       "one thing or another",
       "this way and that"
     ],
-    "display_gloss": "this or that",
+    "display_gloss": "this and that",
     "part_of_speech": [
       "adverb",
       "pronoun"
@@ -87244,7 +87244,7 @@
       "seconds",
       "refill"
     ],
-    "display_gloss": "seconds",
+    "display_gloss": "another helping",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -87471,7 +87471,7 @@
       "I'm glad to make your acquaintance",
       "how do you do?"
     ],
-    "display_gloss": "how do you do?",
+    "display_gloss": "nice to meet you",
     "part_of_speech": [
       "expression"
     ],
@@ -87507,7 +87507,7 @@
       "silently (as the grave)",
       "quietly (as in death)"
     ],
-    "display_gloss": "quietly",
+    "display_gloss": "silently",
     "part_of_speech": [
       "adverb",
       "adv-to",
@@ -87553,7 +87553,7 @@
       "gradual",
       "easy"
     ],
-    "display_gloss": "gentle",
+    "display_gloss": "gently sloping",
     "part_of_speech": [
       "na-adjective"
     ],
@@ -87597,7 +87597,7 @@
       "happy (occasion, ending, etc.)",
       "joyous"
     ],
-    "display_gloss": "happy",
+    "display_gloss": "(matter) for congratulations",
     "part_of_speech": [
       "i-adjective"
     ],
@@ -87693,7 +87693,7 @@
       "failing to write (call, visit, etc.)",
       "long silence"
     ],
-    "display_gloss": "failing to write",
+    "display_gloss": "not writing or contacting for a while",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -87925,7 +87925,7 @@
       "store",
       "shop"
     ],
-    "display_gloss": "shop",
+    "display_gloss": "store",
     "part_of_speech": [
       "noun"
     ],
@@ -87967,7 +87967,7 @@
       "plug",
       "bung"
     ],
-    "display_gloss": "cork",
+    "display_gloss": "stopper",
     "part_of_speech": [
       "noun"
     ],
@@ -88015,7 +88015,7 @@
       "that reminds me",
       "on that subject"
     ],
-    "display_gloss": "that reminds me",
+    "display_gloss": "now that you mention it",
     "part_of_speech": [
       "expression"
     ],
@@ -88063,7 +88063,7 @@
       "fairly",
       "rather"
     ],
-    "display_gloss": "fairly",
+    "display_gloss": "comparatively",
     "part_of_speech": [
       "adverb"
     ],
@@ -88157,7 +88157,7 @@
       "light brown",
       "tawny"
     ],
-    "display_gloss": "tawny",
+    "display_gloss": "light brown",
     "part_of_speech": [
       "i-adjective"
     ],
@@ -88209,7 +88209,7 @@
       "to connect (to)",
       "to run (from, between; e.g. bus service)"
     ],
-    "display_gloss": "to lead",
+    "display_gloss": "to be open",
     "part_of_speech": [
       "vz",
       "intransitive verb"
@@ -88260,7 +88260,7 @@
       "to tear",
       "to rip"
     ],
-    "display_gloss": "to rip",
+    "display_gloss": "to tear",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -88350,7 +88350,7 @@
       "very much",
       "a lot"
     ],
-    "display_gloss": "a lot",
+    "display_gloss": "a great deal",
     "part_of_speech": [
       "adverb"
     ],
@@ -88600,7 +88600,7 @@
       "take care",
       "see you"
     ],
-    "display_gloss": "see you",
+    "display_gloss": "have a good day",
     "part_of_speech": [
       "interjection"
     ],
@@ -88643,7 +88643,7 @@
       "I'm off",
       "see you later"
     ],
-    "display_gloss": "I'm off",
+    "display_gloss": "good bye",
     "part_of_speech": [
       "expression"
     ],
@@ -88764,7 +88764,7 @@
       "x (mark)",
       "cross"
     ],
-    "display_gloss": "cross",
+    "display_gloss": "x (mark)",
     "part_of_speech": [
       "noun"
     ],
@@ -89116,7 +89116,7 @@
       "to be piled on",
       "to be loaded on"
     ],
-    "display_gloss": "to be set on",
+    "display_gloss": "to be placed on",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -89168,7 +89168,7 @@
       "to abide",
       "to stay (in the one place)"
     ],
-    "display_gloss": "to stay",
+    "display_gloss": "to remain",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
@@ -89344,7 +89344,7 @@
       "to roll up (in)",
       "to tuck (up)"
     ],
-    "display_gloss": "to tuck",
+    "display_gloss": "to wrap up",
     "part_of_speech": [
       "godan verb",
       "transitive verb"
@@ -89436,7 +89436,7 @@
       "obtuse",
       "stupid"
     ],
-    "display_gloss": "obtuse",
+    "display_gloss": "thickheaded",
     "part_of_speech": [
       "i-adjective"
     ],
@@ -89488,7 +89488,7 @@
       "residence",
       "address"
     ],
-    "display_gloss": "house",
+    "display_gloss": "dwelling",
     "part_of_speech": [
       "noun",
       "suru verb",
@@ -89582,7 +89582,7 @@
       "to put something out of the way",
       "to move (something, someone) aside"
     ],
-    "display_gloss": "to move",
+    "display_gloss": "to put something out of the way",
     "part_of_speech": [
       "ichidan verb",
       "transitive verb"
@@ -89721,7 +89721,7 @@
       "to set off",
       "to start"
     ],
-    "display_gloss": "to leave",
+    "display_gloss": "to depart",
     "part_of_speech": [
       "godan verb",
       "intransitive verb"
