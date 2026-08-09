@@ -29,14 +29,14 @@ loop, and nothing scraped at runtime.
 
 | Half horizontal | Half vertical | Quadrant |
 | --- | --- | --- |
-| ![](docs/images/half-horizontal.png) | ![](docs/images/half-vertical.png) | ![](docs/images/quadrant.png) |
+| ![Half-horizontal layout: 取り除く with furigana, gloss and a one-line example](docs/images/half-horizontal.png) | ![Half-vertical layout: 取り除く with furigana, gloss and example](docs/images/half-vertical.png) | ![Quadrant layout: 取り除く with furigana and the gloss only](docs/images/quadrant.png) |
 
 Kana-only words get no ruby at all, and the optional translation sits quietly
 under the Japanese:
 
 | Kana only | With the translation switched on |
 | --- | --- |
-| ![](docs/images/kana-only.png) | ![](docs/images/full-with-translation.png) |
+| ![ありがとう rendered with no ruby at all](docs/images/kana-only.png) | ![混雑 with the English translation shown beneath the Japanese example](docs/images/full-with-translation.png) |
 
 ## How it works
 
