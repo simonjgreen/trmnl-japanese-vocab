@@ -13,7 +13,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-  "pytest>=8.0",
+  "pytest>=9.1.1",
 ]
 # Only needed to re-import the production corpus from data/raw. The JMdict
 # examples build is ~129 MB of JSON; ijson streams it instead of loading it.
