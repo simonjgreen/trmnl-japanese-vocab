@@ -20,7 +20,11 @@ from .models import LEVELS, VocabularyEntry, level_display, level_key
 from .normalise import display_width
 from .selection import Scheduler
 
-SCHEMA_VERSION = "1.0"
+SCHEMA_VERSION = "2.0"
+
+#: Levels from easiest to hardest. A learner's deck is every level up to and
+#: including the one they choose, so N3 means N5 + N4 + N3.
+LEVEL_ORDER = ("N5", "N4", "N3", "N2", "N1")
 
 #: Ratio of ruby text size to base text size, mirroring the CSS in
 #: ``src/shared.liquid``. Used to notice when a long reading over a single
@@ -52,6 +56,9 @@ class BuildConfig:
     minify: bool = True
     status: str = "production"
     minimum_entries_per_level: int = 1
+    #: Cards per daily deck, and how long each card stays on screen.
+    deck_size: int = 100
+    slot_seconds: int = 600
 
     @staticmethod
     def load(path: Path) -> "BuildConfig":
@@ -66,6 +73,8 @@ class BuildConfig:
             minify=bool(payload.get("minify", True)),
             status=str(raw.get("status", "production")),
             minimum_entries_per_level=int(raw.get("minimum_entries_per_level", 1)),
+            deck_size=int(raw.get("deck", {}).get("size", 100)),
+            slot_seconds=int(raw.get("deck", {}).get("slot_seconds", 600)),
         )
 
 
@@ -126,31 +135,44 @@ def example_size_class(entry: VocabularyEntry) -> str:
     )
 
 
+def cumulative_entries(
+    corpus: dict[str, list[VocabularyEntry]], level: str
+) -> list[VocabularyEntry]:
+    """Active entries for *level* and every easier level, sorted by ID.
+
+    Selecting N3 gives N5, N4 and N3 material together. Learners revise
+    downwards as well as forwards, and a deck limited to one band drops
+    everything already learned the moment the level is raised.
+    """
+    wanted = LEVEL_ORDER[: LEVEL_ORDER.index(level_display(level)) + 1]
+    entries = [
+        entry
+        for band in wanted
+        for entry in corpus.get(level_key(band), [])
+        if entry.is_active
+    ]
+    return sorted(entries, key=lambda e: e.id)
+
+
 # --------------------------------------------------------------------------
 # Payload construction
 # --------------------------------------------------------------------------
 
 
-def build_payload(
-    entry: VocabularyEntry,
-    level: str,
-    day: date,
-    dataset_version: str,
-    selection_version: str,
-    cycle: int,
-    position: int,
-    total: int,
-) -> dict[str, Any]:
-    """Build one daily payload. No HTML, no markup, no remote references."""
+def build_word(entry: VocabularyEntry, position: int, total: int) -> dict[str, Any]:
+    """One card. No HTML, no markup, no remote references.
+
+    Kept deliberately lean: a deck carries around a hundred of these, so a
+    field that is not rendered is a field worth dropping.
+    """
     word: dict[str, Any] = {
         "id": entry.id,
         "surface": entry.surface,
         "reading": entry.reading,
         "ruby_segments": [s.to_json() for s in entry.ruby_segments],
         "display_gloss": entry.display_gloss,
+        "level": entry.jlpt.level,
     }
-    if entry.part_of_speech:
-        word["part_of_speech"] = entry.part_of_speech[:2]
     if entry.example is not None and entry.example.ja:
         example: dict[str, Any] = {"ja": entry.example.ja}
         if entry.example.en:
@@ -160,6 +182,32 @@ def build_payload(
         "word_size": word_size_class(entry),
         "example_size": example_size_class(entry),
     }
+    word["sequence"] = {"position": position, "total": total}
+    return word
+
+
+def build_payload(
+    entries: list[VocabularyEntry],
+    selections: list[Any],
+    level: str,
+    day: date,
+    dataset_version: str,
+    selection_version: str,
+    slot_seconds: int,
+) -> dict[str, Any]:
+    """Build one day's deck.
+
+    The plugin picks a card from this deck using the current timestamp, which
+    is what turns a static file into flash cards: the payload for a date is
+    fixed and cacheable, but which card is on screen changes every
+    ``slot_seconds``.
+    """
+    by_id = {e.id: e for e in entries}
+    words = [
+        build_word(by_id[s.entry_id], s.position, s.total)
+        for s in selections
+        if s.entry_id in by_id
+    ]
 
     return {
         "schema_version": SCHEMA_VERSION,
@@ -168,8 +216,12 @@ def build_payload(
         "level_display": level_display(level),
         "dataset_version": dataset_version,
         "selection_version": selection_version,
-        "word": word,
-        "sequence": {"cycle": cycle, "position": position, "total": total},
+        "deck": {
+            "size": len(words),
+            "slot_seconds": slot_seconds,
+            "pool": len(entries),
+        },
+        "words": words,
     }
 
 
@@ -190,6 +242,7 @@ class BuildResult:
     start_date: date
     end_date: date
     entry_counts: dict[str, int]
+    pool_counts: dict[str, int]
     file_counts: dict[str, int]
     dataset_version: str
     largest_payload: int
@@ -219,25 +272,29 @@ def build_site(
     daily_dir.mkdir(parents=True, exist_ok=True)
 
     entry_counts: dict[str, int] = {}
+    pool_counts: dict[str, int] = {}
     file_counts: dict[str, int] = {}
     largest = 0
     oversized: list[str] = []
 
     for level in LEVELS:
         key = level_key(level)
-        active = sorted(
-            (e for e in corpus.get(key, []) if e.is_active), key=lambda e: e.id
-        )
-        entry_counts[key] = len(active)
+        # The learner's pool is this level plus every easier one.
+        active = cumulative_entries(corpus, key)
+        own = sum(1 for e in corpus.get(key, []) if e.is_active)
+        # Two different numbers, both worth reporting: how many words the
+        # corpus holds at this level, and how many a learner at this level
+        # can actually be shown once easier levels are included.
+        entry_counts[key] = own
+        pool_counts[key] = len(active)
         if not active:
             raise ValueError(f"level {key} has no active entries; cannot build site")
-        if len(active) < build_config.minimum_entries_per_level:
+        if own < build_config.minimum_entries_per_level:
             raise ValueError(
-                f"level {key} has {len(active)} active entries, minimum is "
+                f"level {key} has {own} active entries of its own, minimum is "
                 f"{build_config.minimum_entries_per_level}"
             )
 
-        by_id = {e.id: e for e in active}
         scheduler = Scheduler(
             [e.id for e in active],
             key,
@@ -253,16 +310,14 @@ def build_site(
         last_text = ""
         day = start_date
         while day <= end_date:
-            selection = scheduler.select(day)
             payload = build_payload(
-                by_id[selection.entry_id],
+                active,
+                scheduler.deck(day, build_config.deck_size),
                 key,
                 day,
                 dataset_version,
                 selection_config.selection_version,
-                selection.cycle,
-                selection.position,
-                selection.total,
+                build_config.slot_seconds,
             )
             text = dump_payload(payload, build_config.minify)
             size = len(text.encode("utf-8"))
@@ -277,20 +332,21 @@ def build_site(
         file_counts[key] = count
         # For inspection only; the plugin always requests a date-specific path.
         (level_dir / "latest.json").write_text(last_text, encoding="utf-8")
-        sample = dump_payload(
-            build_payload(
-                by_id[scheduler.select(today).entry_id],
-                key,
-                today,
-                dataset_version,
-                selection_config.selection_version,
-                scheduler.select(today).cycle,
-                scheduler.select(today).position,
-                scheduler.select(today).total,
+        (level_dir / "sample.json").write_text(
+            dump_payload(
+                build_payload(
+                    active,
+                    scheduler.deck(today, build_config.deck_size),
+                    key,
+                    today,
+                    dataset_version,
+                    selection_config.selection_version,
+                    build_config.slot_seconds,
+                ),
+                minify=False,
             ),
-            minify=False,
+            encoding="utf-8",
         )
-        (level_dir / "sample.json").write_text(sample, encoding="utf-8")
 
     if oversized:
         raise ValueError(
@@ -307,7 +363,13 @@ def build_site(
         "earliest_date": start_date.isoformat(),
         "latest_date": end_date.isoformat(),
         "active_entries": entry_counts,
+        "deck_pool": pool_counts,
         "generated_files": file_counts,
+        "deck": {
+            "size": build_config.deck_size,
+            "slot_seconds": build_config.slot_seconds,
+            "cumulative_levels": True,
+        },
         "sources": sources_summary or [],
         "commit_sha": commit_sha,
     }
@@ -322,6 +384,7 @@ def build_site(
         "earliest_date": manifest["earliest_date"],
         "latest_date": manifest["latest_date"],
         "total_active_entries": sum(entry_counts.values()),
+        "deck_pool": pool_counts,
         "data_status": build_config.status,
     }
     (output_dir / "health.json").write_text(
@@ -337,6 +400,7 @@ def build_site(
         start_date=start_date,
         end_date=end_date,
         entry_counts=entry_counts,
+        pool_counts=pool_counts,
         file_counts=file_counts,
         dataset_version=dataset_version,
         largest_payload=largest,

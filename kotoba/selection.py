@@ -185,21 +185,41 @@ class Scheduler:
         self._cache[cycle] = result
         return result
 
-    def select(self, requested_date: date) -> Selection:
-        """Choose the word for *requested_date*.
+    def at_position(self, position: int) -> Selection:
+        """The word at absolute *position* in the endless shuffled stream.
 
-        Dates before the epoch are well defined: Python's floor division gives
-        a negative cycle number and a non-negative offset, so the rotation
-        simply runs backwards.
+        Think of the shuffled cycles laid end to end: position 0 is the first
+        word of cycle 0, position N the first word of cycle 1, and negative
+        positions run backwards. Python's floor division makes that work
+        without a special case.
         """
-        day_number = (requested_date - self.epoch_date).days
-        cycle, offset = divmod(day_number, self.total)
+        cycle, offset = divmod(position, self.total)
         return Selection(
             entry_id=self.permutation(cycle)[offset],
             cycle=cycle,
             position=offset + 1,
             total=self.total,
         )
+
+    def select(self, requested_date: date) -> Selection:
+        """Choose the single word for *requested_date*."""
+        return self.at_position((requested_date - self.epoch_date).days)
+
+    def deck(self, requested_date: date, size: int) -> list[Selection]:
+        """The deck of *size* words shown on *requested_date*.
+
+        Each day takes the next contiguous run from the same shuffled stream,
+        so the no-repeat guarantee holds across the whole deck and across day
+        boundaries: a word reappears only once every word at the level has
+        been seen.
+
+        A deck longer than the corpus necessarily repeats within itself; that
+        is a property of the corpus, not a defect here.
+        """
+        if size <= 0:
+            raise ValueError("deck size must be positive")
+        start = (requested_date - self.epoch_date).days * size
+        return [self.at_position(start + i) for i in range(size)]
 
 
 def select(

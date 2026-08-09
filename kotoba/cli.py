@@ -231,8 +231,13 @@ def cmd_build_site(args: argparse.Namespace) -> int:
 
 
 def cmd_validate_site(args: argparse.Namespace) -> int:
+    # Read the limit from the build config rather than trusting a default;
+    # the two must agree or a site that built cleanly fails validation.
+    build_config = BuildConfig.load(Path(args.build_config))
     report = validate_site(
-        site_dir=Path(args.site), schema_dir=Path(args.schemas)
+        site_dir=Path(args.site),
+        schema_dir=Path(args.schemas),
+        hard_size_limit=build_config.hard_limit_bytes,
     )
     _emit(report.to_json(), args.json, summarise(report))
     return 0 if report.ok else 1
@@ -395,6 +400,7 @@ def build_parser() -> argparse.ArgumentParser:
     p_vsite = sub.add_parser("validate-site", help="validate the generated static API")
     p_vsite.add_argument("--site", default="site")
     p_vsite.add_argument("--schemas", default=str(DEFAULT_SCHEMAS))
+    p_vsite.add_argument("--build-config", default="config/build.yml")
     p_vsite.add_argument("--json", action="store_true", help=argparse.SUPPRESS)
     p_vsite.set_defaults(func=cmd_validate_site)
 

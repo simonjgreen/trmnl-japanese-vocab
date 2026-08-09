@@ -1,39 +1,46 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "2.0",
   "date": "2026-08-09",
   "level": "n3",
   "level_display": "N3",
   "dataset_version": "fixture",
   "selection_version": "1",
-  "word": {
-    "id": "demo:混雑",
-    "surface": "混雑",
-    "reading": "こんざつ",
-    "ruby_segments": [
-      {
-        "base": "混",
-        "reading": "こん"
+  "deck": {
+    "size": 1,
+    "slot_seconds": 600,
+    "pool": 1730
+  },
+  "words": [
+    {
+      "id": "demo:混雑",
+      "surface": "混雑",
+      "reading": "こんざつ",
+      "ruby_segments": [
+        {
+          "base": "混",
+          "reading": "こん"
+        },
+        {
+          "base": "雑",
+          "reading": "ざつ"
+        }
+      ],
+      "display_gloss": "crush",
+      "example": {
+        "ja": "その道は車で混雑している。",
+        "en": "The roads are jammed with cars."
       },
-      {
-        "base": "雑",
-        "reading": "ざつ"
+      "display": {
+        "word_size": "short",
+        "example_size": "normal"
+      },
+      "level": "N3",
+      "sequence": {
+        "position": 221,
+        "total": 1730
       }
-    ],
-    "display_gloss": "crush",
-    "example": {
-      "ja": "その道は車で混雑している。",
-      "en": "The roads are jammed with cars."
-    },
-    "display": {
-      "word_size": "short",
-      "example_size": "normal"
     }
-  },
-  "sequence": {
-    "cycle": 0,
-    "position": 221,
-    "total": 1730
-  },
+  ],
   "_settings": {
     "show_rotation_progress": true
   }

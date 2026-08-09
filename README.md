@@ -12,14 +12,16 @@ to a single JLPT-aligned level.
 
 ## What it does
 
-- One deterministic word per local calendar day, per level.
+- **Flash cards, not a word of the day** — the card changes every ten minutes,
+  so each glance at the panel is a new word.
 - **Furigana over the kanji only.** 取り除く shows と over 取 and のぞ over 除 —
   nothing over り or く, and no detached reading line.
-- Choose **N5 through N1**. A level gives words from that level alone.
+- Choose **N5 through N1**. A level is *cumulative*: N3 draws on N5, N4 and N3
+  together, and each card shows which level it came from.
 - A concise English gloss and a natural Japanese example sentence.
 - An optional English translation of the example, off by default.
-- Refreshing during the day shows the same word. Tomorrow shows the next word
-  in a shuffled rotation that never repeats until the level is exhausted.
+- A deck of 50 cards a day, drawn from a shuffled rotation that never repeats
+  a word until every word at the level has been seen.
 - 8,289 words, 89% of them with an example sentence.
 
 No server, no database, no account, no analytics, no paid API, no LLM in the
@@ -60,16 +62,20 @@ that truth to TRMNL with `trmnlp push`. Editing in the TRMNL browser editor
 creates a second copy that will drift.
 
 **The data is a static file, not an API.** Every level and date is baked into
-its own tiny JSON document at build time:
+its own JSON document at build time — a deck of 50 cards, from which the
+template picks one using the current timestamp. That is what makes a file on a
+CDN behave like flash cards:
 
 ```
 https://<owner>.github.io/<repo>/api/v1/daily/n3/2026-08-09.json
 ```
 
 The plugin builds that URL from its level setting and the device's local date
-(the server clock shifted by the device's UTC offset), so the word turns over
-at local midnight. Payloads are around 600–900 bytes, the whole site is about
-15 MB, and any date can be opened in a browser when something looks wrong.
+(the server clock shifted by the device's UTC offset), so the deck turns over
+at local midnight while the card turns over every ten minutes. Payloads are
+around 20 KB — fetched by TRMNL's server, never by the device — the whole site
+is about 37 MB, and any date can be opened in a browser when something looks
+wrong.
 
 More detail in [docs/architecture.md](docs/architecture.md).
 
@@ -124,9 +130,9 @@ are in [docs/deployment.md](docs/deployment.md).
 
 | Setting | Default | What it does |
 | ------- | ------- | ------------ |
-| Learner level | `N5` | Which level's words to show. N5 is easiest, N1 hardest. |
+| Learner level | `N5` | Cards are drawn from this level **and every easier one**. N5 is easiest, N1 hardest. |
 | Show example translation | off | English under the Japanese example. Suppressed automatically in the smaller layouts. |
-| Show rotation progress | off | Puts `N3 · 42/1730` in the title bar instead of just `N3`. |
+| Show rotation progress | off | Puts `N3 · N4 · 1840/3054` in the title bar — deck level, this card's level, and position in the pool. |
 | Data endpoint | your Pages URL | Where the daily JSON comes from. Under *Advanced*; leave it alone unless you host your own copy. No trailing slash. |
 
 ## About the vocabulary
@@ -215,3 +221,4 @@ call. Security issues: [SECURITY.md](SECURITY.md).
 - [3. Deterministic shuffled cycles](docs/adr/0003-deterministic-cycle-selection.md)
 - [4. GitHub as source of truth](docs/adr/0004-github-source-of-truth.md)
 - [5. Where attribution lives](docs/adr/0005-attribution-placement.md)
+- [6. Flash cards from a daily deck](docs/adr/0006-flash-cards-from-a-daily-deck.md)

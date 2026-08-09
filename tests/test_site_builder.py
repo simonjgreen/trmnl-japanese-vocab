@@ -23,7 +23,17 @@ from kotoba.validation import validate_corpus, validate_site
 TODAY = date(2026, 8, 9)
 EPOCH = date(2026, 1, 1)
 
-SMALL = BuildConfig(past_days=3, future_days=6, status="demo", minimum_entries_per_level=1)
+# A five-word-per-level corpus, so the deck is deliberately tiny.
+SMALL = BuildConfig(
+    past_days=3,
+    future_days=6,
+    status="demo",
+    minimum_entries_per_level=1,
+    deck_size=5,
+    slot_seconds=600,
+    recommended_bytes=8192,
+    hard_limit_bytes=16384,
+)
 SELECTION = SelectionConfig(epoch_date=EPOCH, selection_version="1", selection_salt="t")
 
 
@@ -127,6 +137,7 @@ class TestBuild:
         assert manifest["commit_sha"] == "abc123"
         assert manifest["status"] == "demo"
         assert manifest["active_entries"] == {k: 5 for k in ("n5", "n4", "n3", "n2", "n1")}
+        assert manifest["deck_pool"] == {"n5": 5, "n4": 10, "n3": 15, "n2": 20, "n1": 25}
         assert manifest["generated_files"] == {k: 10 for k in ("n5", "n4", "n3", "n2", "n1")}
         assert manifest["earliest_date"] == "2026-08-06"
         assert manifest["latest_date"] == "2026-08-15"
@@ -138,6 +149,55 @@ class TestBuild:
         assert "\\u" not in text, "Japanese must not be escaped"
         assert ", " not in text and ": " not in text, "payload should be minified"
 
+    def test_a_deck_is_cumulative_over_easier_levels(self, corpus, tmp_path):
+        """Choosing N3 must draw on N5 and N4 as well."""
+        build(corpus, tmp_path)
+        path = tmp_path / "site" / "api" / "v1" / "daily" / "n3" / f"{TODAY}.json"
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        assert payload["deck"]["pool"] == 15  # 5 each of N5, N4, N3
+        n5 = json.loads(
+            (tmp_path / "site" / "api" / "v1" / "daily" / "n5" / f"{TODAY}.json")
+            .read_text(encoding="utf-8")
+        )
+        assert n5["deck"]["pool"] == 5
+        n1 = json.loads(
+            (tmp_path / "site" / "api" / "v1" / "daily" / "n1" / f"{TODAY}.json")
+            .read_text(encoding="utf-8")
+        )
+        assert n1["deck"]["pool"] == 25  # every level
+
+    def test_each_card_declares_its_own_level(self, corpus, tmp_path):
+        build(corpus, tmp_path)
+        payload = json.loads(
+            (tmp_path / "site" / "api" / "v1" / "daily" / "n3" / f"{TODAY}.json")
+            .read_text(encoding="utf-8")
+        )
+        levels = {w["level"] for w in payload["words"]}
+        assert levels <= {"N5", "N4", "N3"}
+        assert "N2" not in levels and "N1" not in levels
+
+    def test_deck_metadata_matches_the_build_config(self, corpus, tmp_path):
+        build(corpus, tmp_path)
+        payload = json.loads(
+            (tmp_path / "site" / "api" / "v1" / "daily" / "n3" / f"{TODAY}.json")
+            .read_text(encoding="utf-8")
+        )
+        assert payload["deck"]["size"] == SMALL.deck_size
+        assert payload["deck"]["slot_seconds"] == SMALL.slot_seconds
+        assert len(payload["words"]) == SMALL.deck_size
+
+    def test_consecutive_days_draw_different_cards(self, corpus, tmp_path):
+        """A deck moves on; it does not replay yesterday."""
+        build(corpus, tmp_path)
+        level_dir = tmp_path / "site" / "api" / "v1" / "daily" / "n1"
+        today = json.loads((level_dir / f"{TODAY}.json").read_text(encoding="utf-8"))
+        tomorrow = json.loads(
+            (level_dir / f"{TODAY + timedelta(days=1)}.json").read_text(encoding="utf-8")
+        )
+        assert {w["id"] for w in today["words"]} != {
+            w["id"] for w in tomorrow["words"]
+        }
+
     def test_payloads_are_small(self, corpus, tmp_path):
         result = build(corpus, tmp_path)
         assert result.largest_payload < SMALL.recommended_bytes
@@ -145,11 +205,15 @@ class TestBuild:
 
     def test_generated_site_validates(self, corpus, tmp_path, schemas_dir):
         build(corpus, tmp_path)
-        report = validate_site(site_dir=tmp_path / "site", schema_dir=schemas_dir)
+        report = validate_site(
+            site_dir=tmp_path / "site",
+            schema_dir=schemas_dir,
+            hard_size_limit=SMALL.hard_limit_bytes,
+        )
         assert report.ok, "\n".join(i.format() for i in report.errors)
         assert report.counts["payloads_checked"] == 50
 
-    def test_the_same_date_rebuilds_to_the_same_word(self, corpus, tmp_path):
+    def test_the_same_date_rebuilds_identically(self, corpus, tmp_path):
         build(corpus, tmp_path / "a")
         build(corpus, tmp_path / "b")
         for level in ("n5", "n3", "n1"):
@@ -170,6 +234,7 @@ class TestBuild:
         assert payload["date"] == "2026-08-11"
         assert payload["level"] == "n2"
         assert payload["level_display"] == "N2"
+        assert payload["schema_version"] == "2.0"
 
     def test_index_links_resolve_to_real_files(self, corpus, tmp_path):
         import re
@@ -181,7 +246,8 @@ class TestBuild:
             assert (site / href).exists(), href
 
     def test_empty_level_is_refused(self, corpus, tmp_path):
-        corpus["n3"] = []
+        """N5 has nothing easier to fall back on, so emptying it is fatal."""
+        corpus["n5"] = []
         with pytest.raises(ValueError, match="no active entries"):
             build(corpus, tmp_path)
 

@@ -160,9 +160,19 @@ class TestShippedSettings:
     def test_description_fits_trmnls_limit(self, settings):
         assert len(settings["description"]) <= 35
 
-    def test_polling_is_daily(self, settings):
+    def test_polls_at_least_once_per_deck_slot(self, settings):
+        """Cards are chosen from the clock, so a stale render freezes them."""
+        import yaml as _yaml
+
+        build = _yaml.safe_load(
+            (REPO / "config" / "build.yml").read_text(encoding="utf-8")
+        )
+        slot_minutes = build["deck"]["slot_seconds"] / 60
         assert settings["strategy"] == "polling"
-        assert settings["refresh_interval"] == 1440
+        assert settings["refresh_interval"] <= slot_minutes, (
+            "refresh_interval must not exceed deck.slot_seconds, or the same "
+            "card would stay on screen across slots"
+        )
 
     def test_polling_url_uses_level_and_local_date(self, settings):
         url = settings["polling_url"]

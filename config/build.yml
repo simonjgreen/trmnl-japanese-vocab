@@ -1,16 +1,32 @@
 ---
 # Rolling date coverage for the generated static API.
-# A ten-year future horizon means a delayed or disabled weekly schedule cannot
-# take a device offline; it only stops the horizon moving forward.
+# A deck payload is ~20 KB, so the horizon trades directly against site size.
+# 365 days of cushion still means a year of missed weekly builds before a
+# device could run out of dates.
 date_range:
-  past_days: 90
-  future_days: 3650
+  past_days: 14
+  future_days: 365
 
 # Hard ceiling on a single daily payload. Anything larger is a build failure.
+# These limits are ours, not TRMNL's: the payload is fetched by TRMNL's
+# server, never by the device, so a deck of tens of KB costs the device
+# nothing.
 payload:
-  recommended_bytes: 5120
-  hard_limit_bytes: 10240
+  recommended_bytes: 24576
+  hard_limit_bytes: 32768
   minify: true
+
+# Flash-card behaviour. The daily payload carries a deck; the plugin picks a
+# card from it using the current timestamp, so the screen changes on every
+# refresh rather than once a day.
+deck:
+  # 50 cards a day. At a 10-minute slot and a device refreshing every 15-30
+  # minutes, the learner sees close to the whole deck once per day, and the
+  # deck moves on to fresh words tomorrow.
+  size: 50
+  # How long one card stays up. Must be shorter than the device's refresh
+  # interval, or the same card is drawn twice running.
+  slot_seconds: 600
 
 # `demo` relaxes the per-level minimum; `production` enforces it.
 status: production

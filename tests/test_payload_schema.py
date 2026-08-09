@@ -24,6 +24,7 @@ REQUIRED_FIXTURES = (
     "with_translation",
     "with_progress",
     "empty_state",
+    "deck_mixed_levels",
     "xlong_word",
     "wide_ruby",
     "short_word",
@@ -56,16 +57,27 @@ def test_fixtures_satisfy_the_payload_schema(name, validator):
     assert errors == [], [e.message for e in errors]
 
 
-def test_empty_state_fixture_deliberately_has_no_word(validator):
+def test_empty_state_fixture_deliberately_has_no_cards(validator):
     doc = payload("empty_state")
-    assert "word" not in doc
+    assert doc["words"] == []
     # It is intentionally not schema-valid: it models a payload the renderer
     # must survive, not one the builder would ever produce.
     assert list(validator.iter_errors(doc))
 
 
+def first_card(name: str) -> dict:
+    return payload(name)["words"][0]
+
+
+def test_a_mixed_deck_carries_easier_levels():
+    """A cumulative N3 deck must actually contain N5 and N4 cards."""
+    doc = payload("deck_mixed_levels")
+    assert doc["level_display"] == "N3"
+    assert {w["level"] for w in doc["words"]} == {"N3", "N4", "N5"}
+
+
 def test_reference_fixture_matches_the_specified_segmentation():
-    word = payload("full_reference")["word"]
+    word = first_card("full_reference")
     assert word["surface"] == "取り除く"
     assert word["reading"] == "とりのぞく"
     assert word["ruby_segments"] == [
@@ -78,7 +90,7 @@ def test_reference_fixture_matches_the_specified_segmentation():
 
 
 def test_kana_only_fixture_has_no_ruby():
-    word = payload("kana_only")["word"]
+    word = first_card("kana_only")
     assert all(s["reading"] is None for s in word["ruby_segments"])
 
 
@@ -95,27 +107,37 @@ class TestSchemaRejects:
 
     def test_an_unknown_word_size(self, validator):
         doc = payload("full_reference")
-        doc["word"]["display"]["word_size"] = "enormous"
+        doc["words"][0]["display"]["word_size"] = "enormous"
         assert list(validator.iter_errors(doc))
 
     def test_an_empty_ruby_segment_list(self, validator):
         doc = payload("full_reference")
-        doc["word"]["ruby_segments"] = []
+        doc["words"][0]["ruby_segments"] = []
         assert list(validator.iter_errors(doc))
 
     def test_an_overlong_gloss(self, validator):
         doc = payload("full_reference")
-        doc["word"]["display_gloss"] = "x" * 100
+        doc["words"][0]["display_gloss"] = "x" * 100
         assert list(validator.iter_errors(doc))
 
     def test_an_unexpected_extra_property(self, validator):
         doc = payload("full_reference")
-        doc["word"]["html"] = "<b>no</b>"
+        doc["words"][0]["html"] = "<b>no</b>"
         assert list(validator.iter_errors(doc))
 
-    def test_a_missing_sequence_block(self, validator):
+    def test_a_missing_deck_block(self, validator):
         doc = payload("full_reference")
-        del doc["sequence"]
+        del doc["deck"]
+        assert list(validator.iter_errors(doc))
+
+    def test_an_empty_word_list(self, validator):
+        doc = payload("full_reference")
+        doc["words"] = []
+        assert list(validator.iter_errors(doc))
+
+    def test_a_card_without_a_level(self, validator):
+        doc = payload("full_reference")
+        del doc["words"][0]["level"]
         assert list(validator.iter_errors(doc))
 
 

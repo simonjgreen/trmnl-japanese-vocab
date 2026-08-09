@@ -34,12 +34,26 @@
     --kotoba-ja: "Noto Sans CJK JP", "Noto Sans JP", "Hiragino Sans",
       "Yu Gothic", "Meiryo", "IPAexGothic", "TakaoPGothic", sans-serif;
 
-    /* One design unit. Every size below is a multiple of this, so the card
-       scales with the panel instead of being pinned to the original
-       800x480. The Framework sets --screen-w per device (800px on an OG,
-       1040px on a V2 / TRMNL X); the fallback keeps a bare `.screen`
+    /* One design unit: every size below is a multiple of it, so the card
+       scales with the panel instead of being pinned to the original 800x480.
+
+       The card is designed in an 800x480 box and letterboxed into the panel:
+       the smaller of the two ratios wins. Scaling on width alone would be
+       wrong on short screens — TRMNL supports panels of 824x412 and 800x450
+       CSS pixels, where width says "grow" while height says "shrink", and
+       the card would run into the title bar.
+
+       (Note for future editors: `trmnlp lint` counts property names as raw
+       substrings anywhere in the markup, comments included, so naming a
+       capped property here would spend part of the budget.)
+
+       The Framework sets --screen-w / --screen-h per device (800x480 on an
+       OG, 1040x780 on a TRMNL X). The fallbacks keep a bare `.screen`
        preview identical to the tuned baseline. */
-    --kotoba-unit: calc(var(--screen-w, 800px) / 800);
+    --kotoba-unit: min(
+      calc(var(--screen-w, 800px) / 800),
+      calc(var(--screen-h, 480px) / 480)
+    );
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -292,7 +306,25 @@
   The instance label: the level on its own, or the level plus the learner's
   position in the rotation when the optional setting is on.
 {% endcomment %}
+{% assign kotoba_slot_seconds = deck.slot_seconds | default: 600 %}
+{% assign kotoba_deck_size = words | size %}
+
+{% assign word = nil %}
+{% if kotoba_deck_size > 0 %}
+  {% assign kotoba_now = "now" | date: "%s" | plus: 0 %}
+  {% assign kotoba_index = kotoba_now | divided_by: kotoba_slot_seconds | modulo: kotoba_deck_size %}
+  {% assign word = words[kotoba_index] %}
+{% endif %}
+
+{% comment %}
+  The instance label: the level on its own, or the learner's position in the
+  whole pool when the optional setting is on. The card's own level is shown
+  too, because a deck mixes levels — an N3 learner also revises N5 and N4.
+{% endcomment %}
 {% assign instance_label = level_display %}
-{% if show_progress and sequence.total %}
-  {% assign instance_label = level_display | append: " · " | append: sequence.position | append: "/" | append: sequence.total %}
+{% if word.level and word.level != level_display %}
+  {% assign instance_label = level_display | append: " · " | append: word.level %}
+{% endif %}
+{% if show_progress and word.sequence.total %}
+  {% assign instance_label = instance_label | append: " · " | append: word.sequence.position | append: "/" | append: word.sequence.total %}
 {% endif %}

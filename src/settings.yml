@@ -14,8 +14,8 @@ custom_fields:
 - keyname: jlpt_level
   field_type: select
   name: Learner level
-  description: Which JLPT-aligned vocabulary level to practise.
-  help_text: N5 is the easiest level and N1 the hardest.
+  description: Cards are drawn from this level and every easier one.
+  help_text: Choosing N3 shows N5, N4 and N3 words together.
   options:
   - N5 — beginner: n5
   - N4 — elementary: n4
@@ -33,7 +33,7 @@ custom_fields:
 - keyname: show_rotation_progress
   field_type: boolean
   name: Show rotation progress?
-  description: Add the current position in the rotation to the title bar.
+  description: Add the card's position in the whole deck to the title bar.
   help_text: Off by default to keep the screen sparse.
   default: false
   optional: true
@@ -47,4 +47,4 @@ custom_fields:
   default: https://simonjgreen.github.io/trmnl-japanese-vocab/api/v1
 name: Kotoba — JLPT Word of the Day
 description: JLPT-aligned Japanese vocabulary
-refresh_interval: 1440
+refresh_interval: 10

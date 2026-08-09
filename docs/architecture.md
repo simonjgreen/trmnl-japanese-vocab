@@ -80,36 +80,56 @@ arithmetic against a real timezone database and sweeps every hour across both
 2026 UK daylight-saving transitions, plus a half-hour-offset zone
 (Asia/Kathmandu) to catch integer-hour assumptions.
 
-A payload looks like this:
+A payload is a **deck** — the day's cards for that level and every easier one:
 
 ```json
 {
-  "schema_version": "1.0",
+  "schema_version": "2.0",
   "date": "2026-08-09",
   "level": "n3",
   "level_display": "N3",
   "dataset_version": "2026.08.1+1a2b3c4d",
   "selection_version": "1",
-  "word": {
-    "id": "jlpt-waller:1290390-ba0a50",
-    "surface": "混雑",
-    "reading": "こんざつ",
-    "ruby_segments": [
-      { "base": "混", "reading": "こん" },
-      { "base": "雑", "reading": "ざつ" }
-    ],
-    "display_gloss": "crush",
-    "part_of_speech": ["noun", "suru verb"],
-    "example": { "ja": "その道は車で混雑している。", "en": "The roads are jammed with cars." },
-    "display": { "word_size": "short", "example_size": "normal" }
-  },
-  "sequence": { "cycle": 0, "position": 221, "total": 1730 }
+  "deck": { "size": 50, "slot_seconds": 600, "pool": 3054 },
+  "words": [
+    {
+      "id": "jlpt-waller:1361140-4a1b2c",
+      "surface": "拾う",
+      "reading": "ひろう",
+      "ruby_segments": [
+        { "base": "拾", "reading": "ひろ" },
+        { "base": "う", "reading": null }
+      ],
+      "display_gloss": "to pick up",
+      "level": "N4",
+      "example": {
+        "ja": "床からペンを拾って下さい。",
+        "en": "Please pick up the pen from the floor."
+      },
+      "display": { "word_size": "short", "example_size": "normal" },
+      "sequence": { "position": 1840, "total": 3054 }
+    }
+  ]
 }
 ```
 
+The template picks one card from `words` using the clock:
+
+```liquid
+{% assign index = "now" | date: "%s" | divided_by: deck.slot_seconds | modulo: deck_size %}
+```
+
+so the file for a date is immutable and cacheable while the screen still
+changes every `slot_seconds`. See
+[ADR 6](adr/0006-flash-cards-from-a-daily-deck.md).
+
+Note `level` on each card: a deck is cumulative, so an N3 learner sees N5 and
+N4 words too, and the title bar shows which.
+
 Constraints: UTF-8, Japanese left unescaped so a human can read the file,
-minified in the deployed site, no HTML anywhere, and a hard 10 KB ceiling per
-payload. Real payloads are around 600–900 bytes.
+minified in the deployed site, no HTML anywhere, and a hard 32 KB ceiling per
+payload. Real payloads are around 20 KB. That ceiling is ours, not TRMNL's —
+the payload is fetched by TRMNL's render service, never by the device.
 
 Also served, for inspection and monitoring only:
 
