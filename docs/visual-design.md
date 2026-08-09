@@ -53,6 +53,15 @@ inside the word.
 Sizes are custom properties set on the view container. Each element resolves
 its own with a single rule.
 
+Every number below is a multiple of `--kotoba-unit`, which is
+`calc(var(--screen-w, 800px) / 800)` — one unit equals 1px on an 800-wide
+panel. The Framework sets `--screen-w` per device (800px for `screen--og`,
+1040px for `screen--v2`, which is what a TRMNL X reports), so the whole card
+scales with the hardware instead of being pinned to the original panel. The
+table therefore reads in *baseline* pixels; on a 1040-wide screen everything
+is 1.3x larger. The `800px` fallback means a preview with a bare `.screen`
+renders exactly the tuned baseline.
+
 | | short | medium | long | xlong | gloss | example | translation |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Full 800×480 | 108 | 92 | 74 | 56 | 32 | 25 / 22 / 19 | 18 |
@@ -129,6 +138,21 @@ fallback varies between environments and would produce false failures. CI
 gates on a successful render producing non-empty output for every view of
 every fixture, and uploads the PNGs as artefacts. Changes to Liquid or CSS
 need a human to look at them.
+
+## Checking the larger panel
+
+`trmnlp` previews at 800x480 and emits a bare `.screen`, so to see what a
+TRMNL X gets, force both dimensions and render at that size:
+
+```sh
+printf '\n<style>.screen{--screen-w:1040px;--screen-h:780px;}</style>\n' >> src/shared.liquid
+bin/trmnlp build --png --width 1040 --height 780
+git checkout src/shared.liquid    # undo the override
+```
+
+Override *both* variables. Setting only the width grows the type while the
+layout box stays 480 tall, and the card overflows — which is a bug in the
+test, not in the design.
 
 ## Rendering PNGs locally
 

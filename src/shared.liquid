@@ -33,6 +33,13 @@
        system fallback stack. */
     --kotoba-ja: "Noto Sans CJK JP", "Noto Sans JP", "Hiragino Sans",
       "Yu Gothic", "Meiryo", "IPAexGothic", "TakaoPGothic", sans-serif;
+
+    /* One design unit. Every size below is a multiple of this, so the card
+       scales with the panel instead of being pinned to the original
+       800x480. The Framework sets --screen-w per device (800px on an OG,
+       1040px on a V2 / TRMNL X); the fallback keeps a bare `.screen`
+       preview identical to the tuned baseline. */
+    --kotoba-unit: calc(var(--screen-w, 800px) / 800);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -114,63 +121,65 @@
   }
 
   /* ---------------------------------------------------------------
-     Per-view dimensions. Tuned against `trmnlp build --png` output at
-     800x480; see docs/visual-design.md before changing them.
+     Per-view dimensions, in baseline pixels: the numbers are multiples of
+     --kotoba-unit, so they read as 800x480 pixels and scale automatically
+     on a larger panel. Tuned against `trmnlp build --png`; see
+     docs/visual-design.md before changing them.
      --------------------------------------------------------------- */
 
-  /* Full — 800 x 480 */
+  /* Full view */
   .kotoba--full {
-    --kotoba-word: 108px;
-    --kotoba-gloss: 32px;
-    --kotoba-example: 25px;
-    --kotoba-en: 18px;
-    --kotoba-gap: 20px;
+    --kotoba-word: calc(108 * var(--kotoba-unit));
+    --kotoba-gloss: calc(32 * var(--kotoba-unit));
+    --kotoba-example: calc(25 * var(--kotoba-unit));
+    --kotoba-en: calc(18 * var(--kotoba-unit));
+    --kotoba-gap: calc(20 * var(--kotoba-unit));
   }
-  .kotoba--full .is-medium { --kotoba-word: 92px; }
-  .kotoba--full .is-long   { --kotoba-word: 74px; }
-  .kotoba--full .is-xlong  { --kotoba-word: 56px; }
-  .kotoba--full .is-compact { --kotoba-example: 22px; }
-  .kotoba--full .is-tiny    { --kotoba-example: 19px; }
+  .kotoba--full .is-medium { --kotoba-word: calc(92 * var(--kotoba-unit)); }
+  .kotoba--full .is-long   { --kotoba-word: calc(74 * var(--kotoba-unit)); }
+  .kotoba--full .is-xlong  { --kotoba-word: calc(56 * var(--kotoba-unit)); }
+  .kotoba--full .is-compact { --kotoba-example: calc(22 * var(--kotoba-unit)); }
+  .kotoba--full .is-tiny    { --kotoba-example: calc(19 * var(--kotoba-unit)); }
 
-  /* Half horizontal — 800 x 240 */
+  /* Half horizontal */
   .kotoba--half-h {
-    --kotoba-word: 62px;
-    --kotoba-gloss: 23px;
-    --kotoba-example: 18px;
-    --kotoba-en: 15px;
-    --kotoba-gap: 8px;
+    --kotoba-word: calc(62 * var(--kotoba-unit));
+    --kotoba-gloss: calc(23 * var(--kotoba-unit));
+    --kotoba-example: calc(18 * var(--kotoba-unit));
+    --kotoba-en: calc(15 * var(--kotoba-unit));
+    --kotoba-gap: calc(8 * var(--kotoba-unit));
   }
-  .kotoba--half-h .is-medium { --kotoba-word: 54px; }
-  .kotoba--half-h .is-long   { --kotoba-word: 46px; }
-  .kotoba--half-h .is-xlong  { --kotoba-word: 38px; }
-  .kotoba--half-h .is-compact { --kotoba-example: 17px; }
-  .kotoba--half-h .is-tiny    { --kotoba-example: 16px; }
+  .kotoba--half-h .is-medium { --kotoba-word: calc(54 * var(--kotoba-unit)); }
+  .kotoba--half-h .is-long   { --kotoba-word: calc(46 * var(--kotoba-unit)); }
+  .kotoba--half-h .is-xlong  { --kotoba-word: calc(38 * var(--kotoba-unit)); }
+  .kotoba--half-h .is-compact { --kotoba-example: calc(17 * var(--kotoba-unit)); }
+  .kotoba--half-h .is-tiny    { --kotoba-example: calc(16 * var(--kotoba-unit)); }
 
-  /* Half vertical — 400 x 480 */
+  /* Half vertical */
   .kotoba--half-v {
-    --kotoba-word: 52px;
-    --kotoba-gloss: 21px;
-    --kotoba-example: 17px;
-    --kotoba-en: 14px;
-    --kotoba-gap: 14px;
+    --kotoba-word: calc(52 * var(--kotoba-unit));
+    --kotoba-gloss: calc(21 * var(--kotoba-unit));
+    --kotoba-example: calc(17 * var(--kotoba-unit));
+    --kotoba-en: calc(14 * var(--kotoba-unit));
+    --kotoba-gap: calc(14 * var(--kotoba-unit));
   }
-  .kotoba--half-v .is-medium { --kotoba-word: 46px; }
-  .kotoba--half-v .is-long   { --kotoba-word: 38px; }
-  .kotoba--half-v .is-xlong  { --kotoba-word: 30px; }
-  .kotoba--half-v .is-compact { --kotoba-example: 16px; }
-  .kotoba--half-v .is-tiny    { --kotoba-example: 15px; }
+  .kotoba--half-v .is-medium { --kotoba-word: calc(46 * var(--kotoba-unit)); }
+  .kotoba--half-v .is-long   { --kotoba-word: calc(38 * var(--kotoba-unit)); }
+  .kotoba--half-v .is-xlong  { --kotoba-word: calc(30 * var(--kotoba-unit)); }
+  .kotoba--half-v .is-compact { --kotoba-example: calc(16 * var(--kotoba-unit)); }
+  .kotoba--half-v .is-tiny    { --kotoba-example: calc(15 * var(--kotoba-unit)); }
 
-  /* Quadrant — 400 x 240 */
+  /* Quadrant */
   .kotoba--quadrant {
-    --kotoba-word: 40px;
-    --kotoba-gloss: 18px;
-    --kotoba-example: 15px;
-    --kotoba-en: 13px;
-    --kotoba-gap: 8px;
+    --kotoba-word: calc(40 * var(--kotoba-unit));
+    --kotoba-gloss: calc(18 * var(--kotoba-unit));
+    --kotoba-example: calc(15 * var(--kotoba-unit));
+    --kotoba-en: calc(13 * var(--kotoba-unit));
+    --kotoba-gap: calc(8 * var(--kotoba-unit));
   }
-  .kotoba--quadrant .is-medium { --kotoba-word: 34px; }
-  .kotoba--quadrant .is-long   { --kotoba-word: 28px; }
-  .kotoba--quadrant .is-xlong  { --kotoba-word: 24px; }
+  .kotoba--quadrant .is-medium { --kotoba-word: calc(34 * var(--kotoba-unit)); }
+  .kotoba--quadrant .is-long   { --kotoba-word: calc(28 * var(--kotoba-unit)); }
+  .kotoba--quadrant .is-xlong  { --kotoba-word: calc(24 * var(--kotoba-unit)); }
 
   /* Clamps ------------------------------------------------------------ */
   .kotoba-clamp-1,
