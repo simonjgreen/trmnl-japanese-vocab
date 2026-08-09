@@ -16,6 +16,7 @@ Stages, in order (see ``docs/data-sourcing.md``):
 from __future__ import annotations
 
 import json
+import re
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Iterable
@@ -42,6 +43,9 @@ from .sources.base import RawRecord
 #: A display gloss longer than this is trimmed to its first sense rather than
 #: being allowed to dominate the screen.
 DISPLAY_GLOSS_TARGET = 60
+#: Two lines are allowed for unusually long material; beyond this a gloss is
+#: truncated. Mirrors the validation limit.
+DISPLAY_GLOSS_HARD_MAX = 90
 
 
 @dataclass
@@ -112,35 +116,61 @@ def choose_display_gloss(glosses: Iterable[str]) -> str:
 
     Later glosses are consulted only when the first genuinely will not fit.
     """
-    candidates: list[str] = []
-    for gloss in glosses:
-        text = clean_text(gloss)
-        if not text:
-            continue
-        # Drop a trailing qualifier such as "to eat (colloquial)", but only
-        # when what remains still carries the meaning. "(be) still" and
-        # "(flower) vase" lead with the bracket and must be left alone.
-        if "(" in text and not text.startswith("("):
-            head = text.split("(", 1)[0].strip()
-            if len(head) >= 3:
-                text = head
-        text = text.rstrip(" ,;")
-        if text:
-            candidates.append(text)
-
+    candidates = [t for t in (_tidy_gloss(g) for g in glosses) if t]
     if not candidates:
         return ""
 
-    if len(candidates[0]) <= DISPLAY_GLOSS_TARGET:
-        return candidates[0]
+    primary = candidates[0]
+    if len(primary) <= DISPLAY_GLOSS_TARGET:
+        return primary
 
-    # The primary gloss is too long for the screen. Prefer a shorter
-    # alternative from the same sense over truncating mid-phrase.
+    # Too long for one comfortable line. Prefer, in order: a shorter sibling
+    # gloss, the first clause of a comma-separated list, then two lines.
     for alternative in candidates[1:4]:
         if len(alternative) <= DISPLAY_GLOSS_TARGET:
             return alternative
 
-    return candidates[0][: DISPLAY_GLOSS_TARGET - 1].rstrip(" ,;") + "…"
+    if ", " in primary:
+        # Some JMdict glosses are a whole list in one string, e.g.
+        # "wound, injury, hurt, cut, gash, bruise, scratch, scar, weak point".
+        # The first clause is the meaning; the rest is a thesaurus.
+        first_clause = primary.split(", ", 1)[0].strip()
+        if 3 <= len(first_clause) <= DISPLAY_GLOSS_HARD_MAX:
+            return first_clause
+
+    # Two lines are permitted for unusually long material, so use the full
+    # gloss up to the hard limit rather than truncating mid-word.
+    if len(primary) <= DISPLAY_GLOSS_HARD_MAX:
+        return primary
+
+    return primary[: DISPLAY_GLOSS_HARD_MAX - 1].rstrip(" ,;") + "…"
+
+
+#: Matches a parenthetical group at the very end of a gloss.
+_TRAILING_BRACKET = re.compile(r"\s*\([^()]*\)\s*$")
+
+
+def _tidy_gloss(gloss: str) -> str:
+    """Normalise one gloss for display.
+
+    Trailing qualifiers are dropped — "to eat (colloquial)" becomes "to eat",
+    and "(East Asian) rainy season (in Japan, usu. from early June to
+    mid-July)" becomes "(East Asian) rainy season". A *leading* bracket is
+    kept, because "(flower) vase" and "(be) still" lose their sense without
+    it.
+    """
+    text = clean_text(gloss)
+    if not text:
+        return ""
+
+    while True:
+        trimmed = _TRAILING_BRACKET.sub("", text).strip()
+        # Never trim away the whole gloss, and never leave a useless stub.
+        if trimmed == text or len(trimmed) < 3:
+            break
+        text = trimmed
+
+    return text.rstrip(" ,;")
 
 
 def build_entry(

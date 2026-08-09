@@ -4,7 +4,11 @@ from __future__ import annotations
 
 import pytest
 
-from kotoba.importer import DISPLAY_GLOSS_TARGET, choose_display_gloss
+from kotoba.importer import (
+    DISPLAY_GLOSS_HARD_MAX,
+    DISPLAY_GLOSS_TARGET,
+    choose_display_gloss,
+)
 
 
 class TestChooseDisplayGloss:
@@ -46,10 +50,26 @@ class TestChooseDisplayGloss:
         assert len(long_first) > DISPLAY_GLOSS_TARGET
         assert choose_display_gloss([long_first, "brief"]) == "brief"
 
-    def test_truncates_when_every_candidate_is_too_long(self):
-        long_gloss = "x" * 200
-        result = choose_display_gloss([long_gloss, "y" * 150])
-        assert len(result) <= DISPLAY_GLOSS_TARGET
+    def test_uses_two_lines_rather_than_truncating(self):
+        """Between the recommended and hard limits, let it wrap."""
+        gloss = "local specialty or souvenir bought as a gift while travelling"
+        assert DISPLAY_GLOSS_TARGET < len(gloss) <= DISPLAY_GLOSS_HARD_MAX
+        assert choose_display_gloss([gloss]) == gloss
+
+    def test_takes_the_first_clause_of_a_comma_list(self):
+        """Some JMdict glosses are a thesaurus crammed into one string."""
+        gloss = ("wound, injury, hurt, cut, gash, bruise, scratch, scar, "
+                 "weak point")
+        assert choose_display_gloss([gloss]) == "wound"
+
+    def test_strips_a_trailing_qualifier_even_with_a_leading_bracket(self):
+        gloss = ("(East Asian) rainy season "
+                 "(in Japan, usu. from early June to mid-July)")
+        assert choose_display_gloss([gloss]) == "(East Asian) rainy season"
+
+    def test_truncates_only_beyond_the_hard_limit(self):
+        result = choose_display_gloss(["x" * 200])
+        assert len(result) <= DISPLAY_GLOSS_HARD_MAX
         assert result.endswith("…")
 
     def test_ignores_blank_glosses(self):
@@ -61,6 +81,20 @@ class TestChooseDisplayGloss:
 
     def test_trims_trailing_punctuation(self):
         assert choose_display_gloss(["to run,"]) == "to run"
+
+
+def test_no_shipped_gloss_is_truncated():
+    """An ellipsis mid-word looks broken on a wall display."""
+    import glob
+    import json
+
+    truncated = [
+        e["surface"]
+        for path in glob.glob("data/vocabulary/*.json")
+        for e in json.load(open(path, encoding="utf-8"))
+        if e["display_gloss"].endswith("…")
+    ]
+    assert truncated == [], f"truncated glosses: {truncated[:10]}"
 
 
 def test_the_shipped_corpus_uses_primary_glosses():
