@@ -75,17 +75,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.3'
-          bundler-cache: false
-
-      - name: Install trmnlp
-        run: gem install trmnl_preview
-
-      - name: Lint the plugin
-        run: trmnlp lint
-
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -96,18 +85,20 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e '.[dev]'
 
-      - name: Install Japanese fonts
-        # The runner has no CJK coverage by default, so a render would come
-        # out as tofu boxes and prove nothing.
+      - name: Build the trmnlp image
+        # The same image used in local development: the official one carries
+        # no CJK fonts, so a render would come out as tofu boxes. Using Docker
+        # rather than `gem install trmnl_preview` also keeps CI on exactly the
+        # tool version this project is tested against — the released gem is
+        # older and has no `--png`.
+        run: docker build -f Dockerfile.trmnlp -t kotoba/trmnlp:latest .
+
+      - name: Lint the plugin
         run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends fonts-noto-cjk
-          fc-cache -f
+          docker run --rm -u "$(id -u):$(id -g)" -e HOME=/tmp \
+            -v "$PWD:/plugin" -w /plugin kotoba/trmnlp:latest lint
 
       - name: Render every view for every fixture
-        # HTML for all fixtures always; PNGs too, since the runner has a
-        # browser. Renders run against the locally installed trmnlp, so no
-        # Docker image is needed here.
         run: python scripts/render_fixtures.py --png
 
       - name: Package the manual-import ZIP

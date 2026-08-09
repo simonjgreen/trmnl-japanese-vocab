@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 import subprocess
 import sys
 import zipfile
@@ -192,6 +193,17 @@ class TestShippedSettings:
         assert not fields["data_base_url"]["default"].endswith("/")
 
     def test_no_secrets_are_committed(self, settings):
+        """No credential values. Naming the env var in a comment is fine."""
         text = (REPO / "src" / "settings.yml").read_text(encoding="utf-8")
-        assert "TRMNL_API_KEY" not in text
+        assert not re.search(r"user_[A-Za-z0-9]{12,}", text), "TRMNL API key committed"
+        assert not re.search(
+            r"(?i)(api[_-]?key|token|secret)\s*:\s*\S", text
+        ), "credential-shaped setting committed"
+        # Headers are where a key would most plausibly be smuggled in.
         assert settings.get("polling_headers", "") == ""
+
+    def test_plugin_id_is_committed(self, settings):
+        """Without an id, CI would create a new plugin on every deploy."""
+        assert isinstance(settings.get("id"), int), (
+            "src/settings.yml needs the plugin id from the first `trmnlp push`"
+        )

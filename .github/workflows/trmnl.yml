@@ -26,15 +26,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.3'
-
-      - name: Install trmnlp
-        run: gem install trmnl_preview
+      - name: Build the trmnlp image
+        # Pinned to the same tool the project is developed and tested against.
+        run: docker build -f Dockerfile.trmnlp -t kotoba/trmnlp:latest .
 
       - name: Lint the plugin
-        run: trmnlp lint
+        run: |
+          docker run --rm -u "$(id -u):$(id -g)" -e HOME=/tmp \
+            -v "$PWD:/plugin" -w /plugin kotoba/trmnlp:latest lint
 
       - name: Require a committed plugin id
         # Without an id, `trmnlp push` would create a brand new private plugin
@@ -64,4 +63,7 @@ jobs:
       - name: Push to TRMNL
         env:
           TRMNL_API_KEY: ${{ secrets.TRMNL_API_KEY }}
-        run: trmnlp push --force
+        run: |
+          docker run --rm -u "$(id -u):$(id -g)" -e HOME=/tmp \
+            -e TRMNL_API_KEY \
+            -v "$PWD:/plugin" -w /plugin kotoba/trmnlp:latest push --force
