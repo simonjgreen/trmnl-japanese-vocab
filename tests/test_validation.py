@@ -7,7 +7,6 @@ from pathlib import Path
 
 from kotoba.validation import validate_corpus
 
-from conftest import write_corpus
 
 
 def load(vocabulary_dir: Path, level: str) -> list[dict]:

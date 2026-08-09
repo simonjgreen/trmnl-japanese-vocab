@@ -1,4 +1,4 @@
-"""The daily payload contract, and the visual fixtures that stand in for it."""
+"""The slot card payload contract, and the visual fixtures that model it."""
 
 from __future__ import annotations
 

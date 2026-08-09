@@ -19,7 +19,7 @@ import yaml
 
 from .furigana import align
 from .importer import run_import
-from .models import LEVELS, level_key
+from .models import level_key
 from .provenance import SourceRegister
 from .selection import Scheduler
 from .site_builder import BuildConfig, SelectionConfig, build_site

@@ -170,24 +170,31 @@ Background and rebuild instructions: [docs/data-sourcing.md](docs/data-sourcing.
 | Command | What it does |
 | ------- | ------------ |
 | `make setup` | Create the virtualenv and install dependencies |
+| `make configure` | Point `settings.yml` at your own GitHub Pages URL |
+| `make trmnlp-image` | Build the `trmnlp` image with Japanese fonts (needed for PNGs) |
 | `make fetch-sources` | Download the upstream corpora (the only network step) |
 | `make import` | Rebuild the canonical corpus from `data/raw` |
 | `make import-demo` | Build the small committed demo corpus instead |
 | `make validate` | Check corpus, provenance and schemas |
+| `make notice` | Regenerate `NOTICE.md` from `data/sources.yml` |
 | `make test` | Run the test suite |
 | `make build-site` | Generate the full static site into `site/` |
 | `make validate-site` | Check the generated API |
+| `make manifest` | Summarise the generated build manifest |
 | `make preview` | Local preview stack on :4567 |
 | `make lint-plugin` | `trmnlp lint` |
-| `make render` / `make render-fixtures` | Render the reference fixture / all of them |
+| `make render` / `make render-fixtures` | Render the reference fixture / all of them, to HTML and PNG |
+| `make render-html` | Every fixture to HTML only — no Docker or browser needed |
+| `make render-devices` / `make render-devices-all` | Render on TRMNL's own panels / all 26 supported viewports |
 | `make package` | Flat plugin ZIP in `dist/` |
 | `make check` | Everything CI does, locally |
 | `make clean` | Remove generated output |
+| `make clean-raw` | Also remove the downloaded third-party corpora |
 
 There is also a `kotoba` CLI:
 
 ```sh
-kotoba inspect --level n3 --date 2026-08-09    # what will the screen show?
+kotoba inspect --level n3                      # what will the screen show?
 kotoba align --surface 取り除く --reading とりのぞく
 kotoba manifest
 ```

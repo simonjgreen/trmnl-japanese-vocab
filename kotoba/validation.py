@@ -10,18 +10,13 @@ from __future__ import annotations
 import json
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any
 
 import jsonschema
 
 from .furigana import check_segments
 from .models import LEVELS, STATUSES, VocabularyEntry, level_key
-from .normalise import (
-    clean_text,
-    display_width,
-    has_control_characters,
-    nfc,
-)
+from .normalise import display_width, has_control_characters, nfc
 from .provenance import SourceRegister
 
 DISPLAY_GLOSS_RECOMMENDED = 60
@@ -109,14 +104,6 @@ def _validator(schema: dict[str, Any], schema_dir: Path) -> jsonschema.Validator
         store[path.name] = doc
         if "$id" in doc:
             store[doc["$id"]] = doc
-
-    def retrieve(uri: str) -> jsonschema.validators.Resource:  # type: ignore[name-defined]
-        from referencing import Resource
-
-        key = uri.rsplit("/", 1)[-1]
-        if key in store:
-            return Resource.from_contents(store[key], default_specification=None)
-        raise LookupError(uri)
 
     from referencing import Registry, Resource
 

@@ -121,6 +121,14 @@ render-fixtures: ## Render every visual fixture to HTML and PNG
 render-html: ## Render every visual fixture to HTML only (no browser needed)
 	$(PYTHON) scripts/render_fixtures.py
 
+.PHONY: render-devices
+render-devices: ## Render the reference fixture on TRMNL's own panel sizes
+	$(PYTHON) scripts/render_devices.py --png
+
+.PHONY: render-devices-all
+render-devices-all: ## Render on all 26 supported device viewports
+	$(PYTHON) scripts/render_devices.py --png --all
+
 .PHONY: package
 package: ## Produce a flat private-plugin ZIP in dist/
 	$(PYTHON) scripts/package_plugin.py

@@ -160,20 +160,25 @@ gates on a successful render producing non-empty output for every view of
 every fixture, and uploads the PNGs as artefacts. Changes to Liquid or CSS
 need a human to look at them.
 
-## Checking the larger panel
+## Checking other panels
 
-`trmnlp` previews at 800x480 and emits a bare `.screen`, so to see what a
-TRMNL X gets, force both dimensions and render at that size:
+`trmnlp` previews at 800x480 and emits a bare `.screen`, so other devices have
+to be simulated by injecting the `--screen-w` / `--screen-h` the Framework
+would set. `scripts/render_devices.py` does that:
 
 ```sh
-printf '\n<style>.screen{--screen-w:1040px;--screen-h:780px;}</style>\n' >> src/shared.liquid
-bin/trmnlp build --png --width 1040 --height 780
-git checkout src/shared.liquid    # undo the override
+make render-devices        # TRMNL OG and TRMNL X
+make render-devices-all    # all 26 distinct viewports
 ```
 
-Override *both* variables. Setting only the width grows the type while the
-layout box stays 480 tall, and the card overflows — which is a bug in the
-test, not in the design.
+TRMNL supports around fifty devices, but what matters to this CSS is the *CSS
+viewport* — panel resolution divided by the device's scale factor, with a
+quarter-turn for rotated models. Those fifty collapse to 26 distinct
+viewports, listed in the script.
+
+Override *both* variables if doing it by hand. Setting only the width grows
+the type while the layout box stays 480 tall and the card overflows — a bug in
+the test, not the design.
 
 ## Rendering PNGs locally
 

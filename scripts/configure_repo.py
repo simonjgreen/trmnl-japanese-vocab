@@ -146,7 +146,7 @@ def main() -> int:
     print(f"configured {path} for {owner}/{repo}")
     print(f"\n  Pages site:   https://{owner}.github.io/{repo}/")
     print(f"  Data API:     {target}")
-    print(f"  Example URL:  {target}/daily/n5/2026-01-01.json")
+    print(f"  Example URL:  {target}/card/n5/0.json")
     print(
         "\nNext:\n"
         "  1. make validate && make build-site\n"

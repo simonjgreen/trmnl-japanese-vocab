@@ -37,7 +37,7 @@ from .models import (
     normalise_level,
     sort_entries,
 )
-from .normalise import clean_text, display_width
+from .normalise import clean_text
 from .sources.base import RawRecord
 
 #: A display gloss longer than this is trimmed to its first sense rather than

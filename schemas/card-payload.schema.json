@@ -1,33 +1,86 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://simonjgreen.github.io/trmnl-japanese-vocab/schemas/card-payload.schema.json",
+  "$id": "card-payload.schema.json",
   "title": "Kotoba slot card",
   "description": "One flash card, for one level and one time slot. The plugin's polling URL selects the slot from the clock, so the payload differs on every refresh and TRMNL re-renders instead of skipping.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "level", "level_display", "dataset_version", "selection_version", "slot", "sequence", "word"],
+  "required": [
+    "schema_version",
+    "level",
+    "level_display",
+    "dataset_version",
+    "selection_version",
+    "slot",
+    "sequence",
+    "word"
+  ],
   "properties": {
-    "schema_version": { "type": "string", "const": "3.0" },
-    "level": { "enum": ["n5", "n4", "n3", "n2", "n1"] },
-    "level_display": { "enum": ["N5", "N4", "N3", "N2", "N1"] },
-    "dataset_version": { "type": "string", "minLength": 1 },
-    "selection_version": { "type": "string", "minLength": 1 },
+    "schema_version": {
+      "type": "string",
+      "const": "3.0"
+    },
+    "level": {
+      "enum": [
+        "n5",
+        "n4",
+        "n3",
+        "n2",
+        "n1"
+      ]
+    },
+    "level_display": {
+      "enum": [
+        "N5",
+        "N4",
+        "N3",
+        "N2",
+        "N1"
+      ]
+    },
+    "dataset_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "selection_version": {
+      "type": "string",
+      "minLength": 1
+    },
     "slot": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["index", "seconds", "count"],
+      "required": [
+        "index",
+        "seconds",
+        "count"
+      ],
       "properties": {
-        "index": { "type": "integer", "minimum": 0 },
-        "seconds": { "type": "integer", "minimum": 1 },
-        "count": { "type": "integer", "minimum": 1 }
+        "index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "seconds": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "count": {
+          "type": "integer",
+          "minimum": 1
+        }
       }
     },
     "sequence": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["position", "pool"],
+      "required": [
+        "position",
+        "pool"
+      ],
       "properties": {
-        "position": { "type": "integer", "minimum": 1 },
+        "position": {
+          "type": "integer",
+          "minimum": 1
+        },
         "pool": {
           "type": "integer",
           "minimum": 1,
@@ -38,42 +91,109 @@
     "word": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "surface", "reading", "ruby_segments", "display_gloss", "level", "display"],
+      "required": [
+        "id",
+        "surface",
+        "reading",
+        "ruby_segments",
+        "display_gloss",
+        "level",
+        "display"
+      ],
       "properties": {
-        "id": { "type": "string", "minLength": 1 },
-        "surface": { "type": "string", "minLength": 1 },
-        "reading": { "type": "string", "minLength": 1 },
-        "level": { "enum": ["N5", "N4", "N3", "N2", "N1"] },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "surface": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reading": {
+          "type": "string",
+          "minLength": 1
+        },
+        "level": {
+          "enum": [
+            "N5",
+            "N4",
+            "N3",
+            "N2",
+            "N1"
+          ]
+        },
         "ruby_segments": {
           "type": "array",
           "minItems": 1,
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["base", "reading"],
+            "required": [
+              "base",
+              "reading"
+            ],
             "properties": {
-              "base": { "type": "string", "minLength": 1 },
-              "reading": { "type": ["string", "null"], "minLength": 1 }
+              "base": {
+                "type": "string",
+                "minLength": 1
+              },
+              "reading": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "minLength": 1
+              }
             }
           }
         },
-        "display_gloss": { "type": "string", "minLength": 1, "maxLength": 90 },
+        "display_gloss": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 90
+        },
         "example": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["ja"],
+          "required": [
+            "ja"
+          ],
           "properties": {
-            "ja": { "type": "string", "minLength": 1, "maxLength": 80 },
-            "en": { "type": "string", "minLength": 1, "maxLength": 160 }
+            "ja": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 80
+            },
+            "en": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 160
+            }
           }
         },
         "display": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["word_size", "example_size"],
+          "required": [
+            "word_size",
+            "example_size"
+          ],
           "properties": {
-            "word_size": { "enum": ["short", "medium", "long", "xlong"] },
-            "example_size": { "enum": ["normal", "compact", "tiny"] }
+            "word_size": {
+              "enum": [
+                "short",
+                "medium",
+                "long",
+                "xlong"
+              ]
+            },
+            "example_size": {
+              "enum": [
+                "normal",
+                "compact",
+                "tiny"
+              ]
+            }
           }
         }
       }

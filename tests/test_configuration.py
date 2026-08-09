@@ -234,7 +234,7 @@ class TestShippedSettings:
     def test_a_slot_is_no_longer_than_a_render_interval(self, settings):
         """Consecutive renders must always land in different slots.
 
-        The card is chosen as `floor(now / slot) % deck_size`. If a slot were
+        The card is chosen as `floor(now / slot) % slot_count`. If a slot were
         longer than the render interval, two renders in a row could fall
         inside the same slot and draw the same card — the screen would look
         stuck. Slot <= interval guarantees the index advances every time.

@@ -19,9 +19,7 @@ Usage::
 from __future__ import annotations
 
 import argparse
-import gzip
 import hashlib
-import io
 import shutil
 import sys
 import tarfile
@@ -47,7 +45,8 @@ FURIGANA_URL = (
     f"{FURIGANA_RELEASE.replace('+', '%2B')}/JmdictFurigana.txt"
 )
 
-USER_AGENT = "kotoba-trmnl-plugin/1.0 (+https://github.com/simonjgreen/trmnl-japanese-vocab)"
+# Identifies the tool to upstream hosts without naming a particular fork.
+USER_AGENT = "kotoba-trmnl-plugin/1.0 (+https://github.com/topics/trmnl)"
 
 
 def download(url: str, destination: Path) -> bytes:

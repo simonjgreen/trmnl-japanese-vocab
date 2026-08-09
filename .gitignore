@@ -23,3 +23,10 @@ __pycache__/
 
 # OS
 .DS_Store
+
+# The original prompt/specification this project was built from. Kept locally
+# for provenance; not tracked, because the implementation has since moved on
+# from it (word-of-the-day and the date-based API are both retired) and a
+# stale spec in-tree is worse than none. The design decisions that superseded
+# it are recorded in docs/adr/.
+trmnl-kotoba-claude-goal.md

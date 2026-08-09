@@ -51,10 +51,10 @@ want less automation or a different workflow.
 
    ```sh
    curl https://<owner>.github.io/<repo>/api/v1/manifest.json
-   curl https://<owner>.github.io/<repo>/api/v1/daily/n5/$(date +%F).json
+   curl https://<owner>.github.io/<repo>/api/v1/card/n5/0.json
    ```
 
-   Both must return JSON. The daily URL must exist for *today*.
+   Both must return JSON.
 
 8. **Authenticate with TRMNL and create the plugin.**
 
@@ -88,8 +88,9 @@ want less automation or a different workflow.
 
 Edit here, open a pull request, let CI run, merge. `pages.yml` redeploys the
 data when `data/`, `schemas/`, `kotoba/` or `config/` change; `trmnl.yml`
-redeploys the plugin when `src/` changes. A weekly scheduled Pages build rolls
-the date horizon forward.
+redeploys the plugin when `src/` changes. A weekly scheduled Pages build
+advances the rotation into fresh vocabulary — slot URLs carry no dates, so a
+missed run is never an outage.
 
 ## 2. Manual ZIP import
 
@@ -141,8 +142,8 @@ version. For something urgent, `bin/trmnlp push` from a known-good checkout.
 rebuild. Until it finishes, the previous deployment stays live — a failed build
 does not take the old site down.
 
-Note that reverting corpus changes also reverts future word assignments, since
-the cycle length is the corpus size. That is expected; see
+Note that reverting corpus changes also reverts which word lands in which slot,
+since the rotation is derived from the corpus. That is expected; see
 [ADR 3](adr/0003-deterministic-cycle-selection.md).
 
 ## Diagnostics
@@ -150,31 +151,41 @@ the cycle length is the corpus size. That is expected; see
 **The screen says "Vocabulary unavailable".** A payload was rendered but had no
 word. Check the resolved URL and look at the JSON.
 
-**The screen is blank or stale.** Usually a 404 — the plugin got no payload at
-all. An HTTP error cannot be rendered as the empty state, so this is the shape
-a missing date takes. Work through:
+**The screen is blank.** Usually a 404 — the plugin got no payload at all. An
+HTTP error cannot be rendered as the empty state, so that is the shape a bad
+URL takes. Work through:
 
 ```sh
-# 1. Is the site deployed and how far does it reach?
+# 1. Is the site deployed?
 curl https://<owner>.github.io/<repo>/health.json
 
-# 2. Does today's file exist for the selected level?
-curl -i https://<owner>.github.io/<repo>/api/v1/daily/n3/$(date +%F).json
+# 2. Does the slot the plugin is asking for exist?
+SLOT=$(( ($(date -u +%s) / 600) % 4096 ))
+curl -i https://<owner>.github.io/<repo>/api/v1/card/n3/$SLOT.json
 
 # 3. What does the plugin think it is requesting?
 #    TRMNL plugin page -> the resolved polling URL is shown there.
 ```
 
+If the slot maths above disagrees with the plugin, the constants in
+`src/settings.yml` have drifted from `config/build.yml`. A test catches that,
+so it should only happen if someone edits one by hand.
+
 Then check, in order:
 
 - Is Pages enabled with "GitHub Actions" as the source?
 - Did the last Pages run succeed? (Actions → Pages)
-- Does `manifest.json` cover today's date?
+- Does `manifest.json` report the same slot count the URL uses?
 - Does `data_base_url` match your Pages URL, with no trailing slash?
-- Is the device's time zone right? The URL uses the device's local date, so a
-  misconfigured zone asks for the wrong day.
+- The slot comes from UTC, so the device's time zone cannot affect which card
+  it asks for.
 
-**A word looks wrong.** `kotoba inspect --level n3 --date 2026-08-09` shows
-exactly what the build would produce, including the ruby segmentation.
+**A word looks wrong.** `kotoba inspect --level n3` shows exactly what the
+build would produce, including the ruby segmentation.
+
+**The screen is stuck on one word.** Check the plugin's Activity log in TRMNL.
+`Render skipped — no change in data` means it is being served an unchanging
+payload — the slot is not varying. Confirm the polling URL contains the
+`divided_by` / `modulo` expression and that consecutive slot files differ.
 
 **The plugin deploy fails with "No plugin id committed".** Step 9 above.

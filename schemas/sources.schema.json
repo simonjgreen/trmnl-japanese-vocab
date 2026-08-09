@@ -1,10 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://simonjgreen.github.io/trmnl-japanese-vocab/schemas/sources.schema.json",
+  "$id": "sources.schema.json",
   "title": "Kotoba data provenance register",
   "type": "object",
   "additionalProperties": false,
-  "required": ["sources"],
+  "required": [
+    "sources"
+  ],
   "properties": {
     "sources": {
       "type": "array",
@@ -12,19 +14,61 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["id", "name", "homepage", "licence", "licence_url", "attribution", "fields_used", "retrieved"],
+        "required": [
+          "id",
+          "name",
+          "homepage",
+          "licence",
+          "licence_url",
+          "attribution",
+          "fields_used",
+          "retrieved"
+        ],
         "properties": {
-          "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
-          "name": { "type": "string", "minLength": 1 },
-          "homepage": { "type": "string", "format": "uri" },
-          "retrieved": { "type": "string", "minLength": 4 },
-          "version": { "type": "string" },
-          "licence": { "type": "string", "minLength": 1 },
-          "licence_url": { "type": "string", "format": "uri" },
-          "attribution": { "type": "string", "minLength": 1 },
-          "fields_used": { "type": "array", "minItems": 1, "items": { "type": "string" } },
-          "checksum": { "type": "string" },
-          "redistribution_notes": { "type": "string" }
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]*$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "homepage": {
+            "type": "string",
+            "format": "uri"
+          },
+          "retrieved": {
+            "type": "string",
+            "minLength": 4
+          },
+          "version": {
+            "type": "string"
+          },
+          "licence": {
+            "type": "string",
+            "minLength": 1
+          },
+          "licence_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "attribution": {
+            "type": "string",
+            "minLength": 1
+          },
+          "fields_used": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string"
+            }
+          },
+          "checksum": {
+            "type": "string"
+          },
+          "redistribution_notes": {
+            "type": "string"
+          }
         }
       }
     }

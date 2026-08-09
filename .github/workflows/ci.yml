@@ -48,9 +48,9 @@ jobs:
         run: python -m pytest -q
 
       - name: Build the static site
-        # A short horizon: CI is checking correctness, not producing a
-        # deployable artefact. pages.yml builds the full ten-year range.
-        run: python -m kotoba.cli build-site --output site --past-days 7 --future-days 60
+        # A handful of slots: CI is checking correctness, not producing a
+        # deployable artefact. pages.yml builds the full slot space.
+        run: python -m kotoba.cli build-site --output site --slots 64
 
       - name: Validate the generated API
         run: python -m kotoba.cli validate-site --site site

@@ -1,6 +1,9 @@
 # 1. Date-specific static JSON on GitHub Pages
 
-**Status:** accepted (2026-08-09)
+**Status:** accepted (2026-08-09); the date-based URL scheme is superseded by
+[ADR 6](0006-flash-cards-per-time-slot.md), which replaced it with one file
+per time slot. The core decision — a static, precomputed JSON API on GitHub
+Pages rather than a server — still stands.
 
 ## Context
 
