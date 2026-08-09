@@ -490,7 +490,7 @@ def _check_file_invariants(
 def validate_site(
     site_dir: Path = Path("site"),
     schema_dir: Path = Path("schemas"),
-    hard_size_limit: int = 10_240,
+    hard_size_limit: int = 8192,
 ) -> Report:
     """Validate the generated static API against its schema and constraints."""
     report = Report()
@@ -504,27 +504,40 @@ def validate_site(
         return report
 
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    payload_schema = load_schema("daily-payload.schema.json", schema_dir)
+    slot_count = manifest.get("slots", {}).get("count")
+    payload_schema = load_schema("card-payload.schema.json", schema_dir)
     validator = _validator(payload_schema, schema_dir)
 
     checked = 0
     for key in ("n5", "n4", "n3", "n2", "n1"):
-        level_dir = api / "daily" / key
+        level_dir = api / "card" / key
         if not level_dir.is_dir():
             report.error(f"missing generated level directory {level_dir}")
             continue
 
-        files = sorted(
-            p for p in level_dir.glob("*.json") if p.stem not in ("latest", "sample")
+        slots = sorted(
+            (p for p in level_dir.glob("*.json") if p.stem != "sample"),
+            key=lambda p: int(p.stem),
         )
         expected = manifest.get("generated_files", {}).get(key)
-        if expected is not None and expected != len(files):
+        if expected is not None and expected != len(slots):
             report.error(
-                f"manifest claims {expected} files for {key} but {len(files)} exist",
+                f"manifest claims {expected} slots for {key} but {len(slots)} exist",
                 file=str(level_dir),
             )
 
-        for path in files:
+        # Every slot the polling URL can ask for must exist, or a device
+        # lands on a 404 and shows nothing at all.
+        if slot_count is not None:
+            present = {int(p.stem) for p in slots}
+            missing = [i for i in range(slot_count) if i not in present]
+            if missing:
+                report.error(
+                    f"{len(missing)} slot file(s) missing, first {missing[:3]}",
+                    file=str(level_dir),
+                )
+
+        for path in slots:
             checked += 1
             size = path.stat().st_size
             if size > hard_size_limit:
@@ -539,9 +552,10 @@ def validate_site(
                     file=str(path),
                     path=".".join(str(p) for p in error.absolute_path),
                 )
-            if payload.get("date") != path.stem:
+            if payload.get("slot", {}).get("index") != int(path.stem):
                 report.error(
-                    f"payload date {payload.get('date')!r} does not match filename",
+                    f"slot index {payload.get('slot', {}).get('index')!r} does not "
+                    "match filename",
                     file=str(path),
                 )
             if payload.get("level") != key:
@@ -550,17 +564,8 @@ def validate_site(
                     file=str(path),
                 )
 
-        latest = level_dir / "latest.json"
-        if not latest.exists():
-            report.error(f"missing {latest}")
-        elif files:
-            expected_latest = json.loads(files[-1].read_text(encoding="utf-8"))
-            actual_latest = json.loads(latest.read_text(encoding="utf-8"))
-            if actual_latest.get("date") != expected_latest.get("date"):
-                report.error(
-                    "latest.json does not match the newest generated payload",
-                    file=str(latest),
-                )
+        if not (level_dir / "sample.json").exists():
+            report.error(f"missing {level_dir / 'sample.json'}")
 
     report.counts["payloads_checked"] = checked
     return report

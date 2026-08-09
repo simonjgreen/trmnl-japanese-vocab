@@ -1,8 +1,11 @@
-"""Generate the static date-specific JSON API served from GitHub Pages.
+"""Generate the static JSON API served from GitHub Pages.
 
-One tiny document per level per date. The payload changes every day, which is
-what gives TRMNL a reason to redraw the screen, and a date-specific URL is
-naturally cacheable and inspectable in a browser.
+One tiny document per level per time slot. TRMNL skips rendering when a
+polled payload is unchanged, so the card has to differ in the *data* rather
+than being chosen in the template — each slot is its own file, and the
+plugin's polling URL selects one from the clock.
+
+Slot URLs carry no date, so the API cannot run out of coverage.
 """
 
 from __future__ import annotations
@@ -20,7 +23,7 @@ from .models import LEVELS, VocabularyEntry, level_display, level_key
 from .normalise import display_width
 from .selection import Scheduler
 
-SCHEMA_VERSION = "2.0"
+SCHEMA_VERSION = "3.0"
 
 #: Levels from easiest to hardest. A learner's deck is every level up to and
 #: including the one they choose, so N3 means N5 + N4 + N3.
@@ -49,32 +52,28 @@ EXAMPLE_SIZE_FALLBACK = "tiny"
 
 @dataclass(frozen=True)
 class BuildConfig:
-    past_days: int = 90
-    future_days: int = 3650
-    recommended_bytes: int = 5120
-    hard_limit_bytes: int = 10240
+    recommended_bytes: int = 2048
+    hard_limit_bytes: int = 8192
     minify: bool = True
     status: str = "production"
     minimum_entries_per_level: int = 1
-    #: Cards per daily deck, and how long each card stays on screen.
-    deck_size: int = 100
+    #: How long one card stays up, and how many slot files exist per level.
     slot_seconds: int = 600
+    slot_count: int = 4096
 
     @staticmethod
     def load(path: Path) -> "BuildConfig":
         raw = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
-        date_range = raw.get("date_range", {})
         payload = raw.get("payload", {})
+        slots = raw.get("slots", {})
         return BuildConfig(
-            past_days=int(date_range.get("past_days", 90)),
-            future_days=int(date_range.get("future_days", 3650)),
-            recommended_bytes=int(payload.get("recommended_bytes", 5120)),
-            hard_limit_bytes=int(payload.get("hard_limit_bytes", 10240)),
+            recommended_bytes=int(payload.get("recommended_bytes", 2048)),
+            hard_limit_bytes=int(payload.get("hard_limit_bytes", 8192)),
             minify=bool(payload.get("minify", True)),
             status=str(raw.get("status", "production")),
             minimum_entries_per_level=int(raw.get("minimum_entries_per_level", 1)),
-            deck_size=int(raw.get("deck", {}).get("size", 100)),
-            slot_seconds=int(raw.get("deck", {}).get("slot_seconds", 600)),
+            slot_seconds=int(slots.get("seconds", 600)),
+            slot_count=int(slots.get("count", 4096)),
         )
 
 
@@ -159,12 +158,18 @@ def cumulative_entries(
 # --------------------------------------------------------------------------
 
 
-def build_word(entry: VocabularyEntry, position: int, total: int) -> dict[str, Any]:
-    """One card. No HTML, no markup, no remote references.
-
-    Kept deliberately lean: a deck carries around a hundred of these, so a
-    field that is not rendered is a field worth dropping.
-    """
+def build_card(
+    entry: VocabularyEntry,
+    level: str,
+    slot: int,
+    position: int,
+    pool: int,
+    dataset_version: str,
+    selection_version: str,
+    slot_seconds: int,
+    slot_count: int,
+) -> dict[str, Any]:
+    """One slot's payload: exactly the card to show. No HTML, no markup."""
     word: dict[str, Any] = {
         "id": entry.id,
         "surface": entry.surface,
@@ -182,46 +187,20 @@ def build_word(entry: VocabularyEntry, position: int, total: int) -> dict[str, A
         "word_size": word_size_class(entry),
         "example_size": example_size_class(entry),
     }
-    word["sequence"] = {"position": position, "total": total}
-    return word
-
-
-def build_payload(
-    entries: list[VocabularyEntry],
-    selections: list[Any],
-    level: str,
-    day: date,
-    dataset_version: str,
-    selection_version: str,
-    slot_seconds: int,
-) -> dict[str, Any]:
-    """Build one day's deck.
-
-    The plugin picks a card from this deck using the current timestamp, which
-    is what turns a static file into flash cards: the payload for a date is
-    fixed and cacheable, but which card is on screen changes every
-    ``slot_seconds``.
-    """
-    by_id = {e.id: e for e in entries}
-    words = [
-        build_word(by_id[s.entry_id], s.position, s.total)
-        for s in selections
-        if s.entry_id in by_id
-    ]
 
     return {
         "schema_version": SCHEMA_VERSION,
-        "date": day.isoformat(),
         "level": level,
         "level_display": level_display(level),
         "dataset_version": dataset_version,
         "selection_version": selection_version,
-        "deck": {
-            "size": len(words),
-            "slot_seconds": slot_seconds,
-            "pool": len(entries),
+        "slot": {
+            "index": slot,
+            "seconds": slot_seconds,
+            "count": slot_count,
         },
-        "words": words,
+        "sequence": {"position": position, "pool": pool},
+        "word": word,
     }
 
 
@@ -239,14 +218,14 @@ def dump_payload(payload: dict[str, Any], minify: bool) -> str:
 
 @dataclass
 class BuildResult:
-    start_date: date
-    end_date: date
     entry_counts: dict[str, int]
     pool_counts: dict[str, int]
     file_counts: dict[str, int]
     dataset_version: str
     largest_payload: int
     oversized: list[str]
+    slot_seconds: int
+    slot_count: int
 
 
 def build_site(
@@ -264,12 +243,9 @@ def build_site(
     today = today or datetime.now(timezone.utc).date()
     generated_at = generated_at or datetime.now(timezone.utc)
 
-    start_date = today - timedelta(days=build_config.past_days)
-    end_date = today + timedelta(days=build_config.future_days)
-
     api_dir = output_dir / "api" / "v1"
-    daily_dir = api_dir / "daily"
-    daily_dir.mkdir(parents=True, exist_ok=True)
+    card_dir = api_dir / "card"
+    card_dir.mkdir(parents=True, exist_ok=True)
 
     entry_counts: dict[str, int] = {}
     pool_counts: dict[str, int] = {}
@@ -277,14 +253,17 @@ def build_site(
     largest = 0
     oversized: list[str] = []
 
+    # Where in the rotation this build starts. Advancing it with the calendar
+    # means successive rebuilds carry on through the corpus rather than
+    # replaying the same slice, which matters for the larger levels where the
+    # pool is bigger than the slot space.
+    build_offset = (today - selection_config.epoch_date).days
+
     for level in LEVELS:
         key = level_key(level)
         # The learner's pool is this level plus every easier one.
         active = cumulative_entries(corpus, key)
         own = sum(1 for e in corpus.get(key, []) if e.is_active)
-        # Two different numbers, both worth reporting: how many words the
-        # corpus holds at this level, and how many a learner at this level
-        # can actually be shown once easier levels are included.
         entry_counts[key] = own
         pool_counts[key] = len(active)
         if not active:
@@ -295,6 +274,7 @@ def build_site(
                 f"{build_config.minimum_entries_per_level}"
             )
 
+        by_id = {e.id: e for e in active}
         scheduler = Scheduler(
             [e.id for e in active],
             key,
@@ -303,45 +283,39 @@ def build_site(
             selection_config.selection_salt,
         )
 
-        level_dir = daily_dir / key
+        level_dir = card_dir / key
         level_dir.mkdir(parents=True, exist_ok=True)
 
-        count = 0
-        last_text = ""
-        day = start_date
-        while day <= end_date:
-            payload = build_payload(
-                active,
-                scheduler.deck(day, build_config.deck_size),
+        for slot in range(build_config.slot_count):
+            selection = scheduler.at_position(build_offset + slot)
+            payload = build_card(
+                by_id[selection.entry_id],
                 key,
-                day,
+                slot,
+                selection.position,
+                selection.total,
                 dataset_version,
                 selection_config.selection_version,
                 build_config.slot_seconds,
+                build_config.slot_count,
             )
             text = dump_payload(payload, build_config.minify)
             size = len(text.encode("utf-8"))
             largest = max(largest, size)
             if size > build_config.hard_limit_bytes:
-                oversized.append(f"{key}/{day.isoformat()} ({size} bytes)")
-            (level_dir / f"{day.isoformat()}.json").write_text(text, encoding="utf-8")
-            count += 1
-            last_text = text
-            day += timedelta(days=1)
+                oversized.append(f"{key}/{slot} ({size} bytes)")
+            (level_dir / f"{slot}.json").write_text(text, encoding="utf-8")
 
-        file_counts[key] = count
-        # For inspection only; the plugin always requests a date-specific path.
-        (level_dir / "latest.json").write_text(last_text, encoding="utf-8")
+        file_counts[key] = build_config.slot_count
+        # For inspection only; the plugin always requests a slot path.
         (level_dir / "sample.json").write_text(
             dump_payload(
-                build_payload(
-                    active,
-                    scheduler.deck(today, build_config.deck_size),
-                    key,
-                    today,
-                    dataset_version,
-                    selection_config.selection_version,
-                    build_config.slot_seconds,
+                build_card(
+                    by_id[scheduler.at_position(build_offset).entry_id],
+                    key, 0, scheduler.at_position(build_offset).position,
+                    scheduler.at_position(build_offset).total,
+                    dataset_version, selection_config.selection_version,
+                    build_config.slot_seconds, build_config.slot_count,
                 ),
                 minify=False,
             ),
@@ -360,14 +334,15 @@ def build_site(
         "selection_version": selection_config.selection_version,
         "epoch_date": selection_config.epoch_date.isoformat(),
         "status": build_config.status,
-        "earliest_date": start_date.isoformat(),
-        "latest_date": end_date.isoformat(),
         "active_entries": entry_counts,
         "deck_pool": pool_counts,
         "generated_files": file_counts,
-        "deck": {
-            "size": build_config.deck_size,
-            "slot_seconds": build_config.slot_seconds,
+        "slots": {
+            "seconds": build_config.slot_seconds,
+            "count": build_config.slot_count,
+            "cycle_days": round(
+                build_config.slot_count * build_config.slot_seconds / 86400, 1
+            ),
             "cumulative_levels": True,
         },
         "sources": sources_summary or [],
@@ -381,10 +356,9 @@ def build_site(
         "status": "ok",
         "dataset_version": dataset_version,
         "generated_at": manifest["generated_at"],
-        "earliest_date": manifest["earliest_date"],
-        "latest_date": manifest["latest_date"],
         "total_active_entries": sum(entry_counts.values()),
         "deck_pool": pool_counts,
+        "slots": manifest["slots"],
         "data_status": build_config.status,
     }
     (output_dir / "health.json").write_text(
@@ -397,14 +371,14 @@ def build_site(
     (output_dir / ".nojekyll").write_text("", encoding="utf-8")
 
     return BuildResult(
-        start_date=start_date,
-        end_date=end_date,
         entry_counts=entry_counts,
         pool_counts=pool_counts,
         file_counts=file_counts,
         dataset_version=dataset_version,
         largest_payload=largest,
         oversized=oversized,
+        slot_seconds=build_config.slot_seconds,
+        slot_count=build_config.slot_count,
     )
 
 
@@ -428,12 +402,12 @@ def render_index(manifest: dict[str, Any], today: date) -> str:
     licence, so the source credits are part of the page rather than a link.
     """
     rows = "".join(
-        "<tr><td><code>{key}</code></td><td>{count}</td>"
-        '<td><a href="api/v1/daily/{key}/{today}.json">today</a></td>'
-        '<td><a href="api/v1/daily/{key}/sample.json">sample</a></td></tr>'.format(
+        "<tr><td><code>{key}</code></td><td>{own}</td><td>{pool}</td>"
+        '<td><a href="api/v1/card/{key}/0.json">slot 0</a></td>'
+        '<td><a href="api/v1/card/{key}/sample.json">sample</a></td></tr>'.format(
             key=key,
-            count=manifest["active_entries"].get(key, 0),
-            today=today.isoformat(),
+            own=manifest["active_entries"].get(key, 0),
+            pool=manifest["deck_pool"].get(key, 0),
         )
         for key in ("n5", "n4", "n3", "n2", "n1")
     )
@@ -453,11 +427,14 @@ def render_index(manifest: dict[str, Any], today: date) -> str:
 <h1>Kotoba — JLPT Word of the Day</h1>
 <p class="sub">Static data API for the TRMNL private plugin.</p>
 
-<p>Each day and level resolves to one small JSON document. The plugin requests
-a date-specific path built from its selected level and the device's local date.</p>
+<p>Each level and time slot resolves to one small JSON document holding a
+single card. The plugin builds the path from its selected level and the
+current time, so the card changes every
+<code>" + str(manifest["slots"]["seconds"]) + "</code> seconds. A level includes every easier level, so
+N3 draws on N5, N4 and N3 together.</p>
 
 <table>
-<thead><tr><th>Level</th><th>Active words</th><th>Today</th><th>Sample</th></tr></thead>
+<thead><tr><th>Level</th><th>Own words</th><th>Deck pool</th><th>Slot 0</th><th>Sample</th></tr></thead>
 <tbody>{rows}</tbody>
 </table>
 
@@ -471,7 +448,9 @@ a date-specific path built from its selected level and the device's local date.<
 <li>Dataset version: <code>{html.escape(str(manifest["dataset_version"]))}</code></li>
 <li>Selection version: <code>{html.escape(str(manifest["selection_version"]))}</code></li>
 <li>Generated: <code>{html.escape(str(manifest["generated_at"]))}</code></li>
-<li>Date coverage: <code>{manifest["earliest_date"]}</code> to <code>{manifest["latest_date"]}</code></li>
+<li>Slots: <code>{manifest["slots"]["count"]}</code> per level, one every
+    <code>{manifest["slots"]["seconds"]}s</code> — a
+    <code>{manifest["slots"]["cycle_days"]}</code>-day cycle</li>
 <li>Data status: <code>{html.escape(str(manifest["status"]))}</code></li>
 </ul>
 

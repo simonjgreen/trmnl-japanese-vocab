@@ -1,32 +1,32 @@
 ---
-# Rolling date coverage for the generated static API.
-# A deck payload is ~20 KB, so the horizon trades directly against site size.
-# 365 days of cushion still means a year of missed weekly builds before a
-# device could run out of dates.
-date_range:
-  past_days: 14
-  future_days: 365
+# Flash cards as one file per time slot.
+#
+# TRMNL skips rendering when a polled payload is byte-identical to the last
+# one ("Render skipped — no change in data" in its activity log). A deck in a
+# per-date file therefore renders once a day however clever the template is.
+# The card must differ per slot in the *data*, so each slot is its own file
+# and the polling URL selects it from the clock.
+#
+# A pleasant side effect: no dates in the URL means the API can never run out
+# of them, so there is no horizon to keep rolling forward and no 404 risk from
+# a stalled schedule.
+slots:
+  # How long one card stays up. Kept below TRMNL's 15-minute maximum refresh
+  # rate so consecutive polls always land in different slots; at exactly 15
+  # minutes a poll arriving early would sometimes repeat a card.
+  seconds: 600
 
-# Hard ceiling on a single daily payload. Anything larger is a build failure.
-# These limits are ours, not TRMNL's: the payload is fetched by TRMNL's
-# server, never by the device, so a deck of tens of KB costs the device
-# nothing.
+  # How many slot files per level. 4096 x 600s is just over 28 days before the
+  # sequence repeats, at 4096 x 5 = 20,480 small files.
+  #
+  # This number is duplicated in the polling URL in src/settings.yml, because
+  # a Liquid modulo needs a literal. A test asserts the two agree.
+  count: 4096
+
 payload:
-  recommended_bytes: 24576
-  hard_limit_bytes: 32768
+  recommended_bytes: 2048
+  hard_limit_bytes: 8192
   minify: true
-
-# Flash-card behaviour. The daily payload carries a deck; the plugin picks a
-# card from it using the current timestamp, so the screen changes on every
-# refresh rather than once a day.
-deck:
-  # 50 cards a day. At a 10-minute slot and a device refreshing every 15-30
-  # minutes, the learner sees close to the whole deck once per day, and the
-  # deck moves on to fresh words tomorrow.
-  size: 50
-  # How long one card stays up. Must be shorter than the device's refresh
-  # interval, or the same card is drawn twice running.
-  slot_seconds: 600
 
 # `demo` relaxes the per-level minimum; `production` enforces it.
 status: production

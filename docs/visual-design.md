@@ -91,7 +91,7 @@ If you add CSS, run `make lint-plugin` before pushing.
 
 ## The level strip
 
-A deck is cumulative, so an N3 learner sees N5 and N4 cards too. Rather than a
+A level is cumulative, so an N3 learner sees N5 and N4 cards too. Rather than a
 compound label like `N3 · N4`, which reads as a puzzle, the title bar lists the
 whole range and underlines where this card sits:
 

@@ -1,40 +1,37 @@
 {
-  "schema_version": "2.0",
-  "date": "2026-08-09",
+  "schema_version": "3.0",
   "level": "n5",
   "level_display": "N5",
   "dataset_version": "fixture",
   "selection_version": "1",
-  "deck": {
-    "size": 1,
-    "slot_seconds": 600,
+  "slot": {
+    "index": 0,
+    "seconds": 600,
+    "count": 4096
+  },
+  "sequence": {
+    "position": 42,
     "pool": 650
   },
-  "words": [
-    {
-      "id": "demo:本",
-      "surface": "本",
-      "reading": "ほん",
-      "ruby_segments": [
-        {
-          "base": "本",
-          "reading": "ほん"
-        }
-      ],
-      "display_gloss": "book",
-      "example": {
-        "ja": "図書館で本を借りました。",
-        "en": "I borrowed a book from the library."
-      },
-      "display": {
-        "word_size": "short",
-        "example_size": "normal"
-      },
-      "level": "N5",
-      "sequence": {
-        "position": 42,
-        "total": 650
+  "word": {
+    "id": "demo:本",
+    "surface": "本",
+    "reading": "ほん",
+    "ruby_segments": [
+      {
+        "base": "本",
+        "reading": "ほん"
       }
-    }
-  ]
+    ],
+    "display_gloss": "book",
+    "example": {
+      "ja": "図書館で本を借りました。",
+      "en": "I borrowed a book from the library."
+    },
+    "display": {
+      "word_size": "short",
+      "example_size": "normal"
+    },
+    "level": "N5"
+  }
 }

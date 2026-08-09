@@ -168,12 +168,8 @@ def cmd_validate(args: argparse.Namespace) -> int:
 
 def cmd_build_site(args: argparse.Namespace) -> int:
     build_config = BuildConfig.load(Path(args.build_config))
-    if args.past_days is not None:
-        build_config = BuildConfig(**{**build_config.__dict__, "past_days": args.past_days})
-    if args.future_days is not None:
-        build_config = BuildConfig(
-            **{**build_config.__dict__, "future_days": args.future_days}
-        )
+    if args.slots is not None:
+        build_config = BuildConfig(**{**build_config.__dict__, "slot_count": args.slots})
     if args.demo:
         build_config = BuildConfig(
             **{**build_config.__dict__, "status": "demo", "minimum_entries_per_level": 1}
@@ -209,9 +205,10 @@ def cmd_build_site(args: argparse.Namespace) -> int:
     _emit(
         {
             "dataset_version": result.dataset_version,
-            "earliest_date": result.start_date.isoformat(),
-            "latest_date": result.end_date.isoformat(),
+            "slot_seconds": result.slot_seconds,
+            "slot_count": result.slot_count,
             "active_entries": result.entry_counts,
+            "deck_pool": result.pool_counts,
             "generated_files": result.file_counts,
             "largest_payload_bytes": result.largest_payload,
         },
@@ -219,10 +216,11 @@ def cmd_build_site(args: argparse.Namespace) -> int:
         "\n".join(
             [
                 f"dataset {result.dataset_version}",
-                f"dates {result.start_date} to {result.end_date}",
-                "active entries: "
-                + ", ".join(f"{k}={v}" for k, v in result.entry_counts.items()),
-                f"generated {total_files} daily payloads into {output}",
+                f"{result.slot_count} slots of {result.slot_seconds}s "
+                f"(~{result.slot_count * result.slot_seconds / 86400:.1f} day cycle)",
+                "deck pools: "
+                + ", ".join(f"{k}={v}" for k, v in result.pool_counts.items()),
+                f"generated {total_files} card payloads into {output}",
                 f"largest payload {result.largest_payload} bytes",
             ]
         ),
@@ -341,7 +339,7 @@ def cmd_manifest(args: argparse.Namespace) -> int:
             [
                 f"dataset {manifest['dataset_version']} ({manifest['status']})",
                 f"generated {manifest['generated_at']} from commit {manifest.get('commit_sha')}",
-                f"dates {manifest['earliest_date']} to {manifest['latest_date']}",
+                f"slots {manifest['slots']['count']} x {manifest['slots']['seconds']}s",
                 "active entries: "
                 + ", ".join(f"{k}={v}" for k, v in manifest["active_entries"].items()),
                 "files: "
@@ -390,8 +388,9 @@ def build_parser() -> argparse.ArgumentParser:
     p_build.add_argument("--output", default="site")
     p_build.add_argument("--build-config", default="config/build.yml")
     p_build.add_argument("--selection-config", default="config/selection.yml")
-    p_build.add_argument("--past-days", type=int)
-    p_build.add_argument("--future-days", type=int)
+    p_build.add_argument(
+        "--slots", type=int, help="override the number of slot files per level"
+    )
     p_build.add_argument("--today", help="override today's date (YYYY-MM-DD)")
     p_build.add_argument("--commit-sha")
     p_build.add_argument("--demo", action="store_true")

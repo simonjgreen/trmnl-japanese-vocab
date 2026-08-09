@@ -6,7 +6,7 @@ static_data: ''
 polling_verb: get
 framework_version: latest
 serverless_language:
-polling_url: '{{ data_base_url }}/daily/{{ jlpt_level }}/{{ "now" | date: "%s" | plus: trmnl.user.utc_offset | date: "%Y-%m-%d" }}.json'
+polling_url: '{{ data_base_url }}/card/{{ jlpt_level }}/{{ "now" | date: "%s" | divided_by: 600 | modulo: 4096 }}.json'
 polling_headers: ''
 polling_body:
 id: 410659

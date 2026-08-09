@@ -160,6 +160,29 @@ class TestShippedSettings:
     def test_description_fits_trmnls_limit(self, settings):
         assert len(settings["description"]) <= 35
 
+    def test_polling_url_constants_match_the_build_config(self, settings):
+        """A Liquid modulo needs literals, so slot length and count are
+
+        duplicated in the polling URL. If they drift from config/build.yml the
+        plugin asks for slots that were never generated, and the device gets a
+        404 and a blank screen.
+        """
+        import yaml as _yaml
+
+        build = _yaml.safe_load(
+            (REPO / "config" / "build.yml").read_text(encoding="utf-8")
+        )
+        url = settings["polling_url"]
+        assert f"divided_by: {build['slots']['seconds']}" in url, url
+        assert f"modulo: {build['slots']['count']}" in url, url
+
+    def test_polling_url_selects_a_card_slot(self, settings):
+        url = settings["polling_url"]
+        assert "{{ data_base_url }}" in url
+        assert "{{ jlpt_level }}" in url
+        assert "/card/" in url
+        assert '"now" | date: "%s"' in url
+
     def test_a_slot_is_no_longer_than_a_render_interval(self, settings):
         """Consecutive renders must always land in different slots.
 
@@ -177,20 +200,13 @@ class TestShippedSettings:
         build = _yaml.safe_load(
             (REPO / "config" / "build.yml").read_text(encoding="utf-8")
         )
-        slot_seconds = build["deck"]["slot_seconds"]
+        slot_seconds = build["slots"]["seconds"]
         interval_seconds = settings["refresh_interval"] * 60
         assert settings["strategy"] == "polling"
         assert slot_seconds <= interval_seconds, (
             f"deck.slot_seconds ({slot_seconds}) exceeds the render interval "
             f"({interval_seconds}s); cards would repeat across refreshes"
         )
-
-    def test_polling_url_uses_level_and_local_date(self, settings):
-        url = settings["polling_url"]
-        assert "{{ data_base_url }}" in url
-        assert "{{ jlpt_level }}" in url
-        assert "trmnl.user.utc_offset" in url
-        assert '"%Y-%m-%d"' in url
 
     def test_all_expected_fields_exist_with_the_right_defaults(self, settings):
         fields = {f["keyname"]: f for f in settings["custom_fields"]}

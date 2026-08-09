@@ -24,7 +24,6 @@ REQUIRED_FIXTURES = (
     "with_translation",
     "with_progress",
     "empty_state",
-    "deck_mixed_levels",
     "level_strip_middle",
     "xlong_word",
     "wide_ruby",
@@ -34,7 +33,7 @@ REQUIRED_FIXTURES = (
 
 @pytest.fixture
 def validator(schemas_dir):
-    return _validator(load_schema("daily-payload.schema.json", schemas_dir), schemas_dir)
+    return _validator(load_schema("card-payload.schema.json", schemas_dir), schemas_dir)
 
 
 def payload(name: str) -> dict:
@@ -58,16 +57,16 @@ def test_fixtures_satisfy_the_payload_schema(name, validator):
     assert errors == [], [e.message for e in errors]
 
 
-def test_empty_state_fixture_deliberately_has_no_cards(validator):
+def test_empty_state_fixture_deliberately_has_no_card(validator):
     doc = payload("empty_state")
-    assert doc["words"] == []
+    assert "word" not in doc
     # It is intentionally not schema-valid: it models a payload the renderer
     # must survive, not one the builder would ever produce.
     assert list(validator.iter_errors(doc))
 
 
 def first_card(name: str) -> dict:
-    return payload(name)["words"][0]
+    return payload(name)["word"]
 
 
 LEVEL_ORDER = ("N5", "N4", "N3", "N2", "N1")
@@ -83,12 +82,12 @@ def test_every_card_sits_within_its_deck_level():
     offenders = []
     for path in FIXTURES.glob("*.json"):
         doc = payload(path.stem)
-        if not doc.get("words"):
+        card = doc.get("word")
+        if not card:
             continue
         limit = LEVEL_ORDER.index(doc["level_display"])
-        for card in doc["words"]:
-            if LEVEL_ORDER.index(card["level"]) > limit:
-                offenders.append((path.stem, card["surface"], card["level"]))
+        if LEVEL_ORDER.index(card["level"]) > limit:
+            offenders.append((path.stem, card["surface"], card["level"]))
     assert offenders == [], offenders
 
 
@@ -96,15 +95,7 @@ def test_the_middle_level_fixture_underlines_a_middle_band():
     """Guards the interesting case: not the first or last level in the strip."""
     doc = payload("level_strip_middle")
     assert doc["level_display"] == "N3"
-    assert doc["words"][0]["level"] == "N4"
-    assert doc["deck"]["size"] == 1, "must be deterministic, not clock-dependent"
-
-
-def test_a_mixed_deck_carries_easier_levels():
-    """A cumulative N3 deck must actually contain N5 and N4 cards."""
-    doc = payload("deck_mixed_levels")
-    assert doc["level_display"] == "N3"
-    assert {w["level"] for w in doc["words"]} == {"N3", "N4", "N5"}
+    assert doc["word"]["level"] == "N4"
 
 
 def test_reference_fixture_matches_the_specified_segmentation():
@@ -138,37 +129,37 @@ class TestSchemaRejects:
 
     def test_an_unknown_word_size(self, validator):
         doc = payload("full_reference")
-        doc["words"][0]["display"]["word_size"] = "enormous"
+        doc["word"]["display"]["word_size"] = "enormous"
         assert list(validator.iter_errors(doc))
 
     def test_an_empty_ruby_segment_list(self, validator):
         doc = payload("full_reference")
-        doc["words"][0]["ruby_segments"] = []
+        doc["word"]["ruby_segments"] = []
         assert list(validator.iter_errors(doc))
 
     def test_an_overlong_gloss(self, validator):
         doc = payload("full_reference")
-        doc["words"][0]["display_gloss"] = "x" * 100
+        doc["word"]["display_gloss"] = "x" * 100
         assert list(validator.iter_errors(doc))
 
     def test_an_unexpected_extra_property(self, validator):
         doc = payload("full_reference")
-        doc["words"][0]["html"] = "<b>no</b>"
+        doc["word"]["html"] = "<b>no</b>"
         assert list(validator.iter_errors(doc))
 
-    def test_a_missing_deck_block(self, validator):
+    def test_a_missing_slot_block(self, validator):
         doc = payload("full_reference")
-        del doc["deck"]
+        del doc["slot"]
         assert list(validator.iter_errors(doc))
 
-    def test_an_empty_word_list(self, validator):
+    def test_a_missing_word(self, validator):
         doc = payload("full_reference")
-        doc["words"] = []
+        del doc["word"]
         assert list(validator.iter_errors(doc))
 
     def test_a_card_without_a_level(self, validator):
         doc = payload("full_reference")
-        del doc["words"][0]["level"]
+        del doc["word"]["level"]
         assert list(validator.iter_errors(doc))
 
 

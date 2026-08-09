@@ -25,14 +25,12 @@ EPOCH = date(2026, 1, 1)
 
 # A five-word-per-level corpus, so the deck is deliberately tiny.
 SMALL = BuildConfig(
-    past_days=3,
-    future_days=6,
     status="demo",
     minimum_entries_per_level=1,
-    deck_size=5,
     slot_seconds=600,
-    recommended_bytes=8192,
-    hard_limit_bytes=16384,
+    slot_count=12,
+    recommended_bytes=2048,
+    hard_limit_bytes=8192,
 )
 SELECTION = SelectionConfig(epoch_date=EPOCH, selection_version="1", selection_salt="t")
 
@@ -48,7 +46,17 @@ def corpus(corpus_root, schemas_dir):
     return loaded
 
 
-def build(corpus, tmp_path: Path, config: BuildConfig = SMALL):
+def build_at(corpus, tmp_path: Path, day):
+    """Build for a given date and return the n3 slot-0 card id."""
+    build(corpus, tmp_path, SMALL, day)
+    payload = json.loads(
+        (tmp_path / "site" / "api" / "v1" / "card" / "n3" / "0.json")
+        .read_text(encoding="utf-8")
+    )
+    return payload["word"]["id"]
+
+
+def build(corpus, tmp_path: Path, config: BuildConfig = SMALL, day=TODAY):
     return build_site(
         corpus=corpus,
         output_dir=tmp_path / "site",
@@ -57,7 +65,7 @@ def build(corpus, tmp_path: Path, config: BuildConfig = SMALL):
         dataset_version="test+abc123",
         sources_summary=[{"id": "demo", "name": "Demo", "licence": "CC0-1.0", "version": "1"}],
         commit_sha="abc123",
-        today=TODAY,
+        today=day,
         generated_at=datetime(2026, 8, 9, 12, 0, tzinfo=timezone.utc),
     )
 
@@ -113,20 +121,36 @@ class TestBuild:
         assert (site / ".nojekyll").is_file()
         assert (site / "api" / "v1" / "manifest.json").is_file()
         for level in ("n5", "n4", "n3", "n2", "n1"):
-            level_dir = site / "api" / "v1" / "daily" / level
-            assert (level_dir / "latest.json").is_file()
+            level_dir = site / "api" / "v1" / "card" / level
             assert (level_dir / "sample.json").is_file()
-            assert (level_dir / f"{TODAY.isoformat()}.json").is_file()
+            assert (level_dir / "0.json").is_file()
 
-    def test_covers_exactly_the_requested_date_range(self, corpus, tmp_path):
-        result = build(corpus, tmp_path)
-        assert result.start_date == TODAY - timedelta(days=3)
-        assert result.end_date == TODAY + timedelta(days=6)
-        expected = 10  # 3 past + today + 6 future
-        level_dir = tmp_path / "site" / "api" / "v1" / "daily" / "n3"
-        dated = [p for p in level_dir.glob("*.json") if p.stem not in ("latest", "sample")]
-        assert len(dated) == expected
-        assert result.file_counts["n3"] == expected
+    def test_every_slot_the_url_can_request_exists(self, corpus, tmp_path):
+        """A missing slot is a 404 and a blank screen, not a stale card."""
+        build(corpus, tmp_path)
+        level_dir = tmp_path / "site" / "api" / "v1" / "card" / "n3"
+        for slot in range(SMALL.slot_count):
+            assert (level_dir / f"{slot}.json").is_file(), slot
+        assert not (level_dir / f"{SMALL.slot_count}.json").exists()
+
+    def test_consecutive_slots_hold_different_cards(self, corpus, tmp_path):
+        """The whole point: the payload must change so TRMNL re-renders."""
+        build(corpus, tmp_path)
+        level_dir = tmp_path / "site" / "api" / "v1" / "card" / "n1"
+        texts = [
+            (level_dir / f"{slot}.json").read_text(encoding="utf-8")
+            for slot in range(5)
+        ]
+        assert len(set(texts)) == len(texts), "identical payloads would be skipped"
+
+    def test_slot_index_matches_the_filename(self, corpus, tmp_path):
+        build(corpus, tmp_path)
+        level_dir = tmp_path / "site" / "api" / "v1" / "card" / "n2"
+        for slot in (0, 3, SMALL.slot_count - 1):
+            payload = json.loads((level_dir / f"{slot}.json").read_text(encoding="utf-8"))
+            assert payload["slot"]["index"] == slot
+            assert payload["slot"]["count"] == SMALL.slot_count
+            assert payload["slot"]["seconds"] == SMALL.slot_seconds
 
     def test_manifest_is_accurate(self, corpus, tmp_path):
         build(corpus, tmp_path)
@@ -138,65 +162,38 @@ class TestBuild:
         assert manifest["status"] == "demo"
         assert manifest["active_entries"] == {k: 5 for k in ("n5", "n4", "n3", "n2", "n1")}
         assert manifest["deck_pool"] == {"n5": 5, "n4": 10, "n3": 15, "n2": 20, "n1": 25}
-        assert manifest["generated_files"] == {k: 10 for k in ("n5", "n4", "n3", "n2", "n1")}
-        assert manifest["earliest_date"] == "2026-08-06"
-        assert manifest["latest_date"] == "2026-08-15"
+        assert manifest["generated_files"] == {
+            k: SMALL.slot_count for k in ("n5", "n4", "n3", "n2", "n1")
+        }
+        assert manifest["slots"]["cumulative_levels"] is True
 
     def test_payloads_are_minified_utf8_with_readable_japanese(self, corpus, tmp_path):
         build(corpus, tmp_path)
-        path = tmp_path / "site" / "api" / "v1" / "daily" / "n3" / f"{TODAY}.json"
+        path = tmp_path / "site" / "api" / "v1" / "card" / "n3" / "0.json"
         text = path.read_text(encoding="utf-8")
         assert "\\u" not in text, "Japanese must not be escaped"
         assert ", " not in text and ": " not in text, "payload should be minified"
 
-    def test_a_deck_is_cumulative_over_easier_levels(self, corpus, tmp_path):
+    def test_a_pool_is_cumulative_over_easier_levels(self, corpus, tmp_path):
         """Choosing N3 must draw on N5 and N4 as well."""
         build(corpus, tmp_path)
-        path = tmp_path / "site" / "api" / "v1" / "daily" / "n3" / f"{TODAY}.json"
-        payload = json.loads(path.read_text(encoding="utf-8"))
-        assert payload["deck"]["pool"] == 15  # 5 each of N5, N4, N3
-        n5 = json.loads(
-            (tmp_path / "site" / "api" / "v1" / "daily" / "n5" / f"{TODAY}.json")
-            .read_text(encoding="utf-8")
-        )
-        assert n5["deck"]["pool"] == 5
-        n1 = json.loads(
-            (tmp_path / "site" / "api" / "v1" / "daily" / "n1" / f"{TODAY}.json")
-            .read_text(encoding="utf-8")
-        )
-        assert n1["deck"]["pool"] == 25  # every level
-
-    def test_each_card_declares_its_own_level(self, corpus, tmp_path):
-        build(corpus, tmp_path)
-        payload = json.loads(
-            (tmp_path / "site" / "api" / "v1" / "daily" / "n3" / f"{TODAY}.json")
-            .read_text(encoding="utf-8")
-        )
-        levels = {w["level"] for w in payload["words"]}
-        assert levels <= {"N5", "N4", "N3"}
-        assert "N2" not in levels and "N1" not in levels
-
-    def test_deck_metadata_matches_the_build_config(self, corpus, tmp_path):
-        build(corpus, tmp_path)
-        payload = json.loads(
-            (tmp_path / "site" / "api" / "v1" / "daily" / "n3" / f"{TODAY}.json")
-            .read_text(encoding="utf-8")
-        )
-        assert payload["deck"]["size"] == SMALL.deck_size
-        assert payload["deck"]["slot_seconds"] == SMALL.slot_seconds
-        assert len(payload["words"]) == SMALL.deck_size
-
-    def test_consecutive_days_draw_different_cards(self, corpus, tmp_path):
-        """A deck moves on; it does not replay yesterday."""
-        build(corpus, tmp_path)
-        level_dir = tmp_path / "site" / "api" / "v1" / "daily" / "n1"
-        today = json.loads((level_dir / f"{TODAY}.json").read_text(encoding="utf-8"))
-        tomorrow = json.loads(
-            (level_dir / f"{TODAY + timedelta(days=1)}.json").read_text(encoding="utf-8")
-        )
-        assert {w["id"] for w in today["words"]} != {
-            w["id"] for w in tomorrow["words"]
+        api = tmp_path / "site" / "api" / "v1" / "card"
+        pools = {
+            level: json.loads((api / level / "0.json").read_text(encoding="utf-8"))[
+                "sequence"
+            ]["pool"]
+            for level in ("n5", "n3", "n1")
         }
+        assert pools == {"n5": 5, "n3": 15, "n1": 25}
+
+    def test_no_card_comes_from_a_harder_level(self, corpus, tmp_path):
+        build(corpus, tmp_path)
+        level_dir = tmp_path / "site" / "api" / "v1" / "card" / "n3"
+        levels = {
+            json.loads((level_dir / f"{s}.json").read_text(encoding="utf-8"))["word"]["level"]
+            for s in range(SMALL.slot_count)
+        }
+        assert levels <= {"N5", "N4", "N3"}
 
     def test_payloads_are_small(self, corpus, tmp_path):
         result = build(corpus, tmp_path)
@@ -211,30 +208,21 @@ class TestBuild:
             hard_size_limit=SMALL.hard_limit_bytes,
         )
         assert report.ok, "\n".join(i.format() for i in report.errors)
-        assert report.counts["payloads_checked"] == 50
+        assert report.counts["payloads_checked"] == 5 * SMALL.slot_count
 
-    def test_the_same_date_rebuilds_identically(self, corpus, tmp_path):
+    def test_rebuilding_the_same_day_is_identical(self, corpus, tmp_path):
         build(corpus, tmp_path / "a")
         build(corpus, tmp_path / "b")
         for level in ("n5", "n3", "n1"):
-            a = (tmp_path / "a" / "site" / "api" / "v1" / "daily" / level / f"{TODAY}.json")
-            b = (tmp_path / "b" / "site" / "api" / "v1" / "daily" / level / f"{TODAY}.json")
+            a = tmp_path / "a" / "site" / "api" / "v1" / "card" / level / "0.json"
+            b = tmp_path / "b" / "site" / "api" / "v1" / "card" / level / "0.json"
             assert a.read_text(encoding="utf-8") == b.read_text(encoding="utf-8")
 
-    def test_latest_matches_the_newest_payload(self, corpus, tmp_path):
-        build(corpus, tmp_path)
-        level_dir = tmp_path / "site" / "api" / "v1" / "daily" / "n3"
-        latest = json.loads((level_dir / "latest.json").read_text(encoding="utf-8"))
-        assert latest["date"] == "2026-08-15"
-
-    def test_payload_date_and_level_match_their_path(self, corpus, tmp_path):
-        build(corpus, tmp_path)
-        path = tmp_path / "site" / "api" / "v1" / "daily" / "n2" / "2026-08-11.json"
-        payload = json.loads(path.read_text(encoding="utf-8"))
-        assert payload["date"] == "2026-08-11"
-        assert payload["level"] == "n2"
-        assert payload["level_display"] == "N2"
-        assert payload["schema_version"] == "2.0"
+    def test_the_rotation_advances_with_the_build_date(self, corpus, tmp_path):
+        """Successive builds carry on through the corpus, not replay it."""
+        today = build_at(corpus, tmp_path / "today", TODAY)
+        later = build_at(corpus, tmp_path / "later", TODAY + timedelta(days=1))
+        assert today != later
 
     def test_index_links_resolve_to_real_files(self, corpus, tmp_path):
         import re

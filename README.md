@@ -21,8 +21,8 @@ to a single JLPT-aligned level.
   card came from.
 - A concise English gloss and a natural Japanese example sentence.
 - An optional English translation of the example, off by default.
-- A deck of 50 cards a day, drawn from a shuffled rotation that never repeats
-  a word until every word at the level has been seen.
+- Cards come from a deterministic shuffled rotation, so words do not repeat
+  until you have worked through the level.
 - 8,289 words, 89% of them with an example sentence.
 
 No server, no database, no account, no analytics, no paid API, no LLM in the
@@ -62,21 +62,22 @@ copy of the templates. This repository is the source of truth, and CI *pushes*
 that truth to TRMNL with `trmnlp push`. Editing in the TRMNL browser editor
 creates a second copy that will drift.
 
-**The data is a static file, not an API.** Every level and date is baked into
-its own JSON document at build time — a deck of 50 cards, from which the
-template picks one using the current timestamp. That is what makes a file on a
-CDN behave like flash cards:
+**The data is a static file, not an API.** Every level and *time slot* is
+baked into its own tiny JSON document at build time. The plugin computes the
+slot from the clock, so each poll fetches a different file — which is what
+makes a file on a CDN behave like flash cards:
 
 ```
-https://<owner>.github.io/<repo>/api/v1/daily/n3/2026-08-09.json
+https://<owner>.github.io/<repo>/api/v1/card/n3/2911.json
 ```
 
-The plugin builds that URL from its level setting and the device's local date
-(the server clock shifted by the device's UTC offset), so the deck turns over
-at local midnight while the card turns over every ten minutes. Payloads are
-around 20 KB — fetched by TRMNL's server, never by the device — the whole site
-is about 37 MB, and any date can be opened in a browser when something looks
+The slot is `floor(now / 600) mod 4096` — a new card every ten minutes on a
+28-day cycle. Payloads are around 700 bytes, the whole site is 12 MB across
+20,480 files, and any slot can be opened in a browser when something looks
 wrong.
+
+There are no dates in the URL, so unlike a date-based API this one cannot run
+out of coverage.
 
 More detail in [docs/architecture.md](docs/architecture.md).
 
@@ -222,4 +223,4 @@ call. Security issues: [SECURITY.md](SECURITY.md).
 - [3. Deterministic shuffled cycles](docs/adr/0003-deterministic-cycle-selection.md)
 - [4. GitHub as source of truth](docs/adr/0004-github-source-of-truth.md)
 - [5. Where attribution lives](docs/adr/0005-attribution-placement.md)
-- [6. Flash cards from a daily deck](docs/adr/0006-flash-cards-from-a-daily-deck.md)
+- [6. Flash cards as one file per time slot](docs/adr/0006-flash-cards-per-time-slot.md)

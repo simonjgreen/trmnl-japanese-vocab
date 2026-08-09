@@ -376,8 +376,8 @@
 {% assign current_level = word.level | default: level_display %}
 
 {% assign progress = "" %}
-{% if show_progress and word.sequence.total %}
-  {% capture progress %}{{ word.sequence.position }}/{{ word.sequence.total }}{% endcapture %}
+{% if show_progress and sequence.pool %}
+  {% capture progress %}{{ sequence.position }}/{{ sequence.pool }}{% endcapture %}
 {% endif %}
 
 {% comment %} Retained for the empty state, which has no card to point at. {% endcomment %}
