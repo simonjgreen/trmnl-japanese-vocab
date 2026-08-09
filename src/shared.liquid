@@ -331,18 +331,11 @@
 {% endtemplate %}
 
 {% comment %}
-  The instance label: the level on its own, or the level plus the learner's
-  position in the rotation when the optional setting is on.
+  `word` arrives ready-made from the payload: the polling URL already chose
+  this slot's card, so nothing is selected at render time. Do not reintroduce
+  a picker here — TRMNL skips rendering when a payload is unchanged, so a card
+  chosen in Liquid can never change on screen.
 {% endcomment %}
-{% assign kotoba_slot_seconds = deck.slot_seconds | default: 600 %}
-{% assign kotoba_deck_size = words | size %}
-
-{% assign word = nil %}
-{% if kotoba_deck_size > 0 %}
-  {% assign kotoba_now = "now" | date: "%s" | plus: 0 %}
-  {% assign kotoba_index = kotoba_now | divided_by: kotoba_slot_seconds | modulo: kotoba_deck_size %}
-  {% assign word = words[kotoba_index] %}
-{% endif %}
 
 {% comment %}
   The title bar shows every level the deck draws on, with the current card's
@@ -377,7 +370,7 @@
 
 {% assign progress = "" %}
 {% if show_progress and sequence.pool %}
-  {% capture progress %}{{ sequence.position }}/{{ sequence.pool }}{% endcapture %}
+  {% capture progress %}{{ sequence.position | escape }}/{{ sequence.pool | escape }}{% endcapture %}
 {% endif %}
 
 {% comment %} Retained for the empty state, which has no card to point at. {% endcomment %}

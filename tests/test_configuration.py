@@ -114,6 +114,54 @@ class TestConfigureRepo:
         assert configure_repo.detect_from_git() is None
 
 
+class TestMarkup:
+    """Static checks on the Liquid, which no Python test otherwise reaches."""
+
+    @pytest.fixture
+    def shared(self):
+        return (REPO / "src" / "shared.liquid").read_text(encoding="utf-8")
+
+    def test_the_card_is_not_selected_in_the_template(self, shared):
+        """The card must come from the payload, not be picked in Liquid.
+
+        TRMNL skips rendering when a polled payload is unchanged, so a card
+        chosen in the template would never change on screen. A leftover
+        `assign word = ...` once did exactly that: it overwrote the payload's
+        word with nil and every screen showed the empty state.
+        """
+        offenders = [
+            line.strip()
+            for line in shared.splitlines()
+            if "assign word " in line or "assign word=" in line
+        ]
+        assert offenders == [], (
+            f"`word` must arrive from the payload, not be assigned: {offenders}"
+        )
+
+    def test_no_references_to_the_retired_deck_payload(self, shared):
+        """Schema 2.0 shipped `words[]`/`deck`; 3.0 ships a single `word`."""
+        for stale in ("words[", "deck.slot_seconds", "deck.size", "| size %}"):
+            assert stale not in shared, f"stale deck reference: {stale}"
+
+    def test_every_view_renders_the_title_bar_with_the_level_strip(self):
+        for name in ("full", "half_horizontal", "half_vertical", "quadrant"):
+            text = (REPO / "src" / f"{name}.liquid").read_text(encoding="utf-8")
+            assert "kotoba_title_bar" in text, name
+            assert "deck_levels" in text, name
+            assert "current_level" in text, name
+
+    def test_every_data_value_is_escaped(self, shared):
+        """No raw payload interpolation anywhere in the markup."""
+        import re
+
+        unescaped = [
+            m.group(0)
+            for m in re.finditer(r"\{\{\s*(word|sequence)\.[^}]*\}\}", shared)
+            if "escape" not in m.group(0)
+        ]
+        assert unescaped == [], unescaped
+
+
 class TestPackagePlugin:
     def test_produces_a_flat_archive(self, tmp_path):
         src = tmp_path / "src"
