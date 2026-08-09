@@ -7,13 +7,13 @@ requires-python = ">=3.12"
 license = { file = "LICENSE" }
 authors = [{ name = "Simon Green" }]
 dependencies = [
-  "PyYAML>=6.0",
-  "jsonschema>=4.21",
+  "PyYAML>=6.0.3",
+  "jsonschema>=4.26.0",
 ]
 
 [project.optional-dependencies]
 dev = [
-  "pytest>=8.0",
+  "pytest>=9.1.1",
 ]
 # Only needed to re-import the production corpus from data/raw. The JMdict
 # examples build is ~129 MB of JSON; ijson streams it instead of loading it.
@@ -25,7 +25,7 @@ import = [
 kotoba = "kotoba.cli:main"
 
 [build-system]
-requires = ["setuptools>=68"]
+requires = ["setuptools>=83.0.0"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
