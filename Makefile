@@ -1,5 +1,5 @@
 #
-# Kotoba — JLPT Word of the Day
+# Kotoba — JLPT Flash Cards
 #
 # `make help` lists every target. Python commands run through the local
 # virtualenv if one exists, and `uv run` if uv is installed, so a contributor

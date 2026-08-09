@@ -420,11 +420,11 @@ def render_index(manifest: dict[str, Any], today: date) -> str:
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kotoba — JLPT Word of the Day: data API</title>
+<title>Kotoba — JLPT Flash Cards: data API</title>
 <style>{INDEX_CSS}</style>
 </head>
 <body>
-<h1>Kotoba — JLPT Word of the Day</h1>
+<h1>Kotoba — JLPT Flash Cards</h1>
 <p class="sub">Static data API for the TRMNL private plugin.</p>
 
 <p>Each level and time slot resolves to one small JSON document holding a

@@ -1,7 +1,7 @@
 [project]
 name = "kotoba"
 version = "1.0.0"
-description = "Build tooling for the Kotoba TRMNL private plugin: JLPT-aligned Japanese word of the day."
+description = "Build tooling for the Kotoba TRMNL private plugin: JLPT-aligned Japanese flash cards."
 readme = "README.md"
 requires-python = ">=3.12"
 license = { file = "LICENSE" }

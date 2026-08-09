@@ -65,6 +65,6 @@ custom_fields:
   group: Advanced
   placeholder: https://simonjgreen.github.io/trmnl-japanese-vocab/api/v1
   default: https://simonjgreen.github.io/trmnl-japanese-vocab/api/v1
-name: Kotoba — JLPT Word of the Day
-description: JLPT-aligned Japanese vocabulary
+name: Kotoba — JLPT Flash Cards
+description: Japanese flash cards with furigana
 refresh_interval: 15
