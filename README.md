@@ -1,0 +1,1 @@
+This is a from scratch plugin inspired by the official trmnl language-learner plugin based on feedback from my wife. She really likes the vocab method, but wished it had furigana above the kanji. This corrects that, as well as improves the depth of vocab and aligns to particular learning levels.
