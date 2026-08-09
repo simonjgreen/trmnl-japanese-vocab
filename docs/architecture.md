@@ -73,6 +73,13 @@ to the device's wall clock before the date is formatted. The word therefore
 turns over at local midnight, and it changes only once per day, so a forced
 refresh returns the same word.
 
+This matters more than it looks. Without the offset, a device in the UK would
+show the previous day's word from 23:00 to midnight every night through
+British Summer Time. `tests/test_local_date.py` reproduces the Liquid
+arithmetic against a real timezone database and sweeps every hour across both
+2026 UK daylight-saving transitions, plus a half-hour-offset zone
+(Asia/Kathmandu) to catch integer-hour assumptions.
+
 A payload looks like this:
 
 ```json

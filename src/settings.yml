@@ -1,16 +1,3 @@
-#
-# TRMNL private plugin definition.
-#
-# `trmnlp push` rewrites this file, so comments here are lost on the next
-# push. Anything that needs explaining lives in docs/deployment.md.
-#
-# `id` is the plugin created by the first push. CI refuses to deploy without
-# it, so that it updates this plugin rather than creating a new one each run.
-# The id is not a secret; TRMNL_API_KEY is.
-#
-# polling_url adds the device's UTC offset to the server clock before
-# formatting the date, so the word turns over at local midnight.
-#
 ---
 strategy: polling
 no_screen_padding: 'no'
