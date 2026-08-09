@@ -17,7 +17,8 @@ to a single JLPT-aligned level.
 - **Furigana over the kanji only.** 取り除く shows と over 取 and のぞ over 除 —
   nothing over り or く, and no detached reading line.
 - Choose **N5 through N1**. A level is *cumulative*: N3 draws on N5, N4 and N3
-  together, and each card shows which level it came from.
+  together. The title bar lists the whole range and underlines the level this
+  card came from.
 - A concise English gloss and a natural Japanese example sentence.
 - An optional English translation of the example, off by default.
 - A deck of 50 cards a day, drawn from a shuffled rotation that never repeats
@@ -132,7 +133,7 @@ are in [docs/deployment.md](docs/deployment.md).
 | ------- | ------- | ------------ |
 | Learner level | `N5` | Cards are drawn from this level **and every easier one**. N5 is easiest, N1 hardest. |
 | Show example translation | off | English under the Japanese example. Suppressed automatically in the smaller layouts. |
-| Show rotation progress | off | Puts `N3 · N4 · 1840/3054` in the title bar — deck level, this card's level, and position in the pool. |
+| Show rotation progress | off | Appends the card's position in the pool (`1840/3054`) after the level strip. |
 | Data endpoint | your Pages URL | Where the daily JSON comes from. Under *Advanced*; leave it alone unless you host your own copy. No trailing slash. |
 
 ## About the vocabulary

@@ -134,6 +134,21 @@
     max-width: 86%;
   }
 
+  /* The level strip in the title bar: every level the deck draws on, with the
+     current card's level underlined. Spacing comes from `gap` rather than
+     per-item offsets, for the same lint reason as everything else here. */
+  .kotoba-levels {
+    display: inline-flex;
+    gap: 0.5em;
+  }
+
+  .kotoba-levels .is-current {
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+    text-decoration-thickness: 0.09em;
+  }
+
   /* ---------------------------------------------------------------
      Per-view dimensions, in baseline pixels: the numbers are multiples of
      --kotoba-unit, so they read as 800x480 pixels and scale automatically
@@ -293,7 +308,20 @@
   <div class="title_bar">
     <span class="title">Japanese</span>
     <span class="instance">
-      {%- if instance_label and instance_label != blank -%}
+      {%- if deck_levels and deck_levels != empty -%}
+        {%- comment -%}
+          Every level in the deck, with the current card's level underlined.
+          The strings are the fixed literals N5..N1 from a hardcoded list, not
+          payload data, so emitting them as markup introduces nothing to
+          escape; `current_level` is only ever compared, never printed.
+        {%- endcomment -%}
+        <span class="kotoba-levels">
+          {%- for band in deck_levels -%}
+            <span class="{% if band == current_level %}is-current{% endif %}">{{ band }}</span>
+          {%- endfor -%}
+        </span>
+        {%- if progress and progress != blank %} <span>{{ progress | escape }}</span>{% endif -%}
+      {%- elsif instance_label and instance_label != blank -%}
         {{- instance_label | escape -}}
       {%- else -%}
         Kotoba
@@ -317,14 +345,40 @@
 {% endif %}
 
 {% comment %}
-  The instance label: the level on its own, or the learner's position in the
-  whole pool when the optional setting is on. The card's own level is shown
-  too, because a deck mixes levels — an N3 learner also revises N5 and N4.
+  The title bar shows every level the deck draws on, with the current card's
+  level underlined — "N5 N4 N3" for an N3 learner, underlining whichever the
+  card came from. That says both "this is your range" and "this card is from
+  here" without the reader having to decode a compound label.
+
+  The list runs from N5 up to and including the chosen level, matching the
+  cumulative deck.
 {% endcomment %}
-{% assign instance_label = level_display %}
-{% if word.level and word.level != level_display %}
-  {% assign instance_label = level_display | append: " · " | append: word.level %}
-{% endif %}
+{% comment %}
+  Accumulate into a string and split once at the end. Liquid's `concat`
+  filter joins two *arrays*, so appending a bare string to an array silently
+  produces nothing.
+{% endcomment %}
+{% assign kotoba_all_levels = "N5,N4,N3,N2,N1" | split: "," %}
+{% assign kotoba_level_csv = "" %}
+{% assign kotoba_past_level = false %}
+{% for band in kotoba_all_levels %}
+  {% unless kotoba_past_level %}
+    {% if kotoba_level_csv == "" %}
+      {% assign kotoba_level_csv = band %}
+    {% else %}
+      {% assign kotoba_level_csv = kotoba_level_csv | append: "," | append: band %}
+    {% endif %}
+    {% if band == level_display %}{% assign kotoba_past_level = true %}{% endif %}
+  {% endunless %}
+{% endfor %}
+{% assign deck_levels = kotoba_level_csv | split: "," %}
+
+{% assign current_level = word.level | default: level_display %}
+
+{% assign progress = "" %}
 {% if show_progress and word.sequence.total %}
-  {% assign instance_label = instance_label | append: " · " | append: word.sequence.position | append: "/" | append: word.sequence.total %}
+  {% capture progress %}{{ word.sequence.position }}/{{ word.sequence.total }}{% endcapture %}
 {% endif %}
+
+{% comment %} Retained for the empty state, which has no card to point at. {% endcomment %}
+{% assign instance_label = level_display %}

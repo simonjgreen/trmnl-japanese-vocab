@@ -160,18 +160,29 @@ class TestShippedSettings:
     def test_description_fits_trmnls_limit(self, settings):
         assert len(settings["description"]) <= 35
 
-    def test_polls_at_least_once_per_deck_slot(self, settings):
-        """Cards are chosen from the clock, so a stale render freezes them."""
+    def test_a_slot_is_no_longer_than_a_render_interval(self, settings):
+        """Consecutive renders must always land in different slots.
+
+        The card is chosen as `floor(now / slot) % deck_size`. If a slot were
+        longer than the render interval, two renders in a row could fall
+        inside the same slot and draw the same card — the screen would look
+        stuck. Slot <= interval guarantees the index advances every time.
+
+        TRMNL rounds refresh_interval up to its own allowed values (10
+        becomes 15), so this is checked against whatever is actually
+        committed rather than what was asked for.
+        """
         import yaml as _yaml
 
         build = _yaml.safe_load(
             (REPO / "config" / "build.yml").read_text(encoding="utf-8")
         )
-        slot_minutes = build["deck"]["slot_seconds"] / 60
+        slot_seconds = build["deck"]["slot_seconds"]
+        interval_seconds = settings["refresh_interval"] * 60
         assert settings["strategy"] == "polling"
-        assert settings["refresh_interval"] <= slot_minutes, (
-            "refresh_interval must not exceed deck.slot_seconds, or the same "
-            "card would stay on screen across slots"
+        assert slot_seconds <= interval_seconds, (
+            f"deck.slot_seconds ({slot_seconds}) exceeds the render interval "
+            f"({interval_seconds}s); cards would repeat across refreshes"
         )
 
     def test_polling_url_uses_level_and_local_date(self, settings):

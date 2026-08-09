@@ -15,7 +15,8 @@ The baseline is the original 800 × 480 panel.
 2. **English gloss** — one concise phrase, normally one line.
 3. **Japanese example** — one or two lines in the full view.
 4. **English translation** — optional, off by default, visually secondary.
-5. **Title bar** — `Japanese` on the left, the level as the instance on the right.
+5. **Title bar** — `Japanese` on the left; on the right, every level the deck
+   draws on, with the current card's level underlined.
 
 ## Furigana rules
 
@@ -88,6 +89,24 @@ use the Framework's `text--gray-*` classes because `opacity` is disallowed.
 
 If you add CSS, run `make lint-plugin` before pushing.
 
+## The level strip
+
+A deck is cumulative, so an N3 learner sees N5 and N4 cards too. Rather than a
+compound label like `N3 · N4`, which reads as a puzzle, the title bar lists the
+whole range and underlines where this card sits:
+
+```
+Japanese                                            N5  N4  N3
+                                                        ‾‾
+```
+
+Only the fixed literals `N5`..`N1` are emitted as markup — they come from a
+hardcoded list, never from the payload — and the card's level is only ever
+compared, never printed, so nothing here needs escaping.
+
+Spacing uses `gap` and the emphasis uses `text-decoration`, both outside the
+lint budget.
+
 ## Per-layout behaviour
 
 **Full** — word, gloss, Japanese example (up to two lines), optional English
@@ -127,7 +146,9 @@ Across the rest of the fixtures:
 - [ ] `wide_ruby` shows うけたまわ spread over 承, spacing out the base
 - [ ] `xlong_word` fits デモンストレーション on one line in all four layouts
 - [ ] `with_translation` shows the English line, greyed and secondary
-- [ ] `with_progress` shows `N3 · 221/1730` in the title bar
+- [ ] `level_strip_middle` shows `N5 N4 N3` with **N4** underlined
+- [ ] `level_n5` shows a strip of just `N5`; `level_n1` shows all five
+- [ ] `with_progress` appends the position in the pool after the strip
 - [ ] `empty_state` shows "Vocabulary unavailable" with the level and date,
       and keeps the title bar
 - [ ] every `level_n*` fixture shows the right label

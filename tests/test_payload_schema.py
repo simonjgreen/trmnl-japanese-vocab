@@ -25,6 +25,7 @@ REQUIRED_FIXTURES = (
     "with_progress",
     "empty_state",
     "deck_mixed_levels",
+    "level_strip_middle",
     "xlong_word",
     "wide_ruby",
     "short_word",
@@ -67,6 +68,36 @@ def test_empty_state_fixture_deliberately_has_no_cards(validator):
 
 def first_card(name: str) -> dict:
     return payload(name)["words"][0]
+
+
+LEVEL_ORDER = ("N5", "N4", "N3", "N2", "N1")
+
+
+def test_every_card_sits_within_its_deck_level():
+    """A card must never come from a level harder than the deck's own.
+
+    This is what the title-bar strip depends on: it lists N5 up to the deck
+    level and underlines the card's, so a card from outside that range would
+    have nothing to underline.
+    """
+    offenders = []
+    for path in FIXTURES.glob("*.json"):
+        doc = payload(path.stem)
+        if not doc.get("words"):
+            continue
+        limit = LEVEL_ORDER.index(doc["level_display"])
+        for card in doc["words"]:
+            if LEVEL_ORDER.index(card["level"]) > limit:
+                offenders.append((path.stem, card["surface"], card["level"]))
+    assert offenders == [], offenders
+
+
+def test_the_middle_level_fixture_underlines_a_middle_band():
+    """Guards the interesting case: not the first or last level in the strip."""
+    doc = payload("level_strip_middle")
+    assert doc["level_display"] == "N3"
+    assert doc["words"][0]["level"] == "N4"
+    assert doc["deck"]["size"] == 1, "must be deterministic, not clock-dependent"
 
 
 def test_a_mixed_deck_carries_easier_levels():
