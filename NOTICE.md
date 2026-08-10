@@ -21,7 +21,13 @@ no list here is, or claims to be, an official JLPT vocabulary list.
 - **Version:** HEAD (original_data/n1..n5.csv)
 - **Licence:** CC-BY-SA-4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 - **Fields used:** jmdict_seq, kana, kanji, waller_definition
-- **Checksum:** `sha256:07dc6f197b51cc076c65c3c (n5.csv; see scripts/fetch_sources.py --checksums for the full set)`
+- **Upstream:** tracks a branch head; the recorded digests describe the revision actually imported, and upstream may have moved since
+- **Checksums (SHA-256):**
+  - `data/raw/jlpt/n1.csv` — `7a58f0584e9ec2b0299ccb9b109f3bd03e08b90d129a714307c0a1cb72f07b32`
+  - `data/raw/jlpt/n2.csv` — `42a4413326e857d701dc9659b2711637ab612304a339fe0d09f4f0f042d3a214`
+  - `data/raw/jlpt/n3.csv` — `bd4d68c59cfee861351e1bdf9d99818e434392201eabbed4d3657225fe53a3ac`
+  - `data/raw/jlpt/n4.csv` — `a14dcc7fdc02259b22331a486c6ff66df74c16472c8aeb5a0ebe7e5fa8ee8eb4`
+  - `data/raw/jlpt/n5.csv` — `07dc6f197b51cc076c65c3c9f23218d10c2b67f76545f5c1c4d9e3750495533a`
 
 > JLPT level estimates compiled by Jonathan Waller (http://www.tanos.co.uk/jlpt/, Creative Commons Attribution licence), redistributed with JMdict entry identifiers by stephenmk/yomitan-jlpt-vocab under CC BY-SA 4.0.
 
@@ -36,7 +42,9 @@ no list here is, or claims to be, an official JLPT vocabulary list.
 - **Version:** 3.6.2+20260803141815 (jmdict-examples-eng)
 - **Licence:** CC-BY-SA-4.0 (https://www.edrdg.org/edrdg/licence.html)
 - **Fields used:** id, sense.gloss, sense.partOfSpeech, sense.examples
-- **Checksum:** `sha256:924f8297cec4d48eb4a313c (jmdict-examples-eng.json; see scripts/fetch_sources.py --checksums for the full digest)`
+- **Upstream:** pinned release artefact; the recorded digests must match exactly
+- **Checksums (SHA-256):**
+  - `data/raw/jmdict-examples-eng.json` — `924f8297cec4d48eb4a313cc01dcd91f866908468a650bf162c0a9756f2657d0`
 
 > JMdict is the property of the Electronic Dictionary Research and Development Group, and is used in conformance with the Group's licence. The project was started in 1991 by Jim Breen. JSON conversion by scriptin/jmdict-simplified, distributed under the same licence.
 
@@ -51,7 +59,9 @@ no list here is, or claims to be, an official JLPT vocabulary list.
 - **Version:** 2.3.1+2026-07-25
 - **Licence:** CC-BY-SA-4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 - **Fields used:** surface, reading, ruby segment offsets
-- **Checksum:** `sha256:2d5a6a11195ecfbaa565867 (JmdictFurigana.txt; see scripts/fetch_sources.py --checksums for the full digest)`
+- **Upstream:** pinned release artefact; the recorded digests must match exactly
+- **Checksums (SHA-256):**
+  - `data/raw/JmdictFurigana.txt` — `2d5a6a11195ecfbaa56586720fa4e869e5db146eb2973683161fa54fce3936d7`
 
 > Furigana segmentation from JmdictFurigana by Doublevil, distributed under the same licence as JMdict (Creative Commons Attribution-ShareAlike).
 

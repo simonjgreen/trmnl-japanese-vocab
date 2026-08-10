@@ -7,7 +7,18 @@
 #
 # No font is bundled into the plugin itself; this is a development and CI
 # rendering tool only.
-FROM trmnl/trmnlp:latest
+#
+# Pinned by digest because the deploy job in .github/workflows/trmnl.yml runs a
+# container built from this file with TRMNL_API_KEY in its environment and the
+# whole checkout bind-mounted at /plugin. A tag is a moving pointer, so an
+# upstream account compromise or a mistaken publish would put attacker-chosen
+# code next to the key with nothing in the repository changing. The digest is
+# the only part of a reference that cannot be silently repointed. The tag is
+# kept alongside it purely so a human can see which release this is; Docker
+# ignores it and resolves the digest. Dependabot's docker ecosystem parses this
+# form and will raise a pull request when upstream moves, so the pin is
+# reviewed rather than frozen.
+FROM trmnl/trmnlp:latest@sha256:4ac6d7f35ff30665b6c3b2634c2ba830488b2ee38783acc2ce953b652cb1c973
 
 USER root
 RUN apt-get update \

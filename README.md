@@ -220,7 +220,7 @@ Background and rebuild instructions: [docs/data-sourcing.md](docs/data-sourcing.
 ## Development
 
 ```sh
-make check        # validate, test, build, render — no network, no Docker
+make check        # validate, test, build, render — no network
 make preview      # local preview stack on http://localhost:4567 (needs Docker)
 ```
 
@@ -261,7 +261,7 @@ properties. Run `make lint-plugin` before pushing, and read
 | `make preview` | Local preview stack on :4567 |
 | `make lint-plugin` | `trmnlp lint` |
 | `make render` / `make render-fixtures` | Render the reference fixture / all of them, to HTML and PNG |
-| `make render-html` | Every fixture to HTML only — no Docker or browser needed |
+| `make render-html` | Every fixture to HTML only — no browser needed, but still needs `trmnlp` or Docker |
 | `make render-devices` / `make render-devices-all` | Render on TRMNL's own panels / every viewport in the device table |
 | `make package` | Flat plugin ZIP in `dist/` |
 | `make check` | Everything CI does, locally |

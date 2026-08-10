@@ -8,7 +8,12 @@ make check
 ```
 
 `make check` runs validation, the tests, a site build, API validation and an
-HTML render of every fixture. It needs no network and no Docker.
+HTML render of every fixture. It needs no network.
+
+The render step needs either the `trmnlp` gem on your PATH or Docker — the
+HTML build has no browser in it, but `trmnlp` itself does the rendering. If
+you have neither, run the other targets individually; everything except
+`render-html` is pure Python.
 
 For PNG renders you also need Docker:
 

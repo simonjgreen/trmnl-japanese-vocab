@@ -29,6 +29,29 @@ Foundation and JEES no longer publish an official vocabulary specification, so
 no list here is, or claims to be, an official JLPT vocabulary list.
 """
 
+#: Spelled out in NOTICE.md because a reader of the licensing file should not
+#: have to know the register's vocabulary to understand what a digest promises.
+UPSTREAM_LABELS = {
+    "pinned": "pinned release artefact; the recorded digests must match exactly",
+    "head-tracked": (
+        "tracks a branch head; the recorded digests describe the revision "
+        "actually imported, and upstream may have moved since"
+    ),
+}
+
+
+@dataclass(frozen=True)
+class SourceFile:
+    """One file a source contributes to ``data/raw``, and its SHA-256.
+
+    The digest is held on its own, with nothing else in the field. An earlier
+    revision recorded a truncated digest with an explanatory sentence appended,
+    which read plausibly in ``NOTICE.md`` and was worthless for verification.
+    """
+
+    path: str
+    sha256: str
+
 
 @dataclass(frozen=True)
 class Source:
@@ -41,7 +64,8 @@ class Source:
     attribution: str
     fields_used: list[str] = field(default_factory=list)
     version: str | None = None
-    checksum: str | None = None
+    upstream: str | None = None
+    files: list[SourceFile] = field(default_factory=list)
     redistribution_notes: str | None = None
 
     @staticmethod
@@ -56,7 +80,11 @@ class Source:
             attribution=raw["attribution"],
             fields_used=list(raw.get("fields_used", [])),
             version=raw.get("version"),
-            checksum=raw.get("checksum"),
+            upstream=raw.get("upstream"),
+            files=[
+                SourceFile(path=f["path"], sha256=f["sha256"])
+                for f in raw.get("files", [])
+            ],
             redistribution_notes=raw.get("redistribution_notes"),
         )
 
@@ -101,8 +129,12 @@ class SourceRegister:
                 parts.append(f"- **Version:** {source.version}")
             parts.append(f"- **Licence:** {source.licence} ({source.licence_url})")
             parts.append(f"- **Fields used:** {', '.join(source.fields_used)}")
-            if source.checksum:
-                parts.append(f"- **Checksum:** `{source.checksum}`")
+            if source.upstream:
+                parts.append(f"- **Upstream:** {UPSTREAM_LABELS[source.upstream]}")
+            if source.files:
+                parts.append("- **Checksums (SHA-256):**")
+                for entry in source.files:
+                    parts.append(f"  - `{entry.path}` — `{entry.sha256}`")
             parts.append(f"\n> {source.attribution}\n")
             if source.redistribution_notes:
                 parts.append(f"**Redistribution notes:** {source.redistribution_notes}\n")
@@ -110,9 +142,13 @@ class SourceRegister:
 
 
 def file_checksum(path: Path) -> str:
-    """SHA-256 of a source file, for recording in the register."""
+    """SHA-256 of a source file, in the bare-hex form the register records.
+
+    Bare hex rather than a ``sha256:`` prefix so the value can be compared with
+    a recorded digest, and pasted into ``sha256sum -c``, without stripping.
+    """
     digest = hashlib.sha256()
     with path.open("rb") as handle:
         for chunk in iter(lambda: handle.read(1 << 20), b""):
             digest.update(chunk)
-    return f"sha256:{digest.hexdigest()}"
+    return digest.hexdigest()

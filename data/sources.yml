@@ -5,6 +5,22 @@
 # The code in this repository is MIT licensed. The vocabulary data is not: it
 # is derived from the sources below and inherits their terms. JMdict is
 # CC BY-SA 4.0, so the compiled corpus is CC BY-SA 4.0 as well.
+#
+# Each downloaded source records the SHA-256 of every file it puts into
+# data/raw, and scripts/fetch_sources.py checks the downloads against them.
+# The `upstream` key says how much authority those digests carry, because the
+# two kinds of source are not comparable:
+#
+#   pinned        The URL names an immutable release artefact. A digest change
+#                 means corruption, a truncated download or a re-tagged
+#                 release, and is always an error.
+#   head-tracked  The URL follows a branch head, so upstream can legitimately
+#                 change under us. A digest change is a warning inviting a
+#                 review of the canonical diff, not a failure.
+#
+# Digests are recorded with `scripts/fetch_sources.py --update-checksums`,
+# which will not overwrite an existing digest without an explicit flag, so a
+# corrupt download cannot be laundered into the register by rerunning it.
 sources:
   - id: jlpt-waller
     name: Jonathan Waller's JLPT Resources, via stephenmk/yomitan-jlpt-vocab
@@ -23,9 +39,18 @@ sources:
       - kana
       - kanji
       - waller_definition
-    checksum: >-
-      sha256:07dc6f197b51cc076c65c3c (n5.csv; see scripts/fetch_sources.py
-      --checksums for the full set)
+    upstream: head-tracked
+    files:
+      - path: data/raw/jlpt/n1.csv
+        sha256: 7a58f0584e9ec2b0299ccb9b109f3bd03e08b90d129a714307c0a1cb72f07b32
+      - path: data/raw/jlpt/n2.csv
+        sha256: 42a4413326e857d701dc9659b2711637ab612304a339fe0d09f4f0f042d3a214
+      - path: data/raw/jlpt/n3.csv
+        sha256: bd4d68c59cfee861351e1bdf9d99818e434392201eabbed4d3657225fe53a3ac
+      - path: data/raw/jlpt/n4.csv
+        sha256: a14dcc7fdc02259b22331a486c6ff66df74c16472c8aeb5a0ebe7e5fa8ee8eb4
+      - path: data/raw/jlpt/n5.csv
+        sha256: 07dc6f197b51cc076c65c3c9f23218d10c2b67f76545f5c1c4d9e3750495533a
     redistribution_notes: >-
       Level assignments are community estimates, not an official JLPT
       specification. The Japan Foundation and JEES stopped publishing
@@ -50,9 +75,13 @@ sources:
       - sense.gloss
       - sense.partOfSpeech
       - sense.examples
-    checksum: >-
-      sha256:924f8297cec4d48eb4a313c (jmdict-examples-eng.json; see
-      scripts/fetch_sources.py --checksums for the full digest)
+    upstream: pinned
+    files:
+      # The digest is of the extracted JSON rather than the .tgz that is
+      # downloaded: the archive is deleted after extraction, so the JSON is the
+      # only artefact left to check on a later run.
+      - path: data/raw/jmdict-examples-eng.json
+        sha256: 924f8297cec4d48eb4a313cc01dcd91f866908468a650bf162c0a9756f2657d0
     redistribution_notes: >-
       EDRDG requires that the usage and source of the files be acknowledged in
       documentation, publicity material and the project website, and that
@@ -75,9 +104,10 @@ sources:
       - surface
       - reading
       - ruby segment offsets
-    checksum: >-
-      sha256:2d5a6a11195ecfbaa565867 (JmdictFurigana.txt; see
-      scripts/fetch_sources.py --checksums for the full digest)
+    upstream: pinned
+    files:
+      - path: data/raw/JmdictFurigana.txt
+        sha256: 2d5a6a11195ecfbaa56586720fa4e869e5db146eb2973683161fa54fce3936d7
     redistribution_notes: >-
       The repository's LICENSE file states MIT, which covers the C# generator.
       The README states the data is distributed under the same licence as

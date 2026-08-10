@@ -60,5 +60,10 @@ available.
 
 ## Dependencies
 
-Runtime dependencies are two well-known Python libraries (PyYAML and
-jsonschema). Dependabot tracks GitHub Actions, pip and Docker updates weekly.
+Runtime dependencies are three well-known Python libraries (PyYAML,
+jsonschema, and referencing, which jsonschema pulls in anyway). Dependabot
+tracks GitHub Actions, pip and Docker updates weekly.
+The upstream `trmnl/trmnlp` image in `Dockerfile.trmnlp` is pinned by digest,
+not by tag, because the deploy job runs a container built from it with
+`TRMNL_API_KEY` in scope; Dependabot proposes updates to that pin so it stays
+current without being able to change under us unreviewed.

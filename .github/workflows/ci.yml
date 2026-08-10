@@ -101,6 +101,12 @@ jobs:
       - name: Render every view for every fixture
         run: python scripts/render_fixtures.py --png
 
+      - name: Test the rendered output
+        # After the render step, so a failure still leaves dist/renders
+        # populated for the artefact upload below and you can look at what
+        # broke. These tests skip in the `python` job, which has no image.
+        run: python -m pytest -q tests/test_render.py
+
       - name: Package the manual-import ZIP
         run: python scripts/package_plugin.py
 

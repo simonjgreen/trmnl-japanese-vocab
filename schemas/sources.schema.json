@@ -14,6 +14,11 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
+        "dependentRequired": {
+          "files": [
+            "upstream"
+          ]
+        },
         "required": [
           "id",
           "name",
@@ -63,8 +68,36 @@
               "type": "string"
             }
           },
-          "checksum": {
-            "type": "string"
+          "upstream": {
+            "description": "Whether the download URL names an immutable release artefact (pinned) or follows a branch head that may legitimately move (head-tracked). Determines whether a digest mismatch is an error or a warning.",
+            "type": "string",
+            "enum": [
+              "pinned",
+              "head-tracked"
+            ]
+          },
+          "files": {
+            "description": "Every file this source contributes to data/raw, with its SHA-256. One entry, one digest: notes about the digests belong in redistribution_notes or a YAML comment, never inside the digest itself.",
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "path",
+                "sha256"
+              ],
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "pattern": "^data/raw/[A-Za-z0-9._/-]+$"
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                }
+              }
+            }
           },
           "redistribution_notes": {
             "type": "string"

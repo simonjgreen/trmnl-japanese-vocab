@@ -75,6 +75,24 @@ git diff --stat data/vocabulary   # review before committing
 corpus is what this repository redistributes. CI never downloads it, so an
 upstream change can only reach the corpus through a reviewed commit.
 
+Every downloaded file is checked against the SHA-256 recorded for it in
+`data/sources.yml`, including files already on disk that the fetch skips. The
+JMdict and furigana URLs are `upstream: pinned` release artefacts, so a
+mismatch there is a corrupt download and fails the fetch. The JLPT lists are
+`upstream: head-tracked`, served from a branch head that may legitimately
+move, so a mismatch is a warning: run `make import`, review the canonical
+diff, then record the new digest with
+
+```sh
+python scripts/fetch_sources.py --update-checksums --accept-upstream-change
+```
+
+Without that flag an already-recorded digest is never overwritten, so a bad
+download cannot be blessed into the register just by running the command
+again. A pinned digest is never rewritten by the tool at all: a genuine
+release bump means editing the release constant, the version and the recorded
+digest by hand, where the diff makes it obvious.
+
 There is also a 25-word committed demo corpus for exercising the pipeline
 without any download — see [`data/demo/README.md`](../data/demo/README.md).
 
