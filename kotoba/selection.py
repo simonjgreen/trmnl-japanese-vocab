@@ -16,9 +16,9 @@ Fisher-Yates shuffle, both written out in full below.
 from __future__ import annotations
 
 import hashlib
+from collections.abc import Sequence
 from dataclasses import dataclass
 from datetime import date
-from typing import Sequence
 
 MASK64 = 0xFFFFFFFFFFFFFFFF
 _GOLDEN_GAMMA = 0x9E3779B97F4A7C15

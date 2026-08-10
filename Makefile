@@ -63,8 +63,14 @@ notice: ## Regenerate NOTICE.md from data/sources.yml
 	$(KOTOBA) validate --write-notice
 
 # --------------------------------------------------------------------------
-# Tests
+# Lint and tests
 # --------------------------------------------------------------------------
+
+# Lint only. The repository is not `ruff format`-clean and is not meant to be:
+# comments and long strings are wrapped by hand for readability.
+.PHONY: lint
+lint: ## Lint the Python with ruff
+	$(PYTHON) -m ruff check kotoba scripts tests
 
 .PHONY: test
 test: ## Run the Python test suite
@@ -140,7 +146,7 @@ configure: ## Point settings.yml at your GitHub Pages deployment
 # --------------------------------------------------------------------------
 
 .PHONY: check
-check: validate test build-site validate-site render-html ## Everything CI runs, locally
+check: lint validate test build-site validate-site render-html ## Everything CI runs, locally
 	@echo "All checks passed."
 
 .PHONY: clean

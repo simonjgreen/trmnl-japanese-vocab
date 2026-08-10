@@ -8,8 +8,9 @@ JSON schemas in ``schemas/`` remain the single authority on shape.
 from __future__ import annotations
 
 import hashlib
+from collections.abc import Iterable
 from dataclasses import dataclass, field
-from typing import Any, Iterable
+from typing import Any
 
 from .normalise import clean_text, nfc
 
@@ -62,7 +63,7 @@ class RubySegment:
         return {"base": self.base, "reading": self.reading}
 
     @staticmethod
-    def from_json(raw: dict[str, Any]) -> "RubySegment":
+    def from_json(raw: dict[str, Any]) -> RubySegment:
         reading = raw.get("reading")
         return RubySegment(
             base=nfc(raw["base"]),
@@ -88,7 +89,7 @@ class Example:
         return out
 
     @staticmethod
-    def from_json(raw: dict[str, Any]) -> "Example":
+    def from_json(raw: dict[str, Any]) -> Example:
         return Example(
             ja=clean_text(raw.get("ja", "")),
             en=clean_text(raw["en"]) if raw.get("en") else None,
@@ -109,7 +110,7 @@ class SourceRef:
         return out
 
     @staticmethod
-    def from_json(raw: dict[str, Any]) -> "SourceRef":
+    def from_json(raw: dict[str, Any]) -> SourceRef:
         entry_id = raw.get("source_entry_id")
         return SourceRef(
             source_id=raw["source_id"],
@@ -131,7 +132,7 @@ class JlptAssignment:
         }
 
     @staticmethod
-    def from_json(raw: dict[str, Any]) -> "JlptAssignment":
+    def from_json(raw: dict[str, Any]) -> JlptAssignment:
         return JlptAssignment(
             level=raw["level"],
             source_id=raw["source_id"],
@@ -179,7 +180,7 @@ class VocabularyEntry:
         return out
 
     @staticmethod
-    def from_json(raw: dict[str, Any]) -> "VocabularyEntry":
+    def from_json(raw: dict[str, Any]) -> VocabularyEntry:
         return VocabularyEntry(
             id=raw["id"],
             surface=nfc(raw["surface"]),

@@ -19,6 +19,7 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
   "pytest>=9.1.1",
+  "ruff>=0.16.2",
 ]
 # Only needed to re-import the production corpus from data/raw. The JMdict
 # examples build is ~129 MB of JSON; ijson streams it instead of loading it.
@@ -35,6 +36,32 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 include = ["kotoba*"]
+
+[tool.ruff]
+# Matches requires-python: without this ruff assumes an older floor and stops
+# offering the modernisations that make up most of what it finds here.
+target-version = "py312"
+# The code habitually sits well inside 88 columns (99% of lines are 87 or
+# shorter) and that habit is worth keeping by hand. The limit is set higher
+# than the habit on purpose: the only lines that exceed it are f-string
+# diagnostics and embedded HTML, which read worse wrapped than long, so 88
+# would buy churn rather than clarity. 100 still catches a runaway line.
+line-length = 100
+
+[tool.ruff.lint]
+# E/F are the pyflakes and pycodestyle baseline, I keeps import blocks stable
+# so diffs stay about behaviour, B catches the mutable-default and loop-capture
+# traps, UP keeps us on 3.12 idiom, SIM/C4 flag genuinely simpler forms, RUF
+# includes the unused-noqa check that stops suppressions outliving their cause.
+# TRY004 is pulled in alone: the rest of TRY (notably TRY003) would object to
+# the long, specific exception messages the CLI relies on.
+select = ["E", "F", "I", "B", "UP", "SIM", "C4", "RUF", "TRY004"]
+ignore = [
+  # Fullwidth punctuation and en dashes are the subject matter, not a typo.
+  "RUF001",
+  "RUF002",
+  "RUF003",
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

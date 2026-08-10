@@ -253,8 +253,10 @@ def renders() -> Renders:
 # would otherwise not have, and the assertions below need nothing beyond
 # "find elements by tag or class, and read their text".
 
+# Kept as a whitespace-separated string: fourteen quoted, comma-separated
+# items say nothing extra and no longer fit on one line.
 VOID_TAGS = frozenset(
-    "area base br col embed hr img input link meta param source track wbr".split()
+    "area base br col embed hr img input link meta param source track wbr".split()  # noqa: SIM905
 )
 
 #: Text inside these is code, not content, and must never be asserted on.
@@ -262,7 +264,7 @@ OPAQUE_TAGS = frozenset({"style", "script"})
 
 
 class Element:
-    __slots__ = ("tag", "attrs", "children")
+    __slots__ = ("attrs", "children", "tag")
 
     def __init__(self, tag: str, attrs: dict[str, str | None]) -> None:
         self.tag = tag

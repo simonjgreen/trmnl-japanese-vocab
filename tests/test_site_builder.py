@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import json
-from datetime import date, datetime, timedelta, timezone
+from datetime import UTC, date, datetime, timedelta
 from pathlib import Path
 
 import pytest
@@ -66,7 +66,7 @@ def build(corpus, tmp_path: Path, config: BuildConfig = SMALL, day=TODAY):
         sources_summary=[{"id": "demo", "name": "Demo", "licence": "CC0-1.0", "version": "1"}],
         commit_sha="abc123",
         today=day,
-        generated_at=datetime(2026, 8, 9, 12, 0, tzinfo=timezone.utc),
+        generated_at=datetime(2026, 8, 9, 12, 0, tzinfo=UTC),
     )
 
 
@@ -160,11 +160,11 @@ class TestBuild:
         assert manifest["dataset_version"] == "test+abc123"
         assert manifest["commit_sha"] == "abc123"
         assert manifest["status"] == "demo"
-        assert manifest["active_entries"] == {k: 5 for k in ("n5", "n4", "n3", "n2", "n1")}
+        assert manifest["active_entries"] == dict.fromkeys(("n5", "n4", "n3", "n2", "n1"), 5)
         assert manifest["deck_pool"] == {"n5": 5, "n4": 10, "n3": 15, "n2": 20, "n1": 25}
-        assert manifest["generated_files"] == {
-            k: SMALL.slot_count for k in ("n5", "n4", "n3", "n2", "n1")
-        }
+        assert manifest["generated_files"] == dict.fromkeys(
+            ("n5", "n4", "n3", "n2", "n1"), SMALL.slot_count
+        )
         assert manifest["slots"]["cumulative_levels"] is True
 
     def test_payloads_are_minified_utf8_with_readable_japanese(self, corpus, tmp_path):

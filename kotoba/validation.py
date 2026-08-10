@@ -67,7 +67,7 @@ class Report:
     def warn(self, message: str, **location: Any) -> None:
         self.add(WARNING, message, **location)
 
-    def extend(self, other: "Report") -> None:
+    def extend(self, other: Report) -> None:
         self.issues.extend(other.issues)
         self.counts.update(other.counts)
 

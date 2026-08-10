@@ -8,7 +8,6 @@ from pathlib import Path
 from kotoba.validation import validate_corpus
 
 
-
 def load(vocabulary_dir: Path, level: str) -> list[dict]:
     return json.loads((vocabulary_dir / f"{level}.json").read_text(encoding="utf-8"))
 

@@ -12,10 +12,11 @@ from __future__ import annotations
 
 import html
 import json
+from collections.abc import Iterable
 from dataclasses import dataclass
-from datetime import date, datetime, timezone
+from datetime import UTC, date, datetime
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any
 
 import yaml
 
@@ -62,7 +63,7 @@ class BuildConfig:
     slot_count: int = 4096
 
     @staticmethod
-    def load(path: Path) -> "BuildConfig":
+    def load(path: Path) -> BuildConfig:
         raw = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
         payload = raw.get("payload", {})
         slots = raw.get("slots", {})
@@ -84,7 +85,7 @@ class SelectionConfig:
     selection_salt: str = ""
 
     @staticmethod
-    def load(path: Path) -> "SelectionConfig":
+    def load(path: Path) -> SelectionConfig:
         raw = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
         epoch = raw.get("epoch_date")
         epoch_date = epoch if isinstance(epoch, date) else date.fromisoformat(str(epoch))
@@ -240,8 +241,8 @@ def build_site(
     generated_at: datetime | None = None,
 ) -> BuildResult:
     """Generate the complete static site into *output_dir*."""
-    today = today or datetime.now(timezone.utc).date()
-    generated_at = generated_at or datetime.now(timezone.utc)
+    today = today or datetime.now(UTC).date()
+    generated_at = generated_at or datetime.now(UTC)
 
     api_dir = output_dir / "api" / "v1"
     card_dir = api_dir / "card"
@@ -389,7 +390,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
 h1 { margin-bottom: 0.25rem; }
 .sub { opacity: 0.7; margin-top: 0; }
 table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
-th, td { text-align: left; padding: 0.35rem 0.6rem; border-bottom: 1px solid rgba(128,128,128,0.3); }
+th, td { text-align: left; padding: 0.35rem 0.6rem;
+         border-bottom: 1px solid rgba(128,128,128,0.3); }
 code { background: rgba(128,128,128,0.15); padding: 0.1rem 0.35rem; border-radius: 3px; }
 footer { margin-top: 2.5rem; font-size: 0.85rem; opacity: 0.8; }
 """
@@ -434,7 +436,8 @@ current time, so the card changes every
 N3 draws on N5, N4 and N3 together.</p>
 
 <table>
-<thead><tr><th>Level</th><th>Own words</th><th>Deck pool</th><th>Slot 0</th><th>Sample</th></tr></thead>
+<thead><tr><th>Level</th><th>Own words</th><th>Deck pool</th>
+<th>Slot 0</th><th>Sample</th></tr></thead>
 <tbody>{rows}</tbody>
 </table>
 

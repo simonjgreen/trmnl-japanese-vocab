@@ -7,8 +7,9 @@ or TSV source needs configuration rather than code.
 from __future__ import annotations
 
 import csv
+from collections.abc import Iterator
 from pathlib import Path
-from typing import Any, Iterator
+from typing import Any
 
 from ..normalise import clean_text
 from .base import RawRecord

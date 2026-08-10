@@ -13,8 +13,8 @@ import yaml
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
 
-import configure_repo  # noqa: E402
-import package_plugin  # noqa: E402
+import configure_repo
+import package_plugin
 
 REPO = Path(__file__).resolve().parent.parent
 SETTINGS_TEMPLATE = """---
@@ -108,7 +108,9 @@ class TestConfigureRepo:
 
     def test_returns_none_for_a_non_github_remote(self, monkeypatch):
         def fake_run(*args, **kwargs):
-            return subprocess.CompletedProcess(args, 0, stdout="https://gitlab.com/a/b\n", stderr="")
+            return subprocess.CompletedProcess(
+                args, 0, stdout="https://gitlab.com/a/b\n", stderr=""
+            )
 
         monkeypatch.setattr(configure_repo.subprocess, "run", fake_run)
         assert configure_repo.detect_from_git() is None
@@ -270,7 +272,7 @@ class TestShippedSettings:
     def test_all_five_levels_are_offered(self, settings):
         fields = {f["keyname"]: f for f in settings["custom_fields"]}
         options = fields["jlpt_level"]["options"]
-        values = [list(o.values())[0] for o in options]
+        values = [next(iter(o.values())) for o in options]
         assert values == ["n5", "n4", "n3", "n2", "n1"]
 
     def test_data_endpoint_has_no_trailing_slash(self, settings):

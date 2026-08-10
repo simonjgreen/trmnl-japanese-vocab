@@ -5,6 +5,7 @@ from __future__ import annotations
 import subprocess
 import sys
 from datetime import date, timedelta
+from itertools import pairwise
 
 import pytest
 
@@ -93,7 +94,7 @@ class TestSelection:
     def test_no_word_repeats_on_consecutive_days(self, n):
         scheduler = Scheduler(ids(n), "n3", EPOCH)
         seq = sequence(scheduler, -3 * n, 8 * n)
-        repeats = [a for a, b in zip(seq, seq[1:]) if a == b]
+        repeats = [a for a, b in pairwise(seq) if a == b]
         assert repeats == []
 
     def test_single_entry_level_repeats_by_definition(self):
@@ -105,7 +106,7 @@ class TestSelection:
     def test_two_entry_level_strictly_alternates(self):
         scheduler = Scheduler(["a", "b"], "n1", EPOCH)
         seq = sequence(scheduler, 0, 6)
-        assert all(x != y for x, y in zip(seq, seq[1:]))
+        assert all(x != y for x, y in pairwise(seq))
 
     def test_dates_before_the_epoch_are_defined(self):
         scheduler = Scheduler(ids(10), "n3", EPOCH)

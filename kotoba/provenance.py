@@ -69,7 +69,7 @@ class Source:
     redistribution_notes: str | None = None
 
     @staticmethod
-    def from_json(raw: dict[str, Any]) -> "Source":
+    def from_json(raw: dict[str, Any]) -> Source:
         return Source(
             id=raw["id"],
             name=raw["name"],
@@ -94,7 +94,7 @@ class SourceRegister:
     sources: dict[str, Source]
 
     @staticmethod
-    def load(path: Path) -> "SourceRegister":
+    def load(path: Path) -> SourceRegister:
         raw = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
         entries = [Source.from_json(s) for s in raw.get("sources", [])]
         return SourceRegister({s.id: s for s in entries})

@@ -85,13 +85,13 @@ class TestChooseDisplayGloss:
 
 def test_no_shipped_gloss_is_truncated():
     """An ellipsis mid-word looks broken on a wall display."""
-    import glob
     import json
+    from pathlib import Path
 
     truncated = [
         e["surface"]
-        for path in glob.glob("data/vocabulary/*.json")
-        for e in json.load(open(path, encoding="utf-8"))
+        for path in Path("data/vocabulary").glob("*.json")
+        for e in json.loads(path.read_text(encoding="utf-8"))
         if e["display_gloss"].endswith("…")
     ]
     assert truncated == [], f"truncated glosses: {truncated[:10]}"
@@ -99,12 +99,12 @@ def test_no_shipped_gloss_is_truncated():
 
 def test_the_shipped_corpus_uses_primary_glosses():
     """Regression guard against the shortest-gloss rule creeping back in."""
-    import glob
     import json
+    from pathlib import Path
 
     mismatches = []
-    for path in glob.glob("data/vocabulary/*.json"):
-        for entry in json.load(open(path, encoding="utf-8")):
+    for path in Path("data/vocabulary").glob("*.json"):
+        for entry in json.loads(path.read_text(encoding="utf-8")):
             glosses = entry.get("glosses") or []
             if not glosses:
                 continue

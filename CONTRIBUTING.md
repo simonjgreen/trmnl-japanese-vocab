@@ -57,6 +57,9 @@ segmentation and the automatic aligner, and the entry ID does not change.
 
 ## Code changes
 
+- Run `make lint` before pushing. It runs `ruff check`; CI runs the same thing
+  and fails on a finding. Do not run `ruff format` — the wrapping here is
+  deliberate and a reformat would bury your change in noise.
 - Tests come first for anything with logic in it. The furigana aligner and the
   selection algorithm have thorough suites; follow their lead.
 - British English in comments and documentation.

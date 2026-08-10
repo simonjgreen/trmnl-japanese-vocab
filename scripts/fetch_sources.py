@@ -113,7 +113,7 @@ class Register:
         self.warnings: list[str] = []
 
     @staticmethod
-    def load(path: Path = SOURCES) -> "Register":
+    def load(path: Path = SOURCES) -> Register:
         raw = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
         by_id = {entry["id"]: entry for entry in raw.get("sources", [])}
         expectations: dict[Path, Expectation] = {}

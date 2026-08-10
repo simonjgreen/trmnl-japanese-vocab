@@ -19,7 +19,7 @@ import zipfile
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from configure_repo import PLACEHOLDER_OWNER, SHIPPED_URL  # noqa: E402
+from configure_repo import PLACEHOLDER_OWNER, SHIPPED_URL
 
 SRC = Path("src")
 DEFAULT_OUTPUT = Path("dist/kotoba-plugin.zip")

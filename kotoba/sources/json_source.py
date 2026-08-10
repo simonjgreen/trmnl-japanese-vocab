@@ -7,8 +7,9 @@ Field paths use dotted notation with numeric indices, e.g.
 from __future__ import annotations
 
 import json
+from collections.abc import Iterator
 from pathlib import Path
-from typing import Any, Iterator
+from typing import Any
 
 from ..normalise import clean_text
 from .base import RawRecord
@@ -90,7 +91,11 @@ class JsonSource:
         document = json.loads(self.path.read_text(encoding=self.encoding))
         records = resolve_path(document, self.root_path) if self.root_path else document
         if not isinstance(records, list):
-            raise ValueError(
+            # Deliberately ValueError and not the TypeError ruff would prefer:
+            # this is malformed input data rather than a programming error, and
+            # kotoba.cli.main only turns ValueError and FileNotFoundError into a
+            # tidy message. A TypeError here would reach the user as a traceback.
+            raise ValueError(  # noqa: TRY004
                 f"source {self.source_id!r}: expected a JSON array"
                 + (f" at {self.root_path!r}" if self.root_path else "")
             )

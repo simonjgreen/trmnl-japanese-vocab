@@ -11,7 +11,7 @@ import argparse
 import json
 import subprocess
 import sys
-from datetime import date, datetime, timezone
+from datetime import UTC, date, datetime
 from pathlib import Path
 from typing import Any
 
@@ -203,7 +203,7 @@ def cmd_build_site(args: argparse.Namespace) -> int:
         sources_summary=register.summary(),
         commit_sha=args.commit_sha or _git_sha(),
         today=date.fromisoformat(args.today) if args.today else None,
-        generated_at=datetime.now(timezone.utc),
+        generated_at=datetime.now(UTC),
     )
 
     total_files = sum(result.file_counts.values())
@@ -253,6 +253,16 @@ def cmd_inspect(args: argparse.Namespace) -> int:
         sources_path=Path(args.sources),
         schema_dir=Path(args.schemas),
     )
+    # Diagnosing a broken corpus is exactly when `inspect` is most useful, so
+    # validation errors do not stop it — but they do change what the output
+    # means, and reporting a card from a corpus `validate` rejects without
+    # saying so would be misleading.
+    if not report.ok:
+        print(
+            f"warning: corpus has {len(report.errors)} validation error(s); "
+            "run 'kotoba validate' for the detail",
+            file=sys.stderr,
+        )
     build_config = BuildConfig.load(Path(args.build_config))
     key = level_key(args.level)
 
@@ -268,7 +278,7 @@ def cmd_inspect(args: argparse.Namespace) -> int:
     if args.slot is not None:
         slot = args.slot
     else:
-        now = int(datetime.now(timezone.utc).timestamp())
+        now = int(datetime.now(UTC).timestamp())
         slot = now // build_config.slot_seconds % build_config.slot_count
     if not 0 <= slot < build_config.slot_count:
         print(

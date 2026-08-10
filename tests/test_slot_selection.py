@@ -16,13 +16,12 @@ is no date in the path the API can never run out of coverage.
 
 from __future__ import annotations
 
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
+from pathlib import Path
 from zoneinfo import ZoneInfo
 
 import pytest
 import yaml
-
-from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
 BUILD = yaml.safe_load((REPO / "config" / "build.yml").read_text(encoding="utf-8"))
@@ -37,12 +36,12 @@ def slot(moment: datetime) -> int:
 
 def test_the_slot_is_stable_within_its_window():
     """A refresh inside one slot must redraw the same card, not flicker."""
-    base = datetime(2026, 8, 9, 12, 0, tzinfo=timezone.utc)
+    base = datetime(2026, 8, 9, 12, 0, tzinfo=UTC)
     assert slot(base) == slot(base + timedelta(seconds=SECONDS - 1))
 
 
 def test_the_slot_advances_at_the_boundary():
-    base = datetime(2026, 8, 9, 12, 0, tzinfo=timezone.utc)
+    base = datetime(2026, 8, 9, 12, 0, tzinfo=UTC)
     assert slot(base) != slot(base + timedelta(seconds=SECONDS))
 
 
@@ -55,8 +54,8 @@ def test_consecutive_renders_always_change_the_card():
     whole design exists to avoid.
     """
     render_interval = 15 * 60
-    assert SECONDS <= render_interval
-    base = datetime(2026, 8, 9, 12, 0, tzinfo=timezone.utc)
+    assert render_interval >= SECONDS
+    base = datetime(2026, 8, 9, 12, 0, tzinfo=UTC)
     for step in range(20):
         a = base + timedelta(seconds=step * render_interval)
         b = a + timedelta(seconds=render_interval)
@@ -65,7 +64,7 @@ def test_consecutive_renders_always_change_the_card():
 
 def test_the_slot_index_is_always_in_range():
     """Out of range means requesting a file that was never generated."""
-    base = datetime(2026, 1, 1, tzinfo=timezone.utc)
+    base = datetime(2026, 1, 1, tzinfo=UTC)
     for hours in range(0, 24 * 40, 7):
         assert 0 <= slot(base + timedelta(hours=hours)) < COUNT
 
@@ -73,7 +72,7 @@ def test_the_slot_index_is_always_in_range():
 def test_the_cycle_length_is_what_the_config_claims():
     days = COUNT * SECONDS / 86400
     assert days > 14, "a cycle shorter than a fortnight would feel repetitive"
-    base = datetime(2026, 8, 9, tzinfo=timezone.utc)
+    base = datetime(2026, 8, 9, tzinfo=UTC)
     assert slot(base) == slot(base + timedelta(seconds=COUNT * SECONDS))
 
 
@@ -82,15 +81,15 @@ def test_the_cycle_length_is_what_the_config_claims():
 )
 def test_the_slot_does_not_depend_on_time_zone(zone):
     """The same instant gives the same slot wherever the device thinks it is."""
-    moment = datetime(2026, 8, 9, 12, 34, tzinfo=timezone.utc)
+    moment = datetime(2026, 8, 9, 12, 34, tzinfo=UTC)
     assert slot(moment) == slot(moment.astimezone(ZoneInfo(zone)))
 
 
 def test_daylight_saving_does_not_disturb_the_sequence():
     """The UK transitions are a non-event for an epoch-derived index."""
     for transition in (
-        datetime(2026, 3, 29, 1, 0, tzinfo=timezone.utc),
-        datetime(2026, 10, 25, 2, 0, tzinfo=timezone.utc),
+        datetime(2026, 3, 29, 1, 0, tzinfo=UTC),
+        datetime(2026, 10, 25, 2, 0, tzinfo=UTC),
     ):
         before = slot(transition - timedelta(seconds=SECONDS))
         at = slot(transition)

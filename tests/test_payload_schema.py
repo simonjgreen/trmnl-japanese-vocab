@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pytest
 
-from kotoba.validation import load_schema, _validator
+from kotoba.validation import _validator, load_schema
 
 REPO = Path(__file__).resolve().parent.parent
 FIXTURES = REPO / "tests" / "fixtures"
