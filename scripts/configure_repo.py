@@ -1,9 +1,14 @@
 #!/usr/bin/env python3
 """Point the plugin at your own GitHub Pages deployment.
 
-``src/settings.yml`` ships with a placeholder endpoint so that no personal
-account name is baked into generic source files. This script rewrites it, and
-is idempotent: running it twice changes nothing the second time.
+``src/settings.yml`` ships pointing at this project's own Pages site, so that
+someone who imports the plugin ZIP without forking gets working data straight
+away (README "Route 1"). This script repoints it at your deployment, and is
+idempotent: running it twice changes nothing the second time.
+
+The shipped endpoint and the historical ``GITHUB_OWNER`` placeholder are both
+treated as defaults that may be overwritten freely. Only an endpoint you set
+yourself is protected behind ``--force``.
 
 Usage::
 
@@ -27,6 +32,14 @@ PLACEHOLDER_REPO = "GITHUB_REPO"
 PLACEHOLDER_URL = (
     f"https://{PLACEHOLDER_OWNER}.github.io/{PLACEHOLDER_REPO}/api/v1"
 )
+
+#: The endpoint this repository ships with. Not a secret and not personal
+#: data — it is the public data API the plugin defaults to. Listed here so a
+#: fresh fork is not mistaken for a deliberately customised checkout.
+SHIPPED_URL = "https://simonjgreen.github.io/trmnl-japanese-vocab/api/v1"
+
+#: Endpoints that `configure_repo` may overwrite without `--force`.
+DEFAULT_URLS = (PLACEHOLDER_URL, SHIPPED_URL)
 
 # GitHub's own rules: owners are alphanumeric with single hyphens; repository
 # names additionally allow dots and underscores.
@@ -81,7 +94,8 @@ def rewrite(text: str, owner: str, repo: str) -> str:
     existing = current_endpoint(text)
     if existing and existing != PLACEHOLDER_URL:
         # Rewrite whatever is currently configured, not just the placeholder,
-        # so that re-pointing an already-configured checkout works.
+        # so that re-pointing an already-configured checkout works. This also
+        # catches the `placeholder:` field, which carries the same URL.
         text = text.replace(existing, target)
     return text.replace(PLACEHOLDER_URL, target)
 
@@ -133,7 +147,7 @@ def main() -> int:
         print(f"already configured for {owner}/{repo}; nothing to do")
         return 0
 
-    if existing and existing != PLACEHOLDER_URL and not args.force:
+    if existing and existing not in DEFAULT_URLS and not args.force:
         print(
             f"refusing to overwrite a custom data endpoint:\n  {existing}\n"
             "re-run with --force if that is what you want",
@@ -147,12 +161,30 @@ def main() -> int:
     print(f"\n  Pages site:   https://{owner}.github.io/{repo}/")
     print(f"  Data API:     {target}")
     print(f"  Example URL:  {target}/card/n5/0.json")
+
+    # A committed plugin id belongs to whoever created that plugin. Pushing a
+    # fork with the upstream id still in place targets someone else's plugin,
+    # which the API will reject — confusingly, and after the fact.
+    inherited = re.search(r"^\s*id:\s*(\d+)\s*$", text, re.MULTILINE)
+    id_step = "  4. bin/trmnlp login && bin/trmnlp push   (creates the plugin)"
+    if inherited:
+        print(
+            f"\nNOTE: {path} still carries the upstream plugin id "
+            f"{inherited.group(1)}.\n"
+            "      That id is not yours. Delete the `id:` line before your\n"
+            "      first push, then commit the new id that push prints."
+        )
+        id_step = (
+            "  4. remove the `id:` line, then "
+            "bin/trmnlp login && bin/trmnlp push"
+        )
+
     print(
         "\nNext:\n"
         "  1. make validate && make build-site\n"
         "  2. commit and push to GitHub\n"
         "  3. Settings -> Pages -> Source: GitHub Actions\n"
-        "  4. bin/trmnlp login && bin/trmnlp push   (creates the plugin)\n"
+        f"{id_step}\n"
         "  5. add the returned id: to src/settings.yml and commit it\n"
         "  6. add TRMNL_API_KEY as a repository Actions secret"
     )

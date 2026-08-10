@@ -295,10 +295,8 @@
 {% template kotoba_empty %}
   <div class="kotoba-gloss">
     Vocabulary unavailable
-    {%- if level_display or date -%}
-      <div class="kotoba-example-en text--gray-30">
-        {{ level_display | escape }}{% if level_display and date %} · {% endif %}{{ date | escape }}
-      </div>
+    {%- if level_display and level_display != blank -%}
+      <div class="kotoba-example-en text--gray-30">{{ level_display | escape }}</div>
     {%- endif -%}
   </div>
 {% endtemplate %}
@@ -364,6 +362,14 @@
     {% if band == level_display %}{% assign kotoba_past_level = true %}{% endif %}
   {% endunless %}
 {% endfor %}
+{% comment %}
+  If level_display never matched — a blank or unrecognised value, which in
+  practice means no payload arrived — the loop above will have collected all
+  five bands. Showing "N5 N4 N3 N2 N1" with nothing underlined would be a
+  confident-looking lie, so fall back to no strip at all and let the title bar
+  print its plain label.
+{% endcomment %}
+{% unless kotoba_past_level %}{% assign kotoba_level_csv = "" %}{% endunless %}
 {% assign deck_levels = kotoba_level_csv | split: "," %}
 
 {% assign current_level = word.level | default: level_display %}

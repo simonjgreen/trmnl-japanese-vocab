@@ -430,7 +430,7 @@ def render_index(manifest: dict[str, Any], today: date) -> str:
 <p>Each level and time slot resolves to one small JSON document holding a
 single card. The plugin builds the path from its selected level and the
 current time, so the card changes every
-<code>" + str(manifest["slots"]["seconds"]) + "</code> seconds. A level includes every easier level, so
+<code>{manifest["slots"]["seconds"]}</code> seconds. A level includes every easier level, so
 N3 draws on N5, N4 and N3 together.</p>
 
 <table>

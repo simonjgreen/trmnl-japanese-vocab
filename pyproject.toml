@@ -9,6 +9,11 @@ authors = [{ name = "Simon Green" }]
 dependencies = [
   "PyYAML>=6.0.3",
   "jsonschema>=4.26.0",
+  # A transitive dependency of jsonschema, but imported directly by
+  # kotoba.validation to build the local $ref registry. Declared so that a
+  # future jsonschema release dropping it fails at install rather than at
+  # validate time.
+  "referencing>=0.36",
 ]
 
 [project.optional-dependencies]

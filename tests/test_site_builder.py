@@ -233,6 +233,23 @@ class TestBuild:
         for href in re.findall(r'href="([^"#:]+)"', html):
             assert (site / href).exists(), href
 
+    def test_index_interpolates_every_placeholder(self, corpus, tmp_path):
+        """The landing page is public, so an unsubstituted expression is a bug.
+
+        A leftover string-concatenation fragment once shipped to the live site
+        and rendered as `" + str(manifest["slots"]["seconds"]) + "` in prose.
+        Nothing checked the page's *text*, only that its links resolved.
+        """
+        build(corpus, tmp_path)
+        html = (tmp_path / "site" / "index.html").read_text(encoding="utf-8")
+        for artefact in (' + str(', '{manifest', '{html.escape', '%s', '{}'):
+            assert artefact not in html, f"unsubstituted {artefact!r} in index.html"
+
+    def test_index_reports_the_real_slot_duration(self, corpus, tmp_path):
+        build(corpus, tmp_path)
+        html = (tmp_path / "site" / "index.html").read_text(encoding="utf-8")
+        assert f"<code>{SMALL.slot_seconds}</code> seconds" in html
+
     def test_empty_level_is_refused(self, corpus, tmp_path):
         """N5 has nothing easier to fall back on, so emptying it is fatal."""
         corpus["n5"] = []

@@ -168,13 +168,15 @@ would set. `scripts/render_devices.py` does that:
 
 ```sh
 make render-devices        # TRMNL OG and TRMNL X
-make render-devices-all    # all 26 distinct viewports
+make render-devices-all    # every viewport in the table
 ```
 
 TRMNL supports around fifty devices, but what matters to this CSS is the *CSS
 viewport* — panel resolution divided by the device's scale factor, with a
-quarter-turn for rotated models. Those fifty collapse to 26 distinct
-viewports, listed in the script.
+quarter-turn for rotated models. The 24 models covered here collapse to 18
+distinct viewports, listed in the script. That is not TRMNL's whole catalogue
+— it is every viewport the layout has actually been checked against, and the
+list is regenerated with `--from-api` when the device list moves.
 
 Override *both* variables if doing it by hand. Setting only the width grows
 the type while the layout box stays 480 tall and the card overflows — a bug in

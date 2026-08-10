@@ -12,8 +12,9 @@ on:
       - 'config/**'
       - '.github/workflows/pages.yml'
   schedule:
-    # Weekly, to roll the date horizon forward. The ten-year cushion means a
-    # missed run is not an outage.
+    # Weekly, to advance the rotation. Slot URLs carry no date, so a missed
+    # run is not an outage — it only means the same 4096 cards stay in place
+    # for another week.
     - cron: '17 4 * * 1'
   workflow_dispatch:
 
@@ -66,7 +67,7 @@ jobs:
             python -m kotoba.cli manifest --site site
             echo '```'
             echo
-            echo "Total files: $(find site/api/v1/daily -name '*.json' | wc -l)"
+            echo "Total files: $(find site/api/v1/card -name '*.json' | wc -l)"
             echo "Site size:   $(du -sh site | cut -f1)"
           } >> "$GITHUB_STEP_SUMMARY"
 

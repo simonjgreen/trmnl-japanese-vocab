@@ -22,7 +22,12 @@ from .importer import run_import
 from .models import level_key
 from .provenance import SourceRegister
 from .selection import Scheduler
-from .site_builder import BuildConfig, SelectionConfig, build_site
+from .site_builder import (
+    BuildConfig,
+    SelectionConfig,
+    build_site,
+    cumulative_entries,
+)
 from .validation import summarise, validate_corpus, validate_site
 
 DEFAULT_VOCAB_DIR = Path("data/vocabulary")
@@ -248,15 +253,35 @@ def cmd_inspect(args: argparse.Namespace) -> int:
         sources_path=Path(args.sources),
         schema_dir=Path(args.schemas),
     )
+    build_config = BuildConfig.load(Path(args.build_config))
     key = level_key(args.level)
-    active = sorted(
-        (e for e in corpus.get(key, []) if e.is_active), key=lambda e: e.id
-    )
+
+    # The deck is cumulative — the same pool `build-site` uses — so inspecting
+    # n3 has to consider n5 and n4 material too, or it reports a word the
+    # device will never show.
+    active = cumulative_entries(corpus, key)
     if not active:
         print(f"no active entries for level {key}", file=sys.stderr)
         return 1
 
-    day = date.fromisoformat(args.date) if args.date else date.today()
+    # Mirror the polling URL: slot = floor(now / seconds) mod count.
+    if args.slot is not None:
+        slot = args.slot
+    else:
+        now = int(datetime.now(timezone.utc).timestamp())
+        slot = now // build_config.slot_seconds % build_config.slot_count
+    if not 0 <= slot < build_config.slot_count:
+        print(
+            f"slot {slot} is outside 0..{build_config.slot_count - 1}",
+            file=sys.stderr,
+        )
+        return 1
+
+    # And mirror the build: the rotation is offset by the build date, so a
+    # deployed site only agrees with this if it was built on --build-date.
+    built = date.fromisoformat(args.build_date) if args.build_date else date.today()
+    offset = (built - selection_config.epoch_date).days
+
     scheduler = Scheduler(
         [e.id for e in active],
         key,
@@ -264,16 +289,19 @@ def cmd_inspect(args: argparse.Namespace) -> int:
         selection_config.selection_version,
         selection_config.selection_salt,
     )
-    selection = scheduler.select(day)
+    selection = scheduler.at_position(offset + slot)
     entry = next(e for e in active if e.id == selection.entry_id)
 
     ruby = "".join(
         f"{s.base}[{s.reading}]" if s.reading else s.base for s in entry.ruby_segments
     )
+    path = f"api/v1/card/{key}/{slot}.json"
     _emit(
         {
-            "date": day.isoformat(),
             "level": key,
+            "slot": slot,
+            "build_date": built.isoformat(),
+            "path": path,
             "entry": entry.to_json(),
             "sequence": {
                 "cycle": selection.cycle,
@@ -284,13 +312,15 @@ def cmd_inspect(args: argparse.Namespace) -> int:
         args.json,
         "\n".join(
             [
-                f"{day.isoformat()}  {key.upper()}  ({selection.position}/{selection.total},"
+                f"{key.upper()}  slot {slot}  ({selection.position}/{selection.total},"
                 f" cycle {selection.cycle})",
                 f"  {entry.surface}  {entry.reading}",
                 f"  ruby: {ruby}",
                 f"  gloss: {entry.display_gloss}",
+                f"  from level: {entry.jlpt.level}",
                 f"  example: {entry.example.ja if entry.example else '-'}",
                 f"  english: {entry.example.en if entry.example and entry.example.en else '-'}",
+                f"  path: {path}   (as built on {built.isoformat()})",
             ]
         ),
     )
@@ -403,10 +433,20 @@ def build_parser() -> argparse.ArgumentParser:
     p_vsite.add_argument("--json", action="store_true", help=argparse.SUPPRESS)
     p_vsite.set_defaults(func=cmd_validate_site)
 
-    p_inspect = sub.add_parser("inspect", help="show the word for a level and date")
+    p_inspect = sub.add_parser(
+        "inspect", help="show the card a level resolves to for a time slot"
+    )
     common(p_inspect)
     p_inspect.add_argument("--level", required=True)
-    p_inspect.add_argument("--date")
+    p_inspect.add_argument(
+        "--slot", type=int, help="slot index (default: the current clock slot)"
+    )
+    p_inspect.add_argument(
+        "--build-date",
+        help="the date the site was built (default: today); the rotation is "
+        "offset by it, so a deployed site only matches if this agrees",
+    )
+    p_inspect.add_argument("--build-config", default="config/build.yml")
     p_inspect.add_argument("--selection-config", default="config/selection.yml")
     p_inspect.set_defaults(func=cmd_inspect)
 

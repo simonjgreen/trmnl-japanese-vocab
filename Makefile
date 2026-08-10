@@ -2,8 +2,8 @@
 # Kotoba — JLPT Flash Cards
 #
 # `make help` lists every target. Python commands run through the local
-# virtualenv if one exists, and `uv run` if uv is installed, so a contributor
-# with either setup gets the same behaviour.
+# virtualenv if one exists, and fall back to `python3` otherwise, so a
+# contributor with either setup gets the same behaviour.
 #
 
 SHELL := /bin/bash
@@ -16,10 +16,6 @@ TRMNLP     ?= ./bin/trmnlp
 SITE       ?= site
 DIST       ?= dist
 TRMNLP_IMAGE ?= kotoba/trmnlp:latest
-
-# A short local window keeps `make preview` fast; CI builds the full horizon.
-PREVIEW_PAST   ?= 2
-PREVIEW_FUTURE ?= 14
 
 .PHONY: help
 help: ## Show this help
@@ -90,10 +86,12 @@ validate-site: ## Validate the generated static API
 manifest: ## Summarise the generated build manifest
 	$(KOTOBA) manifest --site $(SITE)
 
+# Builds the full slot space, not a truncated one: the polling URL resolves
+# `slot mod 4096` from the wall clock, so a short build 404s on almost every
+# poll. All 20,480 files take about two seconds.
 .PHONY: preview
-preview: ## Build a short date range and start trmnlp against it
-	$(KOTOBA) build-site --output $(SITE) \
-		--past-days $(PREVIEW_PAST) --future-days $(PREVIEW_FUTURE)
+preview: ## Build the site and start trmnlp against it
+	$(KOTOBA) build-site --output $(SITE)
 	@echo "Preview on http://localhost:4567 — Ctrl-C to stop"
 	docker compose up --build
 
@@ -126,7 +124,7 @@ render-devices: ## Render the reference fixture on TRMNL's own panel sizes
 	$(PYTHON) scripts/render_devices.py --png
 
 .PHONY: render-devices-all
-render-devices-all: ## Render on all 26 supported device viewports
+render-devices-all: ## Render on every viewport in the device table
 	$(PYTHON) scripts/render_devices.py --png --all
 
 .PHONY: package

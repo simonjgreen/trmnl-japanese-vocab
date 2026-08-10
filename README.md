@@ -103,10 +103,14 @@ Then:
 5. **Settings → Pages → Source: GitHub Actions.** Not "deploy from a branch" —
    the site is generated, not committed.
 6. Run the **Pages** workflow and wait for it to go green.
-7. `bin/trmnlp login && bin/trmnlp push` — this creates the plugin and prints
-   an `id`. Commit that `id` into `src/settings.yml`.
-8. Add `TRMNL_API_KEY` as a repository Actions secret.
-9. Merge to `main`. From then on CI keeps both the data and the plugin current.
+7. Delete the `id:` line from `src/settings.yml`. It is the upstream plugin's
+   id, and it isn't yours — pushing with it still in place aims at someone
+   else's plugin. (`make configure` reminds you of this.)
+8. `bin/trmnlp login && bin/trmnlp push` — this creates the plugin and prints
+   a new `id`. Commit that `id` into `src/settings.yml`.
+9. Add `TRMNL_API_KEY` as a repository Actions secret.
+10. Merge to `main`. From then on CI keeps both the data and the plugin
+    current.
 
 The plugin `id` is not a secret and belongs in the repo. The API key is, and
 belongs in Actions secrets.
@@ -258,7 +262,7 @@ properties. Run `make lint-plugin` before pushing, and read
 | `make lint-plugin` | `trmnlp lint` |
 | `make render` / `make render-fixtures` | Render the reference fixture / all of them, to HTML and PNG |
 | `make render-html` | Every fixture to HTML only — no Docker or browser needed |
-| `make render-devices` / `make render-devices-all` | Render on TRMNL's own panels / all 26 supported viewports |
+| `make render-devices` / `make render-devices-all` | Render on TRMNL's own panels / every viewport in the device table |
 | `make package` | Flat plugin ZIP in `dist/` |
 | `make check` | Everything CI does, locally |
 | `make clean` | Remove generated output |
@@ -267,7 +271,8 @@ properties. Run `make lint-plugin` before pushing, and read
 There is also a `kotoba` CLI:
 
 ```sh
-kotoba inspect --level n3                       # what will the screen show?
+kotoba inspect --level n3                       # the card on screen right now
+kotoba inspect --level n3 --slot 0              # a specific slot
 kotoba align --surface 取り除く --reading とりのぞく
 kotoba manifest
 ```

@@ -205,22 +205,6 @@ class Scheduler:
         """Choose the single word for *requested_date*."""
         return self.at_position((requested_date - self.epoch_date).days)
 
-    def deck(self, requested_date: date, size: int) -> list[Selection]:
-        """The deck of *size* words shown on *requested_date*.
-
-        Each day takes the next contiguous run from the same shuffled stream,
-        so the no-repeat guarantee holds across the whole deck and across day
-        boundaries: a word reappears only once every word at the level has
-        been seen.
-
-        A deck longer than the corpus necessarily repeats within itself; that
-        is a property of the corpus, not a defect here.
-        """
-        if size <= 0:
-            raise ValueError("deck size must be positive")
-        start = (requested_date - self.epoch_date).days * size
-        return [self.at_position(start + i) for i in range(size)]
-
 
 def select(
     ordered_ids: Sequence[str],

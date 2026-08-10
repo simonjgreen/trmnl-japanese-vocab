@@ -18,6 +18,9 @@ import sys
 import zipfile
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from configure_repo import PLACEHOLDER_OWNER, SHIPPED_URL  # noqa: E402
+
 SRC = Path("src")
 DEFAULT_OUTPUT = Path("dist/kotoba-plugin.zip")
 
@@ -45,11 +48,20 @@ def main() -> int:
         return 1
 
     settings = (src / "settings.yml").read_text(encoding="utf-8")
-    if "GITHUB_OWNER" in settings:
+    if PLACEHOLDER_OWNER in settings:
         print(
             "warning: settings.yml still contains the placeholder data endpoint.\n"
             "         run scripts/configure_repo.py first, or set the endpoint\n"
             "         by hand in the TRMNL UI after importing.",
+            file=sys.stderr,
+        )
+    elif SHIPPED_URL in settings:
+        # Not an error: this is exactly the "borrow the public data" path from
+        # the README. Say so, so it is a choice rather than an accident.
+        print(
+            f"note: the packaged plugin points at the upstream data endpoint\n"
+            f"      {SHIPPED_URL}\n"
+            "      Run scripts/configure_repo.py to point it at your own.",
             file=sys.stderr,
         )
 

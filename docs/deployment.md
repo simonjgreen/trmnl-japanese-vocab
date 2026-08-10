@@ -180,8 +180,12 @@ Then check, in order:
 - The slot comes from UTC, so the device's time zone cannot affect which card
   it asks for.
 
-**A word looks wrong.** `kotoba inspect --level n3` shows exactly what the
-build would produce, including the ruby segmentation.
+**A word looks wrong.** `kotoba inspect --level n3` shows the card the current
+clock slot resolves to, including the ruby segmentation, and prints the API
+path so you can compare it against the deployed file. Pass `--slot N` for a
+particular slot. The rotation is offset by the date the site was built, so if
+the deployment is older than today, pass `--build-date` from
+`manifest.json`'s `generated_at` to make the two agree.
 
 **The screen is stuck on one word.** Check the plugin's Activity log in TRMNL.
 `Render skipped — no change in data` means it is being served an unchanging
