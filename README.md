@@ -11,6 +11,15 @@ vocabulary method was good; what was missing was furigana over the kanji.
 Kotoba adds that, deepens the vocabulary to 8,289 words, and lets you pick how
 hard they are.
 
+## UPDATE: 7 weeks later
+
+*26 September 2026 — 48 days since the first commit on 9 August.*
+
+My wife loves this, and it's now an important part of her learning routine.
+Here's what it looks like in practice:
+
+![Kotoba running on a white TRMNL at home, showing 芽 with the reading め, the gloss "sprout", and an example sentence with its English translation](docs/images/kotoba-in-use.jpg)
+
 ## What it does
 
 - **A new card every ten minutes**, so each glance at the panel is a different
