@@ -13,7 +13,7 @@ dependencies = [
   # kotoba.validation to build the local $ref registry. Declared so that a
   # future jsonschema release dropping it fails at install rather than at
   # validate time.
-  "referencing>=0.36",
+  "referencing>=0.37.0",
 ]
 
 [project.optional-dependencies]
