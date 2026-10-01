@@ -18,7 +18,7 @@
 # ignores it and resolves the digest. Dependabot's docker ecosystem parses this
 # form and will raise a pull request when upstream moves, so the pin is
 # reviewed rather than frozen.
-FROM trmnl/trmnlp:latest@sha256:4ac6d7f35ff30665b6c3b2634c2ba830488b2ee38783acc2ce953b652cb1c973
+FROM trmnl/trmnlp:latest@sha256:ad4163685598187f6d645c8873b16760001b0d94c6055e2306738c5098f7b512
 
 USER root
 RUN apt-get update \
